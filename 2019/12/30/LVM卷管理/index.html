@@ -10,6 +10,11 @@
 
     <!--Description-->
     
+        <meta name="description" content="一、LVM 的概念LVM 卷管理
+LVM 可以实现对磁盘的动态管理，在磁盘不用重新分区的情况下动态调整文件系统的大小，利用 LVM 管理的文件系统可以跨越磁盘。“/boot”分区用于存放系统引导文件，不能应用 LVM 机制。
+
+物理卷 PV，经过处理后的磁盘分区。卷组 VG，由一个或多个物理卷组成，">
+    
 
     <!--Author-->
     
@@ -40,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +132,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +140,76 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/LVM卷管理/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="一、LVM-的概念"><a href="#一、LVM-的概念" class="headerlink" title="一、LVM 的概念"></a>一、LVM 的概念</h1><p>LVM 卷管理</p>
+<p>LVM 可以实现对磁盘的动态管理，在磁盘不用重新分区的情况下动态调整文件系统的大小，利用 LVM 管理的文件系统可以跨越磁盘。“/boot”分区用于存放系统引导文件，不能应用 LVM 机制。</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577006135318.png" alt="1577006135318"></p>
+<p>物理卷 PV，经过处理后的磁盘分区。<br>卷组 VG，由一个或多个物理卷组成，类似于非 LVM 系统中的物理磁盘。<br>逻辑卷 LV，在逻辑卷之上可以创建文件系统，类似于非 LVM 系统中的磁盘分区。<br>物理块 PE，物理卷的组成部分，PE 的大小默认为 4MB，大小可调，一个卷组中最多能包括 65534 个PE。</p>
+<h1 id="二、LVM-的管理命令："><a href="#二、LVM-的管理命令：" class="headerlink" title="二、LVM 的管理命令："></a>二、LVM 的管理命令：</h1><p>功能                  物理卷管理    卷组管理    逻辑卷管理<br>scan 扫描             pvscan          vgscan         lvscan<br>Create 建立         pvcreate       vgcreate      lvcreate<br>Display 显示        pvdisplay     vgdisplay    lvdisplay<br>Remove 删除       pvremove     vgremove    lvremove<br>Reduce 缩减        vgreduce       lvreduce<br>Extend 扩展        vgextend       lvextend</p>
+<h1 id="三、准备实验环境"><a href="#三、准备实验环境" class="headerlink" title="三、准备实验环境"></a>三、准备实验环境</h1><p>在虚拟机中额外添加 2 块硬盘（整个虚拟机共有 3 块硬盘） 为虚拟机创建快照</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577006239885.png" alt="1577006239885"></p>
+<h2 id="1、创建磁盘分区"><a href="#1、创建磁盘分区" class="headerlink" title="1、创建磁盘分区"></a>1、创建磁盘分区</h2><p>创建物理分区： /dev/sdb1 和 /dev/sdb5,并修改分区标记为 8e。</p>
+<h2 id="2、创建物理卷-PV"><a href="#2、创建物理卷-PV" class="headerlink" title="2、创建物理卷 PV"></a>2、创建物理卷 PV</h2><p>然后创建物理卷 PV，用到的命令是pvcreate    （相当于图形操作中的初始化磁盘） <strong>Pvcreate /dev/sdb1 /dev/sdb5</strong></p>
+<h2 id="3、创建卷组-VG"><a href="#3、创建卷组-VG" class="headerlink" title="3、创建卷组 VG"></a>3、创建卷组 VG</h2><p>接下来创建卷组 VG ,用到的命令是 vgcreate<br>使用物理卷/dev/sdb1 和 /dev/sdb5 创建名为 wgroup 的卷组</p>
+<p><strong>vgcreate wgroup /dev/sdb1 /dev/sdb5</strong><br>创建完后可以用 vgdisplay 命令查看卷组的信息</p>
+<h2 id="4、创建逻辑卷"><a href="#4、创建逻辑卷" class="headerlink" title="4、创建逻辑卷"></a>4、创建逻辑卷</h2><p>从卷中创建逻辑卷，用到的命令是 lvcreate 格式如下：</p>
+<p><strong>lvcreate -L 容量大小 -n 逻辑卷名 卷组名</strong></p>
+<p>例：从 wgroup 卷组中创建名为 ftp 的容量为 19G 的逻辑卷</p>
+<p>lvcreate -L 19G -n ftp wgroup</p>
+<h2 id="5、创建并挂载文件系统"><a href="#5、创建并挂载文件系统" class="headerlink" title="5、创建并挂载文件系统"></a>5、创建并挂载文件系统</h2><p>逻辑卷相当于一个磁盘分区，要使用它首先要将其</p>
+<p>格式化<strong>mkfs -t ext4 /dev/wgroup/ftp</strong></p>
+<p>然后创建挂载目录点，将逻辑卷挂载mkdir /mnt/ftp</p>
+<p>挂载：<strong>mount /dev/wgroup/ftp /mnt/ftp</strong></p>
+<p> 修改/etc/fstab 文件，实现永久挂载vim /etc/fstab</p>
+<h2 id="6、扩展逻辑空间"><a href="#6、扩展逻辑空间" class="headerlink" title="6、扩展逻辑空间"></a>6、扩展逻辑空间</h2><p>最后将第三块硬盘/dev/sdc 加入到逻辑卷中。</p>
+<p>先将硬盘分成一个分区/dev/sdc1,并将分区标记修改为 8e 然后将分区转换为物理卷：<strong>pvcreate /dev/sdc1</strong></p>
+<p>将物理卷/dev/sdc1 添加到卷组wgroup 中：<strong>vgextend wgroup /dev/sdc1</strong></p>
+<p> 扩展逻辑卷的空间：<strong>lvextend -L +10G /dev/wgroup/ftp</strong></p>
+<p>执行 resize2fs 命令重设文件系统的大小：<strong>resize2fs /dev/wgroup/ftp</strong></p>
+<p>再次查看文件系统/var/ftp 的空间大小，可以看到已经变成了 29GB： df -HT</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

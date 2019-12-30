@@ -10,6 +10,11 @@
 
     <!--Description-->
     
+        <meta name="description" content="1 、修改防火墙设置2 、 安装 samba 并启动 samba 服务#yum install -y samba samba-client
+#systemctl start smb.service nmb.service
+3 、 建立共享目录mkdir /home/company
+4 、创建访问账号">
+    
 
     <!--Author-->
     
@@ -40,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +132,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +140,76 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/samba服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="1-、修改防火墙设置"><a href="#1-、修改防火墙设置" class="headerlink" title="1 、修改防火墙设置"></a>1 、修改防火墙设置</h2><h2 id="2-、-安装-samba-并启动-samba-服务"><a href="#2-、-安装-samba-并启动-samba-服务" class="headerlink" title="2 、 安装 samba 并启动 samba 服务"></a>2 、 安装 samba 并启动 samba 服务</h2><p>#yum install -y samba samba-client</p>
+<p>#systemctl start smb.service nmb.service</p>
+<h2 id="3-、-建立共享目录"><a href="#3-、-建立共享目录" class="headerlink" title="3 、 建立共享目录"></a>3 、 建立共享目录</h2><p>mkdir /home/company</p>
+<h2 id="4-、创建访问账号"><a href="#4-、创建访问账号" class="headerlink" title="4 、创建访问账号"></a>4 、创建访问账号</h2><p>useradd -s /sbin/nologin smbuser</p>
+<p>#smbpasswd -a smbuser</p>
+<p>【smbpasswd 选项说明： -a 添加 smb 帐号；x-x 删除 smb 帐号； -d 禁用  smb 帐号； -e 启用smb 帐号】</p>
+<h2 id="5-、修改配置文件：-etc-samba-smb-conf"><a href="#5-、修改配置文件：-etc-samba-smb-conf" class="headerlink" title="5 、修改配置文件： /etc/samba/smb.conf"></a>5 、修改配置文件： /etc/samba/smb.conf</h2><p>默认情况下，Samba 已经配置为允许用户通过远程共享访问账号的主目录。</p>
+<p>[company] //共享名称为 company<br>comment = company share//共享注释<br>path = /home/company //指定共享路径<br>browseable = yes //所有人可见<br>guest ok = no //拒绝匿名访问<br>writeable = yes //支持写入数据</p>
+<p>[company]<br>comment = company share<br>path = /home/company<br>guest ok = no //拒绝匿名访问<br>valid users=xzusr,gcusr,xsusr //允许访问的用户列表<br>write list=xzusr //允许写入的用户列表</p>
+<p>注意：修改配置文件以后，必须重启服务（systemctl t restart b smb nmb）</p>
+<h2 id="6-、测试-Samba-服务器"><a href="#6-、测试-Samba-服务器" class="headerlink" title="6 、测试 Samba 服务器"></a>6 、测试 Samba 服务器</h2><p>在 linux 客户端访问测试：smbclient -U smbuser //192.168.75.128/company</p>
+<p>查看服务器的共享文件有哪些：smbclient -L 192.168.75.128</p>
+<p>查看 smbuser 用户可以访问的共享文件：smbclient -L 192.168.75.128 -U         smbuser</p>
+<h2 id="7、linux、windows文件共享"><a href="#7、linux、windows文件共享" class="headerlink" title="7、linux、windows文件共享"></a>7、linux、windows文件共享</h2><p>在 x Linux 下访问 s Windows 共享目录的配置方法</p>
+<p>（1）在 Windows xp 上设置一个共享目录：d:\myfiles</p>
+<p>（2）在 Linux 下安装 samba-client 客户端</p>
+<p>​            #yum install samba-client</p>
+<p>（3）安装 cifs-utils 软件包</p>
+<p>​            #yum install cifs-utils</p>
+<p>（4）在 Linux 下创建一个挂载点</p>
+<p>​            #mkdir /mnt/Windows</p>
+<p>（5）挂载 Windows 上的共享目录 d:\myfiles 到 Linux 下的/mnt/Windows 目录下</p>
+<p>​        #mount -t cifs -o username=smbuser//192.168.0.3/company                 /mnt/Windows</p>
+<p>​            Enter password: <strong>****</strong><br>（6）如果挂载成功，则可以进入/mnt/Windows 下进行相应操作。</p>
+<p>（7）在/etc/fstab 文件中，加入该共享目录的挂载信息<br>//192.168.1.123/redhat_disk /mnt/Windows cifs username=tommy,password=111111 0 0</p>
+<p>（8）到此为止，Windows 上的共享目录//192.168.1.123/redhat_disk 就被成功挂载到了 Linux<br>上面了，并且 Linux 重启后，会自动挂载该目录到/mnt/Windows 目录下</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

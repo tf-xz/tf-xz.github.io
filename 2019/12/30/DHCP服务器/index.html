@@ -10,6 +10,9 @@
 
     <!--Description-->
     
+        <meta name="description" content="一、修改服务器的IP地址：   网卡配置文件存放位置：/etc/sysconfig/network-scripts/  1、 修改网卡配置文件：ifcfg-ens33 2、  启用网卡: ifup ens33      禁用网卡：ifdown ens33
+二、安装DHCP服务​        yum">
+    
 
     <!--Author-->
     
@@ -40,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +130,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +138,62 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/DHCP服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="一、修改服务器的IP地址："><a href="#一、修改服务器的IP地址：" class="headerlink" title="一、修改服务器的IP地址："></a>一、修改服务器的IP地址：</h1><p>   网卡配置文件存放位置：/etc/sysconfig/network-scripts/<br>  1、 修改网卡配置文件：ifcfg-ens33<br> 2、  启用网卡: ifup ens33      禁用网卡：ifdown ens33</p>
+<h1 id="二、安装DHCP服务"><a href="#二、安装DHCP服务" class="headerlink" title="二、安装DHCP服务"></a>二、安装DHCP服务</h1><p>​        <strong>yum install dhcpd</strong>  </p>
+<h1 id="三、配置DHCP服务器"><a href="#三、配置DHCP服务器" class="headerlink" title="三、配置DHCP服务器"></a>三、配置DHCP服务器</h1><p>   DHCP服务的配置文件：/etc/dhcp/dhcpd.conf<br>    如果要配置DHCP需要查看样例件参考，进行配置：<br>        /usr/share/doc/dhcp*/dhcpd.conf.example<br>        也可以通过man dhcpd.conf查看帮助手册进行配置<br>    检查配置语法格式是否有误：dhcpd -t   </p>
+<h2 id="1、修改dhcpd-conf配置文件："><a href="#1、修改dhcpd-conf配置文件：" class="headerlink" title="1、修改dhcpd.conf配置文件："></a>1、修改dhcpd.conf配置文件：</h2><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577326834959.png" alt="1"></p>
+<p>option domain-name-servers 61.139.2.69       设置DNS服务器选项，</p>
+<p>Subnet 192.168.10.0 netmask 255.255.255.0     用于定义作用域</p>
+<p>​     Range 192.168.80.21 192.168.80.254            可供分配的IP地址范围</p>
+<p>​     Option routers 192.168.80.2                           网关</p>
+<p>​     default-lease-time 86400                                默认租约时间，单位为秒</p>
+<p>​     max-lease-time 172800        最大租约时间，一般设置为默认租约时间的2倍</p>
+<h2 id="2、重新启动dhcp服务"><a href="#2、重新启动dhcp服务" class="headerlink" title="2、重新启动dhcp服务"></a>2、重新启动dhcp服务</h2><p>systemctl restart dhcpd</p>
+<h1 id="四、客户端配置"><a href="#四、客户端配置" class="headerlink" title="四、客户端配置"></a>四、客户端配置</h1><p>   方式一：通过命令提示符<br>           &gt;ipconfig /release<br>           &gt;ipconfig /renew<br>           &gt;ipconfig /all  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

@@ -10,6 +10,10 @@
 
     <!--Description-->
     
+        <meta name="description" content="​      1、使用yum安装vsftpd软件包 
+​             #yum install vsftpd ftp
+​      2、启动服务并设置开机自启​        #systemctl start vsftpd.service​        #systemctl enabl">
+    
 
     <!--Author-->
     
@@ -40,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +139,118 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/vsftp服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>​      1、使用yum安装vsftpd软件包 </p>
+<p>​             #yum install vsftpd ftp</p>
+<p>​      2、启动服务并设置开机自启<br>​        #systemctl start vsftpd.service<br>​        #systemctl enable vsftpd.service</p>
+<p>​      3、设置防火墙与selinux机制<br>​        #systemctl stop firewalld<br>​        #setenforce 0</p>
+<h1 id="匿名用户访问FTP"><a href="#匿名用户访问FTP" class="headerlink" title="匿名用户访问FTP"></a>匿名用户访问FTP</h1><p>​        默认目录是：/var/ftp  </p>
+<p>​        ftp的配置文件是：/etc/vsftpd/vsftpd.conf  </p>
+<p>相关命令：</p>
+<p>设置<strong>匿名</strong>用户访问ftp：    anonymous_enable=YES</p>
+<p>登录ftp时<strong>不输入密码</strong>  ：  no_anon_password=YES  </p>
+<p>设置匿名用户<strong>上传</strong>文件：  anon_upload_enable=YES  </p>
+<p>设置匿名用户<strong>新建</strong>文件：       anon_mkdir_write_enable=YES  </p>
+<p>设置匿名用户<strong>删除</strong>文件：       anon_other_write_enable=yes  </p>
+<p> <strong>修改</strong>匿名用户访问ftp的<strong>默认目录</strong>  ： anon_root=/mnt/ftp</p>
+<h2 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h2><p>设置匿名用户上传或新建文件的权限</p>
+<p>如果使用vsftp的是本地用户，则要修改配置文件中的 local_umask 的值；</p>
+<p> 如果使用vsftp的是虚拟用户，则要修改配置文件中的 <strong>anon_umask</strong> 的值。</p>
+<p>umask = 022 时，新建的目录 权限是755，文件的权限是 644；</p>
+<h1 id="系统用户访问FTP服务器"><a href="#系统用户访问FTP服务器" class="headerlink" title="系统用户访问FTP服务器"></a>系统用户访问FTP服务器</h1><p>​         系统用户默认访问主目录，具有上传、下载、新建、删除的权限，还可以切换到的系统其他目录  </p>
+<p>anonymous_enable=no</p>
+<p>local_enable=yes</p>
+<p>local_root=/mnt/public/  设置系统用户访问ftp的默认目录</p>
+<p>write_enable=YES     允许写入</p>
+<p>chroot_local_user=YES   控制用户访问路径访问指定目录，不能切换到其他目录</p>
+<p>allow_writeable_chroot=YES 允许写入q</p>
+<p>黑名单  ： /etc/vsftpd/ftpusers  </p>
+<p>白名单  ：  /etc/vsftpd/user_list  </p>
+<p>当存在userlist_enable=YES时，user_list文件生效。</p>
+<p>当存在userlist_deny=YES时，则仅禁止列表中的帐户登录。</p>
+<p>当存在userlist_deny=NO时，则允许列表中用户登录。 </p>
+<h1 id="虚拟用户访问FTP"><a href="#虚拟用户访问FTP" class="headerlink" title="虚拟用户访问FTP"></a>虚拟用户访问FTP</h1><p>1、安装Vsftpd虚拟用户需要用到的软件及认证模块</p>
+<p>  #yum install pam* libdb-utils libdb* –skip-broken -y</p>
+<p>2、创建虚拟用户临时文件/etc/vsftpd/ftpusers.txt,用户名密码格式如下：</p>
+<p>techftp</p>
+<p>123456</p>
+<p>3、生成Vsftpd虚拟用户数据库认证文件，设置权限为600</p>
+<p>  #db_load -T -t hash -f /etc/vsftpd/ftpusers.txt /etc/vsftpd/vsftp_login.db</p>
+<p>  #chmod 600 /etc/vsftpd/vsftp_login.db  </p>
+<p>4、配置PAM认证文件：vim /etc/pam.d/vsftpd.vu</p>
+<p>  auth  required  pam_userdb.so  db=/etc/vsftpd/vsftp_login</p>
+<p>  account required pam_userdb.so db=/etc/vsftpd/vsftp_login</p>
+<p>5、创建一个系统用户，用于虚拟用户映射</p>
+<p>  #useradd -s /sbin/nologin ftpuser</p>
+<p>6、修改配置文件：#vim /etc/vsftpd/vsftpd.conf </p>
+<p>  #pam_service_name=vsftpd</p>
+<p>  pam_service_name=vsftpd.vu</p>
+<p>  guest_enable=YES</p>
+<p>  guest_username=ftpuser</p>
+<p>  user_config_dir=/etc/vsftpd/vsftpd_user_conf</p>
+<p>  virtual_use_local_privs=YES</p>
+<p>7、分别为虚拟用户创建私有的虚拟目录与独立的配置文件</p>
+<p>  #mkdir /home/ftpuser/techftp</p>
+<p>  #mkdir /etc/vsftpd/vsftpd_user_conf</p>
+<p>  #vim techftp</p>
+<p>   local_root=/home/ftpuser/techftp</p>
+<p>   write_enable=YES</p>
+<p>   anon_world_readable_only=YES</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+<p>  #mkdir /home/ftpuser/netftp</p>
+<p>  #vim netftp</p>
+<p>   local_root=/home/ftpuser/netftp</p>
+<p>   write_enable=YES</p>
+<p>virtual_use_local_privs=NO    #不具有可登录用户的权限   </p>
+<p>anon_world_readable_only=YES       #可浏览目录</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

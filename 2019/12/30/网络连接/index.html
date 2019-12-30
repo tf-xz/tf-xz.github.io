@@ -10,6 +10,10 @@
 
     <!--Description-->
     
+        <meta name="description" content="一、主机名的配置（配置文件/etc/hostname）1、使用 hostname 命令临时设置主机名命令格式：hostname [新主机名] 
+2．永久设置主机名 命令格式：hostnamectl set-hostname 新主机名
+二、网卡信息的配置1、网卡配置文件 位于:/etc/sysconf">
+    
 
     <!--Author-->
     
@@ -40,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +139,93 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/网络连接/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="一、主机名的配置（配置文件-etc-hostname）"><a href="#一、主机名的配置（配置文件-etc-hostname）" class="headerlink" title="一、主机名的配置（配置文件/etc/hostname）"></a>一、主机名的配置（配置文件/etc/hostname）</h1><h2 id="1、使用-hostname-命令临时设置主机名"><a href="#1、使用-hostname-命令临时设置主机名" class="headerlink" title="1、使用 hostname 命令临时设置主机名"></a>1、使用 hostname 命令临时设置主机名</h2><p>命令格式：hostname [新主机名] </p>
+<h2 id="2．永久设置主机名"><a href="#2．永久设置主机名" class="headerlink" title="2．永久设置主机名"></a>2．永久设置主机名</h2><p> 命令格式：hostnamectl set-hostname 新主机名</p>
+<h1 id="二、网卡信息的配置"><a href="#二、网卡信息的配置" class="headerlink" title="二、网卡信息的配置"></a>二、网卡信息的配置</h1><p>1、网卡配置文件 位于:/etc/sysconfig/network-scripts 目录下,一块网卡对应一个配置文件。 </p>
+<p>ifcfg-ens33 为网卡配置文件，常用配置项的含义如下：</p>
+<p> DEVICE=ens33 //定义该网卡的识别名称。</p>
+<p> BOOTPROTO=dhcp //启动该网卡的方式</p>
+<p>dhcp 表示通过 BOOTP 或 DHCP 协议动态取得 IP 地址。 </p>
+<p>ONBOOT=yes //启动 network 服务时，是否启动该网卡。 </p>
+<p>TYPE=Ethernet //网卡的类型。</p>
+<p> IPADDR=192.168.64.128 //静态方式指定网卡的 IP 地址 </p>
+<p>NETMASK=255.255.255.0 //定义网卡的子网掩码</p>
+<p> MTU=1500 //网卡传输的最大数据包</p>
+<p> GATEWAY=192.168.64.254 //网络的默认网关  </p>
+<h1 id="2、配置网卡信息"><a href="#2、配置网卡信息" class="headerlink" title="2、配置网卡信息"></a>2、配置网卡信息</h1><h2 id="（1）直接修改网卡配置文件"><a href="#（1）直接修改网卡配置文件" class="headerlink" title="（1）直接修改网卡配置文件"></a>（1）直接修改网卡配置文件</h2><p> #vim /etc/sysconfig/network-scripts ifcfg-ens33 </p>
+<p>修改完成后重启服务才生效 #systemctl restart network.service </p>
+<h2 id="（2）ifconfig-命令"><a href="#（2）ifconfig-命令" class="headerlink" title="（2）ifconfig 命令"></a>（2）ifconfig 命令</h2><h3 id="①查看网卡信息"><a href="#①查看网卡信息" class="headerlink" title="①查看网卡信息"></a>①查看网卡信息</h3><p>命令格式：ifconfig [选项] </p>
+<p>无选项：显示当前活动的网卡。</p>
+<p>–a ：显示系统中所有网卡配置信息。 </p>
+<p>网卡设备名：显示指定网卡配置信息。 </p>
+<h3 id="②设置-IP-地址（临时的）"><a href="#②设置-IP-地址（临时的）" class="headerlink" title="②设置 IP 地址（临时的）"></a>②设置 IP 地址（临时的）</h3><p>命令格式：ifconfig 网卡设备名 IP 地址 netmask 子网掩码</p>
+<p> ③ 修改网卡的 MAC 地址（先禁用网卡，修改后重启网卡） 命令格式：ifconfig 网卡设备名 hw ether MAC 地址</p>
+<h2 id="（3）网卡常用命令"><a href="#（3）网卡常用命令" class="headerlink" title="（3）网卡常用命令"></a>（3）网卡常用命令</h2><h3 id="①-ifdown（禁用网卡）"><a href="#①-ifdown（禁用网卡）" class="headerlink" title="① ifdown（禁用网卡）"></a>① ifdown（禁用网卡）</h3><p>命令格式：ifdown 网卡设备名 </p>
+<h3 id="②-ifup（重启网卡）"><a href="#②-ifup（重启网卡）" class="headerlink" title="② ifup（重启网卡）"></a>② ifup（重启网卡）</h3><p>命令格式：ifup 网卡设备名</p>
+<h3 id="③绑定-IP-和-MAC-地址"><a href="#③绑定-IP-和-MAC-地址" class="headerlink" title="③绑定 IP 和 MAC 地址"></a>③绑定 IP 和 MAC 地址</h3><p>【举例】创建/etc/ethers 文件，将 193.168.168.154 与 00：0C：29：03：F3：75 网卡绑定。</p>
+<p> #echo “193.168.168.154 00：0C：29：03：F3：75” &gt;&gt;/etc/ethers </p>
+<p>#arp -f</p>
+<h1 id="三、常用网络调试命令与故障排查"><a href="#三、常用网络调试命令与故障排查" class="headerlink" title="三、常用网络调试命令与故障排查"></a>三、常用网络调试命令与故障排查</h1><h2 id="1．ping-命令："><a href="#1．ping-命令：" class="headerlink" title="1．ping 命令："></a>1．ping 命令：</h2><p>测试网络中是否畅通以及网络质量。 </p>
+<p>命令格式：ping [选项] 对方 IP 地址 选项说明：</p>
+<p> -c : 指定向目的主机发送多少个报文。</p>
+<p> -s :指定发送报文的大小，以字节为单位。</p>
+<p> -W: 设置等待接收回应报文的时间间隔，以秒为单位。</p>
+<h2 id="2．netstat-命令："><a href="#2．netstat-命令：" class="headerlink" title="2．netstat 命令："></a>2．netstat 命令：</h2><p>显示网络连接、路由表、正在监听的端口等信息。 </p>
+<p>命令格式：netstat [选项] </p>
+<p>选项说明： -l : 显示正在监听的服务或端口。</p>
+<p>-a : 显示当前主机开放的所有端口 </p>
+<p>-n : 不进行域名解析。</p>
+<p> -p : 显示端口是由哪个进程和程序在监听。 </p>
+<p>-c : 动态显示网络连接和端口监听信息。 </p>
+<p>-i : 显示网卡相关信息。 </p>
+<p>-r : 显示当前主机的路由表信息</p>
+<h2 id="3．traceroute-命令：路由跟踪。"><a href="#3．traceroute-命令：路由跟踪。" class="headerlink" title="3．traceroute 命令：路由跟踪。"></a>3．traceroute 命令：路由跟踪。</h2><p> 命令格式：traceroute 目的 IP 地址 </p>
+<h2 id="4．nslookup-命令"><a href="#4．nslookup-命令" class="headerlink" title="4．nslookup 命令:"></a>4．nslookup 命令:</h2><p>检测指定的 DNS 服务器工作是否正常 </p>
+<p>命令格式：nslookup</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

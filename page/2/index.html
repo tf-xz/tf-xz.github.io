@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="你好">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="你好">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="website">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>page - 你好</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">你好</h1>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/nginx服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><strong>主配置</strong>文件：# vim /etc/nginx/nginx.conf</p>
+<p>events模块：<a href="https://blog.csdn.net/zhangsheng_1992/article/details/51689980" target="_blank" rel="noopener">https://blog.csdn.net/zhangsheng_1992/article/details/51689980</a></p>
+<p>http模块：<a href="https://blog.csdn.net/chinabestchina/article/details/80993086" target="_blank" rel="noopener">https://blog.csdn.net/chinabestchina/article/details/80993086</a></p>
+<p><strong>监听端口</strong>：80</p>
+<p><strong>默认目录</strong>：/usr/share/nginx/html</p>
+<p><strong>日志文件</strong>：error_log /var/log/nginx/error.log;</p>
+<p>​     error_log /var/log/nginx/access.log </p>
+<p>补充：日志格式分析</p>
+<p><strong>安全加固</strong>：<a href="https://www.cnblogs.com/xiaozi/p/10119062.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaozi/p/10119062.html</a></p>
+<p>1、检查网络环境，查看服务器是否可以上网</p>
+<p>2、Centos 7 配置阿里云 yum源和安装 EPEL源</p>
+<h2 id="（1）对默认原文件进行备份"><a href="#（1）对默认原文件进行备份" class="headerlink" title="（1）对默认原文件进行备份"></a><strong>（1）对默认原文件进行备份</strong></h2><p>​            #cd /etc/yum.repos.d</p>
+<p>​            #mkdr bak</p>
+<p>​            #mv *.repo bak/</p>
+<h2 id="（2）配置阿里云yum源"><a href="#（2）配置阿里云yum源" class="headerlink" title="（2）配置阿里云yum源"></a><strong>（2）配置阿里云yum源</strong></h2><p>​         #wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>
+<p>​        #yum clean all    清除缓存</p>
+<p>​        #yum makecache      重新生成</p>
+<h2 id="（3）安装-EPEL源"><a href="#（3）安装-EPEL源" class="headerlink" title="（3）安装 EPEL源"></a><strong>（3）安装 EPEL源</strong></h2><p>​        #yum install -y epel-release</p>
+<p><strong>3**</strong>、安装nginx并配置服务**</p>
+<h3 id="（1）安装nginx服务："><a href="#（1）安装nginx服务：" class="headerlink" title="（1）安装nginx服务："></a><strong>（1）安装nginx服务：</strong></h3><pre><code>#yum install nginx</code></pre><h3 id="（2）修改nginx配置文件"><a href="#（2）修改nginx配置文件" class="headerlink" title="（2）修改nginx配置文件"></a>（2）修改nginx配置文件</h3><pre><code>\#vim /etc/nginx/nginx.conf</code></pre><p>​    在文件最后一个}号前添加：include vhost/*.conf;</p>
+<h3 id="（3）新建两个配置文件"><a href="#（3）新建两个配置文件" class="headerlink" title="（3）新建两个配置文件"></a>（3）新建两个配置文件</h3><p>在/etc/nginx目录下新建vhost目录，并在下面新建<a href="http://www.test.conf与www.hr.conf两个域名配置文件，并作如下编辑。" target="_blank" rel="noopener">www.test.conf与www.hr.conf两个域名配置文件，并作如下编辑。</a></p>
+<p><strong>#vim <a href="http://www.test.conf" target="_blank" rel="noopener">www.test.conf</a></strong></p>
+<p>​        server{</p>
+<pre><code>listen 192.168.75.131:80;
+
+server_name www.test.com;
+
+location / {</code></pre><p>​                root /data/test;</p>
+<p>​                index index.html;</p>
+<p>​        }</p>
+<p>​        }</p>
+<p><strong>#vim <a href="http://www.hr.conf" target="_blank" rel="noopener">www.hr.conf</a></strong></p>
+<p>​        server{</p>
+<pre><code>listen 192.168.75.131:80;
+
+server_name www.hr.com;</code></pre><p>​            location / {</p>
+<p>​           root /data/hr;</p>
+<p>​           index index.html;</p>
+<p>​        }</p>
+<p>​        }</p>
+<p><strong>（4）将公司网站文件test和hr都放到/data/目录下</strong></p>
+<p><strong>（5）配置完成后重启服务：systemctl restart nginx</strong></p>
+<p><strong>（6）关闭防火墙：systemctl status firewalld.service</strong></p>
+<p><strong>关闭selinux安全机制：setenforce 0</strong></p>
+<p>4、配置基于域名的虚拟主机</p>
+<p><strong>域名注册，在/etc/hosts中追加一行：</strong></p>
+<p>192.168.75.128 <a href="http://www.test.com" target="_blank" rel="noopener">www.test.com</a> </p>
+<p>192.168.75.128  <a href="http://www.hr.com" target="_blank" rel="noopener">www.hr.com</a></p>
+<p><strong>5**</strong>、网站访问测试**</p>
+<p>  在浏览器分别输入<a href="http://www.test.com和www.hr.com测试公司是否能够访问" target="_blank" rel="noopener">www.test.com和www.hr.com测试公司是否能够访问</a></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/NDS服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>把防火墙开启，在本机进行访问，看是否访问成功？<br>在客户端用地址访问网站能否成功？不能就关闭防火墙。<br>默认情况下，防火墙是不允许访问80端口的。</p>
+<p>基于域名的访问（通过/etc/hosts文件设置的，只限本机有效）<br>在客户端计算机使用域名进行访问能成功吗？</p>
+<p>DNS<br>正向解析：将域名解析成IP地址，A记录 CNAME记录  MX记录<br>反向解析：将IP地址解析成域名，PTR指针<br>DNS的查询方式：递归查询   迭代查询<br>区域类型：hint 根区域  master 主要区域  slave 辅助区域</p>
+<h1 id="配置DNS服务器："><a href="#配置DNS服务器：" class="headerlink" title="配置DNS服务器："></a>配置DNS服务器：</h1><p>建DNS服务器，分别以attendance和<a href="http://www.exam.com域名分别访问两个网站" target="_blank" rel="noopener">www.exam.com域名分别访问两个网站</a>  </p>
+<h2 id="1、安装DNS服务器"><a href="#1、安装DNS服务器" class="headerlink" title="1、安装DNS服务器"></a>1、安装DNS服务器</h2><p>  <strong>（1）安装bind程序包：</strong></p>
+<p> #yum install bind</p>
+<p><strong>（2）启动服务</strong></p>
+<p># systemctl start named.service</p>
+<p><strong>（3）设置自启动状态</strong></p>
+<p># systemctl enable named.service</p>
+<h2 id="2、主配置文件配置："><a href="#2、主配置文件配置：" class="headerlink" title="2、主配置文件配置："></a>2、主配置文件配置：</h2><pre><code>#vim /etc/named.conf  </code></pre><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577461158019.png" alt="1577461158019"></p>
+<h2 id="3、配置辅助区域文件的内容："><a href="#3、配置辅助区域文件的内容：" class="headerlink" title="3、配置辅助区域文件的内容："></a>3、配置辅助区域文件的内容：</h2><p>/etc/named.rfc1912.zones</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577461211418.png" alt="1577461211418"></p>
+<h2 id="4、配置区域配置文件："><a href="#4、配置区域配置文件：" class="headerlink" title="4、配置区域配置文件："></a>4、配置区域配置文件：</h2><p><strong>将/var/named/named.empty复制重命名为exam.com.zone，</strong></p>
+<p><strong>修改文件属组为named，并对其内容进行修改。</strong></p>
+<p>cp named.localhost exam.com.zone</p>
+<p>chown :named exam.com.zone </p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577461338725.png" alt="1577461338725"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577461363320.png" alt="1577461363320"></p>
+<h2 id="5启动服务-重启服务"><a href="#5启动服务-重启服务" class="headerlink" title="5启动服务/重启服务"></a>5启动服务/重启服务</h2><p>systemctl  restart named.server</p>
+<h2 id="6设置DNS地址"><a href="#6设置DNS地址" class="headerlink" title="6设置DNS地址"></a>6设置DNS地址</h2><h2 id="7-测试DNS：nslookup"><a href="#7-测试DNS：nslookup" class="headerlink" title="7.测试DNS：nslookup"></a>7.测试DNS：nslookup</h2><h1 id="配置辅助DNS服务器"><a href="#配置辅助DNS服务器" class="headerlink" title="配置辅助DNS服务器"></a>配置辅助DNS服务器</h1><p>   1）安装bind<br>   2）启动bind<br>      service named start<br>      chkconfig named on<br>   3）修改主配置文件，添加辅助区域<br>       vim /etc/named.conf</p>
+<pre><code>zone &quot;zlt.com&quot; IN {
+       type slave;
+       file &quot;slaves/slave.com.zone&quot;;
+       masters {192.168.0.1;};
+    };
+
+zone &quot;0.168.192.in-addr.arpa&quot; IN {
+       type slave;
+       file &quot;slaves/0.168.192.zone&quot;;
+       masters {192.168.0.1;};
+    };
+
+4)重启服务：service named restart</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/LVM卷管理/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="一、LVM-的概念"><a href="#一、LVM-的概念" class="headerlink" title="一、LVM 的概念"></a>一、LVM 的概念</h1><p>LVM 卷管理</p>
+<p>LVM 可以实现对磁盘的动态管理，在磁盘不用重新分区的情况下动态调整文件系统的大小，利用 LVM 管理的文件系统可以跨越磁盘。“/boot”分区用于存放系统引导文件，不能应用 LVM 机制。</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577006135318.png" alt="1577006135318"></p>
+<p>物理卷 PV，经过处理后的磁盘分区。<br>卷组 VG，由一个或多个物理卷组成，类似于非 LVM 系统中的物理磁盘。<br>逻辑卷 LV，在逻辑卷之上可以创建文件系统，类似于非 LVM 系统中的磁盘分区。<br>物理块 PE，物理卷的组成部分，PE 的大小默认为 4MB，大小可调，一个卷组中最多能包括 65534 个PE。</p>
+<h1 id="二、LVM-的管理命令："><a href="#二、LVM-的管理命令：" class="headerlink" title="二、LVM 的管理命令："></a>二、LVM 的管理命令：</h1><p>功能                  物理卷管理    卷组管理    逻辑卷管理<br>scan 扫描             pvscan          vgscan         lvscan<br>Create 建立         pvcreate       vgcreate      lvcreate<br>Display 显示        pvdisplay     vgdisplay    lvdisplay<br>Remove 删除       pvremove     vgremove    lvremove<br>Reduce 缩减        vgreduce       lvreduce<br>Extend 扩展        vgextend       lvextend</p>
+<h1 id="三、准备实验环境"><a href="#三、准备实验环境" class="headerlink" title="三、准备实验环境"></a>三、准备实验环境</h1><p>在虚拟机中额外添加 2 块硬盘（整个虚拟机共有 3 块硬盘） 为虚拟机创建快照</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577006239885.png" alt="1577006239885"></p>
+<h2 id="1、创建磁盘分区"><a href="#1、创建磁盘分区" class="headerlink" title="1、创建磁盘分区"></a>1、创建磁盘分区</h2><p>创建物理分区： /dev/sdb1 和 /dev/sdb5,并修改分区标记为 8e。</p>
+<h2 id="2、创建物理卷-PV"><a href="#2、创建物理卷-PV" class="headerlink" title="2、创建物理卷 PV"></a>2、创建物理卷 PV</h2><p>然后创建物理卷 PV，用到的命令是pvcreate    （相当于图形操作中的初始化磁盘） <strong>Pvcreate /dev/sdb1 /dev/sdb5</strong></p>
+<h2 id="3、创建卷组-VG"><a href="#3、创建卷组-VG" class="headerlink" title="3、创建卷组 VG"></a>3、创建卷组 VG</h2><p>接下来创建卷组 VG ,用到的命令是 vgcreate<br>使用物理卷/dev/sdb1 和 /dev/sdb5 创建名为 wgroup 的卷组</p>
+<p><strong>vgcreate wgroup /dev/sdb1 /dev/sdb5</strong><br>创建完后可以用 vgdisplay 命令查看卷组的信息</p>
+<h2 id="4、创建逻辑卷"><a href="#4、创建逻辑卷" class="headerlink" title="4、创建逻辑卷"></a>4、创建逻辑卷</h2><p>从卷中创建逻辑卷，用到的命令是 lvcreate 格式如下：</p>
+<p><strong>lvcreate -L 容量大小 -n 逻辑卷名 卷组名</strong></p>
+<p>例：从 wgroup 卷组中创建名为 ftp 的容量为 19G 的逻辑卷</p>
+<p>lvcreate -L 19G -n ftp wgroup</p>
+<h2 id="5、创建并挂载文件系统"><a href="#5、创建并挂载文件系统" class="headerlink" title="5、创建并挂载文件系统"></a>5、创建并挂载文件系统</h2><p>逻辑卷相当于一个磁盘分区，要使用它首先要将其</p>
+<p>格式化<strong>mkfs -t ext4 /dev/wgroup/ftp</strong></p>
+<p>然后创建挂载目录点，将逻辑卷挂载mkdir /mnt/ftp</p>
+<p>挂载：<strong>mount /dev/wgroup/ftp /mnt/ftp</strong></p>
+<p> 修改/etc/fstab 文件，实现永久挂载vim /etc/fstab</p>
+<h2 id="6、扩展逻辑空间"><a href="#6、扩展逻辑空间" class="headerlink" title="6、扩展逻辑空间"></a>6、扩展逻辑空间</h2><p>最后将第三块硬盘/dev/sdc 加入到逻辑卷中。</p>
+<p>先将硬盘分成一个分区/dev/sdc1,并将分区标记修改为 8e 然后将分区转换为物理卷：<strong>pvcreate /dev/sdc1</strong></p>
+<p>将物理卷/dev/sdc1 添加到卷组wgroup 中：<strong>vgextend wgroup /dev/sdc1</strong></p>
+<p> 扩展逻辑卷的空间：<strong>lvextend -L +10G /dev/wgroup/ftp</strong></p>
+<p>执行 resize2fs 命令重设文件系统的大小：<strong>resize2fs /dev/wgroup/ftp</strong></p>
+<p>再次查看文件系统/var/ftp 的空间大小，可以看到已经变成了 29GB： df -HT</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/linux系统管理基本操作/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>一、文件和目录的基本概念</p>
+<h2 id="1、Linux-的目录结构-Linux-系统的优势："><a href="#1、Linux-的目录结构-Linux-系统的优势：" class="headerlink" title="1、Linux 的目录结构 Linux 系统的优势："></a>1、Linux 的目录结构 Linux 系统的优势：</h2><p><strong>多用户多任务</strong>的系统 <strong>安全性更高</strong> <strong>开源免费</strong><br>在图形界面对Linux系统进行基本设置<br>1、设置让Linux系统能够上网。<br>设置网卡的连接方式:桥接<br>NAT<br>查看IP地址: ifconfig<br>三、虚拟机故障处理<br>首先查看服务有没有启动</p>
+<h2 id="2、命令提示符"><a href="#2、命令提示符" class="headerlink" title="2、命令提示符"></a>2、命令提示符</h2><p>​         [root@localhost~]#</p>
+<p>​          root:当前登录的用户名 </p>
+<p>​          localhost：本机的主机名</p>
+<p>​          <del>:用户当前所在目录，</del>代表家目录 root 用户的家目录是：/root 普通用户的家目录是：/home</p>
+<pre><code>#：当前登录的用户为管理员用户 $：当前登录的用户为普通用户 </code></pre><h2 id="3、切换用户用：su-用户名"><a href="#3、切换用户用：su-用户名" class="headerlink" title="3、切换用户用：su 用户名"></a>3、切换用户用：su 用户名</h2><h2 id="4、显示当前目录所在的完整路径：pwd"><a href="#4、显示当前目录所在的完整路径：pwd" class="headerlink" title="4、显示当前目录所在的完整路径：pwd"></a>4、显示当前目录所在的完整路径：pwd</h2><p>5、目录切换命令：cd cd /etc 切换到/etc/目录 </p>
+<p>cd .. 返回上一级目录 </p>
+<p>6、绝对路径和相对路径 相对路径：是当前目录下的某个文件或路径 绝对路径：是指目录或文件的完整路径<br>7、命令行编辑的几个辅助操作 Tab 键：自动补齐 分号“；”：在同一行中输入多个命令，中间用；隔开 反斜杠“\”：在一行命令后加上\，表示另起一行继续输入</p>
+<p>上下方向键：找出曾经执行过的历史命令 </p>
+<p>查看历史命令：history 快捷键</p>
+<p> Ctrl+U：清空至行首 快捷键</p>
+<p> Ctrl+K：清空至行尾 快捷键 </p>
+<p><strong>Ctrl+L：清屏 快捷键</strong></p>
+<p> <strong>Ctrl+C：终止命令的执行</strong></p>
+<h2 id="8、关机命令"><a href="#8、关机命令" class="headerlink" title="8、关机命令"></a>8、关机命令</h2><p>：shutdown （安全地将系统关机）</p>
+<p>shutdown 参数说明: [-t] 在改变到其它 runlevel 之前﹐告诉 init 多久以后关机。</p>
+<p> [-r] 重启计算器。 [-k] 并不真正关机﹐只是送警告信号给每位登录者〔login〕。 [-h] 关机后关闭电源〔halt〕。 [-n] 不用 init﹐而是自己来关机。不鼓励使用这个选项﹐而且该选项所产生的后 果往往不总是你所预期得到的。</p>
+<p> [-c] cancel current process 取消目前正在执行的关机程序。所以这个选项当然 没有时间参数﹐但是可以输入一个用来解释的讯息﹐而这信息将会送到每位使用者。 [-f] 在重启计算器〔reboot〕时忽略 fsck。</p>
+<p> [-F] 在重启计算器〔reboot〕时强迫 fsck。 [-time] 设定关机〔shutdown〕前的时间。 例如： ／sbin／shutdown －h now－－－－－立即关机； ／sbin／shutdown －h 20：49－－－－20：49 分关机 ／sbin／shutdown －h ＋10－－－－－10 分钟后关机 ／sbin／shutdown －r now －－－－－立即重启 ／sbin／shutdown －r ＋10 ‘The system will reboot’－－－－10 分钟后系统 重启并给每个登录用户发通知 ／sbin／shutdown －k now ‘The system will reboot’－－－－仅给每个登录用 户发通知并不真关机 reboot init 6</p>
+<h1 id="二、常用-shell-命令介绍"><a href="#二、常用-shell-命令介绍" class="headerlink" title="二、常用 shell 命令介绍"></a>二、常用 shell 命令介绍</h1><p> shell 命令格式：命令名 [选项][参数] </p>
+<h2 id="1、文件管理命令-ls–列表显示目录内容"><a href="#1、文件管理命令-ls–列表显示目录内容" class="headerlink" title="1、文件管理命令 ls–列表显示目录内容"></a>1、文件管理命令 ls–列表显示目录内容</h2><p> ls 显示结果以不同的颜色来区分文件类别。</p>
+<p> 蓝色代表目录（文件夹） </p>
+<p>灰色代表普通文件</p>
+<p> 绿色代表可执行文件<br>红色代表压缩文件</p>
+<p> 浅绿色代表链接文件（快捷方式） </p>
+<p>选项说明： -a 显示所有文件，包括隐藏文件（以.号开头的文件）。 </p>
+<p>-l 以长格式（内容更详细）显示文件或目录的详细信息。 </p>
+<p>-h 以 K、M、G 等单位显示文件大小（ 默认为字节），提高可读性 -lh</p>
+<h2 id="2、通配符的使用："><a href="#2、通配符的使用：" class="headerlink" title="2、通配符的使用："></a>2、通配符的使用：</h2><p>“？”可以匹配文件名中的一个任意字符， “<em>”可以匹配文件名中的任意多个字符。</em></p>
+<p>举例：显示/etc 目录下文件名以 ns 开头，扩展名是 conf 的文件的详细信息 ls –l /etc/ns*.conf<br>显示/etc 目录下文件名以 v 开头，文件名一共是 4 个字符的文件的详细信息 ls –l /etc/v???</p>
+<h2 id="3、创建目录（就是新建文件夹）"><a href="#3、创建目录（就是新建文件夹）" class="headerlink" title="3、创建目录（就是新建文件夹）:"></a>3、创建目录（就是新建文件夹）:</h2><p>要考虑权限问题 mkdir –p -m </p>
+<p>例 1：在当前目录创建名为 test 的子目录 [root@localhost /]:#mkdir /mnt/test </p>
+<p>例 2：在根目录中创建名为 public 的子目录 [root@localhost /]:#mkdir /public </p>
+<p>例 3：在当前目录中同时创建 3 个子目录 [root@localhost /]:#mkdir mp3 mp4 mp5<br>当前目录为/，此时在/mnt 目录下同时创建 2 个子目录 y1 y2 </p>
+<p>[root@localhost /]:#mkdir /mnt/y1/ y2/y3</p>
+<p>例 4：创建连续目录 [root@localhost /]:#mkdir <strong>- p</strong> /media/cdrom</p>
+<p> 例 5：创建目录，同时设置权限 [root@localhost /]:#mkdir - m 775 test</p>
+<h2 id="4、删除目录或文件"><a href="#4、删除目录或文件" class="headerlink" title="4、删除目录或文件"></a>4、删除目录或文件</h2><p>删除空目录：rmdir </p>
+<p>例 1：删除当前目录下的空目录 mytest [root@localhost /]:#rmdir mytest </p>
+<p>例 2：删除连续目录 [root@localhost /]:#rmdir - p /media/cdrom/aa</p>
+<p>删除文件：rm 默认只删除文件，不删除目录 </p>
+<p>例 1：删除当前目录下文件 1.txt [root@localhost /]:#rm 1.txt 有提示,确认删除请输入 y [root@localhost /]:#rm -f 1.txt 无提示,直接删除 </p>
+<p>例 2：删除当前目录下的 student 目录 [root@localhost /]:#rm -rf /student 5、复制文件或目录 复制文件 [root@localhost ~]# cp /bin/touch /root/test/toch1</p>
+<h2 id="复制、移动、重命名"><a href="#复制、移动、重命名" class="headerlink" title="复制、移动、重命名"></a>复制、移动、重命名</h2><p> [root@localhost ~]# cp /etc/inittab /etc/inittab.bat 将文件进行备份 复制目录 [root@localhost ~]# cp –R /tmp /root/mnt 6、移动（剪切–粘贴）文件或目录 [root@localhost ~]# mv /root/test/test1.txt /root/test/test2.txt 重命名 [root@localhost ~]# mv /root/test/test2.txt /tmp/ 7、新建文件 touch /1.txt 在/目录下新建一个 1.txt 文件</p>
+<h1 id="三、查看文件内容命令"><a href="#三、查看文件内容命令" class="headerlink" title="三、查看文件内容命令"></a>三、查看文件内容命令</h1><p>1、cat–显示文件的内容 cat –n 显示行号 cat 在<strong>显示文本文件的内容时不进行停顿，因此不适合查看长文件。</strong></p>
+<p>2、more 或 less 分页显示文件内容 </p>
+<p>采用全屏的方式分页显示文件内容，当内容满屏时便会暂停，按空格键 继续显示下一画面，或按 q 键跳离，适于阅读长文件。 </p>
+<p>区别： 当文件内容显示到文件尾时，more 命令<strong>会自动退出阅读环境</strong>，而 less 命令<strong>不自动退出</strong>，需在提示符“：”后按 q 键退出。</p>
+<p>3、head 和 tail–查看文件开头或末尾的部分内容</p>
+<p> 默认情况下，head 显示前 10 行内容，tail 显示后 10 行内容。</p>
+<p> 举例：查看/etc/inittab 文件的前 3 行内容 查看/etc/inittab 文件的后 5 行内容</p>
+<p>4、wc 命令</p>
+<p>文件内容统计 作用：用于统计指定文件中的行数、单词数、字节数。</p>
+<p> 语法：wc(选项)(参数) </p>
+<p>常用选项： -l 统计行数 </p>
+<p>​                    -w 统计单词数 </p>
+<p>​                    -c 统计字节数</p>
+<h1 id="四、查找命令"><a href="#四、查找命令" class="headerlink" title="四、查找命令"></a>四、查找命令</h1><h2 id="1、find-命令-搜索文件与目录"><a href="#1、find-命令-搜索文件与目录" class="headerlink" title="1、find 命令:搜索文件与目录"></a>1、find 命令:搜索文件与目录</h2><p>作用：是在某个指定的路径下找我们需要的文件或目录，目标是文件或目录。 类似于在 Windows 系统中执行的“搜索”操作。 </p>
+<p>语法：find [查找范围] [查找条件表达式] </p>
+<p>常用选项： -name 按名称查找，允许使用通配符。</p>
+<p> -type 按文件类型查找文件类型包括：普通文件（f）、目录（d）、块设备 文件（b）、字符设备文件（c）</p>
+<p> -user 按文件所有者查找，根据文件是否属于某个目标用户进行查找。</p>
+<p> -size 按文件大小查找，使用“+”、“-”号设置超过或小于指定的大小 作为查找条件。常用的容量单位包括 k（注意是小写）、M、G</p>
+<p>#find /etc -size +1024k -name “init*” </p>
+<p>#find /etc -name 1.txt</p>
+<h2 id="2、grep-命令-查找文件内容"><a href="#2、grep-命令-查找文件内容" class="headerlink" title="2、grep 命令:查找文件内容"></a>2、grep 命令:查找文件内容</h2><p>作用：是在某个文件中找我们所需要的某部分内容，目标是字符串。则类似于在 WORD 中执行的“查找”操作。 </p>
+<p>语法：grep [选项] 查找条件 目标文件 常用选项： </p>
+<p>​            -c ：计算找到 ‘搜寻字符串’ 的次数</p>
+<p>​             -i ：忽略大小写的不同，所以大小写视为相同 </p>
+<p>​            -n ：顺便输出行号</p>
+<p>​             -v ：反向选择，亦即显示出没有 ‘搜寻字符串’ 内容的那一行！</p>
+<p>​             –color=auto ：可以将找到的关键词部分加上颜色的显示！</p>
+<p> 注意：grep 不支持通配符，而是使用正则表达式：</p>
+<p> ^ 表示以什么字符开头</p>
+<p> $ 表示以什么字符结尾 </p>
+<p>如：“^word”表示以“word”开头 “word$”表示以“word”结尾 “^$”表示空行</p>
+<h1 id="五、其他辅助命令"><a href="#五、其他辅助命令" class="headerlink" title="五、其他辅助命令"></a>五、其他辅助命令</h1><h2 id="1、查看历史命令：history"><a href="#1、查看历史命令：history" class="headerlink" title="1、查看历史命令：history"></a>1、查看历史命令：history</h2><p> 作用：linux 的 history 命令的作用是，记录执行过的命令。 </p>
+<p>用法：history [n] n 为数字，列出最近的 n 条命令<br>使用! 执行历史命令。 ! number 执行第几条命令 ! command 从最近的命令查到以 command 开头的命令执行 !! 执行上一条</p>
+<h2 id="2-help-命令："><a href="#2-help-命令：" class="headerlink" title="2.help 命令："></a>2.help 命令：</h2><p>只能查看内部命令的帮助信息 举例：查看 pwd 命令的帮助信息 pwd –help </p>
+<p>如果使用 help 命令查看外部命令的帮助信息时则会报错<br>使用–help 选项查以查看外部命令的帮助信息</p>
+<h2 id="3-man-命令："><a href="#3-man-命令：" class="headerlink" title="3.man 命令："></a>3.man 命令：</h2><p>查看命令的帮助手册 使用“↑ ”、“↓ ”方向键滚动文本 </p>
+<p>使用 Page Up 和 Page Down 键翻页 按 Q 或 q 键退出阅读环境、按“/”键后查找内容<br>举例：查看 ls 的帮助手册</p>
+<h2 id="4-输入输出重定向"><a href="#4-输入输出重定向" class="headerlink" title="4.输入输出重定向"></a>4.输入输出重定向</h2><p> Linux 系统中标准的输入设备为键盘，标准输出设备为屏幕，但在某些情况下，我们希 望能从键盘以外的其他输入设备读取数据，或者将数据送到屏幕外的其他输出设备，这种情 况称为重定向。<br>输入重定向：&lt;</p>
+<p> 输出重定向：&gt;或&gt;&gt; 输出重定向是将命令的输出结果重定向到一个文件中，而不是显示在屏幕上。 “&gt;”后面指定的文件如果不存在，将先建立该文件，再保存命令结果到文件中。 “&gt;”后面指定的文件如果存在，将先清空文件的内容，再保存命令结果到文件中。 “&gt;&gt;”可以将命令结果重定向并追加到指定文件的末尾保存，而不覆盖文件中原有的内容。<br>举例：将 1.txt 的内容输出重定向到 a.txt Cat 1.txt &gt; a.txt 将 1.txt 的内容追加到 a.txt<br>将错误信息输出到文件 ls /etc/hhh 2&gt; erro cat &gt; newfile ls &gt; newfile cat &gt; newfile &lt; 1.txt</p>
+<h2 id="5-管道符“-”"><a href="#5-管道符“-”" class="headerlink" title="5.管道符“|”"></a>5.管道符“|”</h2><p>通过管道符“|”，可以把多个简单的命令连接起来实现更加复杂的功能。 管道符用于将“|”左边命令的执行结果作为“|”右边命令的输入。</p>
+<p>[root@localhost ~]# ls -lh /etc | more </p>
+<p>分页显示/etc 目录下所有文件和子目录的详细信息。</p>
+<p> [root@localhost ~]# ls -lh /etc | grep net </p>
+<p>显示/etc 目录下包含有“net”关键字的所有文件和子目录的详细信息。 [root@localhost ~]# ls -l /etc/*.conf | wc –l</p>
+<p> 统计/etc 目录下所有以“.conf”结尾的文件的个数。</p>
+<p> [root@localhost ~]# grep -v “^#” /etc/httpd/conf/httpd.conf | gerp –v “^$”</p>
+<p> 查看/etc/httpd/conf/httpd.conf 文件中除了以“#”开头的行和空行以外的内容。</p>
+<h2 id="6-clear-命令–清屏-Ctrl-l"><a href="#6-clear-命令–清屏-Ctrl-l" class="headerlink" title="6. clear 命令–清屏 Ctrl+l"></a>6. clear 命令–清屏 Ctrl+l</h2><h1 id="六、文件权限"><a href="#六、文件权限" class="headerlink" title="六、文件权限"></a>六、文件权限</h1><h2 id="1、文件属性说明"><a href="#1、文件属性说明" class="headerlink" title="1、文件属性说明"></a>1、文件属性说明</h2><p>第 1 组：文件类型，其中第一个字符代表文件的类别。 - 普通文件 d 目录 l 符号链接 c 字符设备 b 块设备 文件的权限 r：可读 w：可写 x：可执行 -：没有权限 </p>
+<p>第 2 组：文件件的连接数 </p>
+<p>第 3 组：文件所有者</p>
+<p> 第 4 组：文件属组 </p>
+<p>第 5 组：文件大小，默认单位为字节 </p>
+<p>第 6 组：文件创建时间 </p>
+<p>第 7 组：文件名称</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576723442133.png" alt="1576723442133"></p>
+<h2 id="2、修改文件的权限：chmod"><a href="#2、修改文件的权限：chmod" class="headerlink" title="2、修改文件的权限：chmod"></a>2、修改文件的权限：chmod</h2><p>字母方式修改权限 </p>
+<p>文件所有者权限（u) </p>
+<p>所属组权限（g) </p>
+<p>其他用户权限(o) </p>
+<p>所有用户（a) </p>
+<p>举例：/mnt 的权限是 drwxr-x–</p>
+<p>chmod u-w /mnt 权限变为：dr-xr-x–</p>
+<p>chmod o+rx /mnt 权限变为：dr-xr-xr-x </p>
+<p>chmod g+w /mnt 权限变为：dr-xrwxr-x </p>
+<p>chmod a+w /mnt 权限变为：drwxrwxrwx</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576724607619.png" alt="1576724607619"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576725111204.png" alt="1576725111204"></p>
+<h2 id="3、数字方式修改权限"><a href="#3、数字方式修改权限" class="headerlink" title="3、数字方式修改权限"></a>3、数字方式修改权限</h2><p>1 组 2 组 3 组 4 组 5 组 6 组 7 组<br>r=4 w=2 x=1 -=0</p>
+<h2 id="4、修改文件的所有者与所属组：chown"><a href="#4、修改文件的所有者与所属组：chown" class="headerlink" title="4、修改文件的所有者与所属组：chown"></a>4、修改文件的所有者与所属组：chown</h2><p>举例：chown teacher:teacher /test1 同时修改所有者与所属组 </p>
+<p>chown root /test1 修改所有者 </p>
+<p>chown :student /test1 修改所属组</p>
+<h2 id="5、特殊权限acl："><a href="#5、特殊权限acl：" class="headerlink" title="5、特殊权限acl："></a>5、特殊权限acl：</h2><p> 1）ACL：访问控制【针对其他用户当中的部份或个别用户设置特殊权限】 </p>
+<p>setfacl -m u:stu1:rwx A 创建一个 ACL 规则，使 stu1 用户对 A 目录具有 rwx 权限 </p>
+<p>getfacl A 查看 ACL 规则 </p>
+<p>setfacl -x u:stu3 A </p>
+<p>删除 stu3 对 A 目录的 ACL 权限，只删除了一条规则</p>
+<p> setfacl -b A</p>
+<p> 删除 A 目录的所有 ACL 规则 </p>
+<p>（2）SBIT：粘滞位权限（强制位权限）【针对其他用户，只能删除自己的文件，不能删除其他的用户的文件】 chmodo+tA </p>
+<p>（3）SGID:针对其他用户设置，以所属组的身份去执行。 hmodg+sA </p>
+<p>（4）SUID:以文件所有者的身份执行文件，只针对可执行文件。 chmodu+sA</p>
+<h1 id="六、连接文件"><a href="#六、连接文件" class="headerlink" title="六、连接文件"></a>六、连接文件</h1><h2 id="（1）软连接"><a href="#（1）软连接" class="headerlink" title="（1）软连接"></a><strong>（1）软连接</strong></h2><p>  是连接文件本身，可以跨分区建立软连接，不会因为不同分区而出现不能使用的问题。</p>
+<p>在创建软连接的文件中，修改一处文件另一处同时发生修改，当删除软连接对象时，不影响源文件使用，当删除源文件后，连接对象失去作用。</p>
+<p>创建软连接的方式：#ln -s soure /file object </p>
+<h2 id="（2）硬连接"><a href="#（2）硬连接" class="headerlink" title="（2）硬连接"></a><strong>（2）硬连接</strong></h2><p>在文件中使用inode号连接，两个连接文件同事使用一个inode号进行文件表示，一处文件修改，修改针对文件底层数据块修改，两个文件同时修改内容，删除一处文件，不会影响另一处文件的使用。因为硬连接使用inode号连接，所以只能在同分区能使用，不能跨分区使用。</p>
+<p>创建硬连接的方式：#ln soure /file object</p>
+<h2 id="七、命令别名"><a href="#七、命令别名" class="headerlink" title="七、命令别名"></a>七、命令别名</h2><p><strong>（1）定义别名：</strong>alias [name[=value]]</p>
+<p>   #alias li=’cat /etc/passwd’</p>
+<p><strong>（2）删除别名：</strong>unalias li</p>
+<p><strong>（3）查看系统可用别名：</strong>alias</p>
+<h1 id="八sudo概述"><a href="#八sudo概述" class="headerlink" title="八sudo概述"></a>八sudo概述</h1><p>sudo允许根据指定的安全策略，运行一个用户以其他用户身份或管理员身份去执行某个命令。</p>
+<p><strong>（1）sudo配置</strong></p>
+<p>查看sudo软件包：# rpm -qi sudo</p>
+<p>sudoers的模板配置文件：# cat /etc/sudoers</p>
+<p><strong>（2）配置一个普通用户，不需要切换密码就能以管理员身份执行管理命令</strong></p>
+<p>yanhui ALL=(ALL) NOPASSWD: ALL</p>
+<p>（3）定义别名并简单验证</p>
+<p>Cmnd_Alias NETADMINCMD = /usr/sbin/ip,/usr/sbin/ifconfig,/usr/sbin/route</p>
+<p>Cmnd_Alias USERADMINCMD = /usr/sbin/useradd,/ur/sbin/userdel,/usr/sbin/passwd,! /usr/sbin/passwd root</p>
+<p>fedora ALL=(ALL)    NETADMINCMD</p>
+<p>centos ALL=(ALL)    NETADMINCMD,USERADMINCMD</p>
+<h1 id="九、使用vim编辑文档"><a href="#九、使用vim编辑文档" class="headerlink" title="九、使用vim编辑文档"></a>九、使用vim编辑文档</h1><p>1.vim 编辑器的使用</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769304223.png" alt="1576769304223"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769379726.png" alt="1576769379726"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769399782.png" alt="1576769399782"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769427820.png" alt="1576769427820"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769452426.png" alt="1576769452426"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769476892.png" alt="1576769476892"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576769496495.png" alt="1576769496495"></p>
+<p>（</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/LAMP环境的搭建/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/DHCP服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="一、修改服务器的IP地址："><a href="#一、修改服务器的IP地址：" class="headerlink" title="一、修改服务器的IP地址："></a>一、修改服务器的IP地址：</h1><p>   网卡配置文件存放位置：/etc/sysconfig/network-scripts/<br>  1、 修改网卡配置文件：ifcfg-ens33<br> 2、  启用网卡: ifup ens33      禁用网卡：ifdown ens33</p>
+<h1 id="二、安装DHCP服务"><a href="#二、安装DHCP服务" class="headerlink" title="二、安装DHCP服务"></a>二、安装DHCP服务</h1><p>​        <strong>yum install dhcpd</strong>  </p>
+<h1 id="三、配置DHCP服务器"><a href="#三、配置DHCP服务器" class="headerlink" title="三、配置DHCP服务器"></a>三、配置DHCP服务器</h1><p>   DHCP服务的配置文件：/etc/dhcp/dhcpd.conf<br>    如果要配置DHCP需要查看样例件参考，进行配置：<br>        /usr/share/doc/dhcp*/dhcpd.conf.example<br>        也可以通过man dhcpd.conf查看帮助手册进行配置<br>    检查配置语法格式是否有误：dhcpd -t   </p>
+<h2 id="1、修改dhcpd-conf配置文件："><a href="#1、修改dhcpd-conf配置文件：" class="headerlink" title="1、修改dhcpd.conf配置文件："></a>1、修改dhcpd.conf配置文件：</h2><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577326834959.png" alt="1"></p>
+<p>option domain-name-servers 61.139.2.69       设置DNS服务器选项，</p>
+<p>Subnet 192.168.10.0 netmask 255.255.255.0     用于定义作用域</p>
+<p>​     Range 192.168.80.21 192.168.80.254            可供分配的IP地址范围</p>
+<p>​     Option routers 192.168.80.2                           网关</p>
+<p>​     default-lease-time 86400                                默认租约时间，单位为秒</p>
+<p>​     max-lease-time 172800        最大租约时间，一般设置为默认租约时间的2倍</p>
+<h2 id="2、重新启动dhcp服务"><a href="#2、重新启动dhcp服务" class="headerlink" title="2、重新启动dhcp服务"></a>2、重新启动dhcp服务</h2><p>systemctl restart dhcpd</p>
+<h1 id="四、客户端配置"><a href="#四、客户端配置" class="headerlink" title="四、客户端配置"></a>四、客户端配置</h1><p>   方式一：通过命令提示符<br>           &gt;ipconfig /release<br>           &gt;ipconfig /renew<br>           &gt;ipconfig /all  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/30/12-27任务/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>今日任务-一:<br>配置WEB/ dhcp/DNS服务器，并实现以下功能:<br>1.在WEB服务器上发布两个网站,<br>2.建DNS服务器，分别以at tendance和www. exam. com域名分别访问两个网站。<br>3.搭建DHCP服务器，让客户端能获取正确的IP地址及DNS地址，并能通过域名成功访问网站<br>4.设置在访问<a href="http://www.exam.com网站时使用用户名密码进行访问。" target="_blank" rel="noopener">www.exam.com网站时使用用户名密码进行访问。</a><br>5.制定任务计划，在每天晚上22 : 00对web/ dhcp/dns日志分别进行备份。<br>任务_::<br>1、整理Linux系统学习的笔记<br>2、对所学的Linux系统的知识进行复习，并以组为单位进行抽问。<br>开始<br>3、准备明天的周考。</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/12/03/hello-world/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-03</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <hr>
+<h2 id="title-你好呀！！！！！！！"><a href="#title-你好呀！！！！！！！" class="headerlink" title="title:你好呀！！！！！！！"></a>title:你好呀！！！！！！！</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/09/07/CVE-2019-0708/">
+                漏洞复现
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-09-07</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="CVE-2019-07-08"><a href="#CVE-2019-07-08" class="headerlink" title="CVE _2019_07_08"></a>CVE _2019_07_08</h3>
+        </div>
+        <a href="/2019/09/07/CVE-2019-0708/" class="read-more">Read More</a>
+    
+
+</div>
+            
+        </section>
+    </div>
+</div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/30/用户与组的管理/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/30/网络连接/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/30/软件安装与包管理工具/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/30/服务与进程/">Untitled</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

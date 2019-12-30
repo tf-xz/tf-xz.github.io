@@ -10,6 +10,10 @@
 
     <!--Description-->
     
+        <meta name="description" content="主配置文件：# vim /etc/nginx/nginx.conf
+events模块：https://blog.csdn.net/zhangsheng_1992/article/details/51689980
+http模块：https://blog.csdn.net/chinabestchina/">
+    
 
     <!--Author-->
     
@@ -40,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +139,100 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/nginx服务器/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><strong>主配置</strong>文件：# vim /etc/nginx/nginx.conf</p>
+<p>events模块：<a href="https://blog.csdn.net/zhangsheng_1992/article/details/51689980" target="_blank" rel="noopener">https://blog.csdn.net/zhangsheng_1992/article/details/51689980</a></p>
+<p>http模块：<a href="https://blog.csdn.net/chinabestchina/article/details/80993086" target="_blank" rel="noopener">https://blog.csdn.net/chinabestchina/article/details/80993086</a></p>
+<p><strong>监听端口</strong>：80</p>
+<p><strong>默认目录</strong>：/usr/share/nginx/html</p>
+<p><strong>日志文件</strong>：error_log /var/log/nginx/error.log;</p>
+<p>​     error_log /var/log/nginx/access.log </p>
+<p>补充：日志格式分析</p>
+<p><strong>安全加固</strong>：<a href="https://www.cnblogs.com/xiaozi/p/10119062.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaozi/p/10119062.html</a></p>
+<p>1、检查网络环境，查看服务器是否可以上网</p>
+<p>2、Centos 7 配置阿里云 yum源和安装 EPEL源</p>
+<h2 id="（1）对默认原文件进行备份"><a href="#（1）对默认原文件进行备份" class="headerlink" title="（1）对默认原文件进行备份"></a><strong>（1）对默认原文件进行备份</strong></h2><p>​            #cd /etc/yum.repos.d</p>
+<p>​            #mkdr bak</p>
+<p>​            #mv *.repo bak/</p>
+<h2 id="（2）配置阿里云yum源"><a href="#（2）配置阿里云yum源" class="headerlink" title="（2）配置阿里云yum源"></a><strong>（2）配置阿里云yum源</strong></h2><p>​         #wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>
+<p>​        #yum clean all    清除缓存</p>
+<p>​        #yum makecache      重新生成</p>
+<h2 id="（3）安装-EPEL源"><a href="#（3）安装-EPEL源" class="headerlink" title="（3）安装 EPEL源"></a><strong>（3）安装 EPEL源</strong></h2><p>​        #yum install -y epel-release</p>
+<p><strong>3**</strong>、安装nginx并配置服务**</p>
+<h3 id="（1）安装nginx服务："><a href="#（1）安装nginx服务：" class="headerlink" title="（1）安装nginx服务："></a><strong>（1）安装nginx服务：</strong></h3><pre><code>#yum install nginx</code></pre><h3 id="（2）修改nginx配置文件"><a href="#（2）修改nginx配置文件" class="headerlink" title="（2）修改nginx配置文件"></a>（2）修改nginx配置文件</h3><pre><code>\#vim /etc/nginx/nginx.conf</code></pre><p>​    在文件最后一个}号前添加：include vhost/*.conf;</p>
+<h3 id="（3）新建两个配置文件"><a href="#（3）新建两个配置文件" class="headerlink" title="（3）新建两个配置文件"></a>（3）新建两个配置文件</h3><p>在/etc/nginx目录下新建vhost目录，并在下面新建<a href="http://www.test.conf与www.hr.conf两个域名配置文件，并作如下编辑。" target="_blank" rel="noopener">www.test.conf与www.hr.conf两个域名配置文件，并作如下编辑。</a></p>
+<p><strong>#vim <a href="http://www.test.conf" target="_blank" rel="noopener">www.test.conf</a></strong></p>
+<p>​        server{</p>
+<pre><code>listen 192.168.75.131:80;
+
+server_name www.test.com;
+
+location / {</code></pre><p>​                root /data/test;</p>
+<p>​                index index.html;</p>
+<p>​        }</p>
+<p>​        }</p>
+<p><strong>#vim <a href="http://www.hr.conf" target="_blank" rel="noopener">www.hr.conf</a></strong></p>
+<p>​        server{</p>
+<pre><code>listen 192.168.75.131:80;
+
+server_name www.hr.com;</code></pre><p>​            location / {</p>
+<p>​           root /data/hr;</p>
+<p>​           index index.html;</p>
+<p>​        }</p>
+<p>​        }</p>
+<p><strong>（4）将公司网站文件test和hr都放到/data/目录下</strong></p>
+<p><strong>（5）配置完成后重启服务：systemctl restart nginx</strong></p>
+<p><strong>（6）关闭防火墙：systemctl status firewalld.service</strong></p>
+<p><strong>关闭selinux安全机制：setenforce 0</strong></p>
+<p>4、配置基于域名的虚拟主机</p>
+<p><strong>域名注册，在/etc/hosts中追加一行：</strong></p>
+<p>192.168.75.128 <a href="http://www.test.com" target="_blank" rel="noopener">www.test.com</a> </p>
+<p>192.168.75.128  <a href="http://www.hr.com" target="_blank" rel="noopener">www.hr.com</a></p>
+<p><strong>5**</strong>、网站访问测试**</p>
+<p>  在浏览器分别输入<a href="http://www.test.com和www.hr.com测试公司是否能够访问" target="_blank" rel="noopener">www.test.com和www.hr.com测试公司是否能够访问</a></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

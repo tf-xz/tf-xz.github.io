@@ -10,6 +10,13 @@
 
     <!--Description-->
     
+        <meta name="description" content="Linux 系统下安装软件的方法一、RPM 包安装RPM 主要有５种基本功能：查询、安装、升级、刷新、卸载。
+ 命令格式：rpm [选项] [文件]
+
+
+（1）查询 软件包的查询功能主要由-q选项完成，为了实现特殊的查询功能要配合其它的选项使用。 
+【举例 2】在已经安装的软件包中查询包含 lib ">
+    
 
     <!--Author-->
     
@@ -40,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/12 - 你好</title>
+    <title>你好</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +134,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,187 +142,115 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/12</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/30/LAMP环境的搭建/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/30/软件安装与包管理工具/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-30</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="Linux-系统下安装软件的方法"><a href="#Linux-系统下安装软件的方法" class="headerlink" title="Linux 系统下安装软件的方法"></a>Linux 系统下安装软件的方法</h1><h1 id="一、RPM-包安装"><a href="#一、RPM-包安装" class="headerlink" title="一、RPM 包安装"></a>一、RPM 包安装</h1><p>RPM 主要有５种基本功能：查询、安装、升级、刷新、卸载。</p>
+<p> 命令格式：rpm [选项] [文件]</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577116258032.png" alt="1577116258032"></p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577116298477.png" alt="1577116298477"></p>
+<h2 id="（1）查询"><a href="#（1）查询" class="headerlink" title="（1）查询"></a>（1）查询</h2><p> 软件包的查询功能主要由-q选项完成，为了实现特殊的查询功能要配合其它的选项使用。 </p>
+<p>【举例 2】在已经安装的软件包中查询包含 lib 关键字的软件包的名称。 </p>
+<p>#rpm -qa | grep lib </p>
+<p>【举例 3】查询 openssh-server 软件包是否已经安装。</p>
+<p> #rpm -q openssh-server</p>
+<p>【举例 6】查询 openssh-server 软件包中有哪些文件，以及这些文件安装在系统的位置。</p>
+<p> #rpm -ql openssh-server </p>
+<p>【举例 7】查询/var/empty/sshd 目录是安装哪一个软件包而创建的 </p>
+<p>#rpm -qf /var/empty/sshd</p>
+<h2 id="（2）安装：rpm-ivh-软件包名称"><a href="#（2）安装：rpm-ivh-软件包名称" class="headerlink" title="（2）安装：rpm -ivh 软件包名称"></a>（2）安装：rpm -ivh 软件包名称</h2><p>【举例 1】安装 telnet-server-0.17-59.el7.x86_64.rpm 软件包 </p>
+<p>#rpm -ivh telnet-server-0.17-59.el7.x86_64.rpm</p>
+<p>（3）升级是先将低版本的软件包卸载，再安装高版本的软件包。</p>
+<p> 【举例 1】升级 telnet 软件为 telnet-server-0.17-59.el7.x86_64.rpm 软件包。 </p>
+<p>#rpm -Uvh telnet-server-0.17-59.el7.x86_64.rpm</p>
+<h2 id="（4）刷新，"><a href="#（4）刷新，" class="headerlink" title="（4）刷新，"></a>（4）刷新，</h2><p>如果选项指定软件包的版本更高，会升级安装。如果未安装该软件包，刷新选 项不会安装软件包。 </p>
+<p>【举例 1】刷新 telnet-server-0.17-59.el7.x86_64.rpm 软件包</p>
+<p> #rpm -Fvh telnet-server-0.17-59.el7.x86_64.rpm</p>
+<h2 id="（5）卸载"><a href="#（5）卸载" class="headerlink" title="（5）卸载"></a>（5）卸载</h2><p>【举例 1】将 telnet-server 软件从系统中卸载。 </p>
+<p>#rpm -e telnet-server </p>
+<h2 id="（6）常见问题分析："><a href="#（6）常见问题分析：" class="headerlink" title="（6）常见问题分析："></a>（6）常见问题分析：</h2><p>·在执行#rpm -qa 命令时，如果输出信息过多，不易查找指定信息。</p>
+<p> 解决办法：使用 rpm -qa | grep</p>
+<p> ·在查询软件包信息或文件时，想保存执行结果。 </p>
+<p>解决办法：使用输出重定向 </p>
+<p>·“软件名称”和“软件包名称”。</p>
+<p> 解决办法：安装软件时使用软件包名称，查询与卸载时使用软件名称</p>
+<p>3、使用 RPM 管理 telnet-server 软件包 </p>
+<p>（1）在服务器端安装 telnet-server 和 xinetd，启动相应的服务。</p>
+<p> #rpm -q telnet-server xinetd </p>
+<p>#mount /dev/sr0 /mnt/cdrom </p>
+<p>#cd /mnt/cdrom/Packgr~</p>
+<p>#rpm -ivh telnet-server xinetd </p>
+<p>#systemctl start telnet.socket xinetd.service</p>
+<p>#systemctl status telnet.socket xinetd.service</p>
+<p>（2）在服务器端开启防火墙（图形界面与命令）。 </p>
+<p>systemctl status firewalld.service # firewall-cmd –zone=public –add-port=23/tcp –permanent # systemctl restart firewalld.service</p>
+<p>（3）在客户端访问（默认不允许 root 用户 telnet 登录）。</p>
+<p> 开始–运行–cmd Telnet 192.168.64.128</p>
+<h1 id="二、YUM-源安装"><a href="#二、YUM-源安装" class="headerlink" title="二、YUM 源安装"></a>二、YUM 源安装</h1><h2 id="1、设置本地-YUM-源"><a href="#1、设置本地-YUM-源" class="headerlink" title="1、设置本地 YUM 源"></a>1、设置本地 YUM 源</h2><p>（1）挂载光盘到/mnt/cdrom </p>
+<p>（2）创建自定义 yum 文件:#vim/etc/yum.d/media.repo </p>
+<p>[media] </p>
+<p>name=CentOS7 </p>
+<p>baseurl=file:///mnt/cdrom </p>
+<p>enabled=1 </p>
+<p>gpgcheck=0 </p>
+<p>gpqkey=gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</p>
+<p>YUM 工具主要有查询、安装、升级、刷新、卸载软件包等功能。 </p>
+<p>命令格式：yum [选项] [指令] [软件包]</p>
+<p> install package1 [package2][…] 使用 YUM 源安装软件包。</p>
+<p> update [package][packge2][…] 使用 YUM 源升级软件包。 </p>
+<p>check-update 检查 YUM 源中所有可用的升级。 </p>
+<p>remove|erase package1 [package2][…] 卸载软件包。 </p>
+<p>list[…]系统中已经安装的以及 YUM 源中所有可用的软件包。</p>
+<p> info[…] 查看软件包信息。</p>
+<p> clean all 清空所有的缓存信息。 </p>
+<p>makecache all 生成所有的缓存信息</p>
+<p> groupinstall group1 [group2] […] 使用 YUM 源安装组包。</p>
+<p> groupremove group1 [group2] […] 卸载组包。</p>
+<h1 id="三、源代码安装"><a href="#三、源代码安装" class="headerlink" title="三、源代码安装"></a>三、源代码安装</h1><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577151029434.png" alt="1577151029434"></p>
+<h1 id="四、包管理"><a href="#四、包管理" class="headerlink" title="四、包管理"></a>四、包管理</h1><h2 id="tar文件的压缩与解压缩"><a href="#tar文件的压缩与解压缩" class="headerlink" title="tar文件的压缩与解压缩"></a>tar文件的压缩与解压缩</h2><h2 id="ZIP文件的压缩与解压缩"><a href="#ZIP文件的压缩与解压缩" class="headerlink" title="ZIP文件的压缩与解压缩"></a><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1577151343790.png" alt="1577151343790">ZIP文件的压缩与解压缩</h2><p>   压缩：# zip -r wp.zip wp<br>   解压到当前目录：# unzip wp.zip<br>   解压到指定目录：#unzip -d /mnt/ wp.zip</p>
+<h2 id="RAR文件在压缩与解压缩"><a href="#RAR文件在压缩与解压缩" class="headerlink" title="RAR文件在压缩与解压缩"></a>RAR文件在压缩与解压缩</h2><p>   下载rarlinux-x64-5.7.1.tar.gz：<a href="https://www.rarlab.com/download.htm" target="_blank" rel="noopener">https://www.rarlab.com/download.htm</a><br>    解压后将rar文件复制到/usr/local目录下<br>    然后执行以下命令<br>      ln -s /usr/local/rar/rar /usr/local/bin/rar<br>      ln -s /usr/local/rar/unrar /usr/local/bin/unrar</p>
+<pre><code>解压文件：rar x 1.rar
+压缩文件：rar a test.rar ./test/ </code></pre>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/09/07/CVE-2019-0708/">
-        <span class="archive-date">
-            Sep 2019
-        </span>
-        漏洞复现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/12-27任务/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/LVM卷管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/NDS服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Web服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/03/hello-world/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/nginx服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/Untitled/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/samba服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/服务与进程/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/quota磁盘配额管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/vsftp服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/网络连接/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/用户与组的管理/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/软件安装与包管理工具/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/磁盘分区与挂载/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/linux系统管理基本操作/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/30/DHCP服务器/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Untitled
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

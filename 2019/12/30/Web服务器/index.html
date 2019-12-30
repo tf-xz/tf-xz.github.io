@@ -10,7 +10,10 @@
 
     <!--Description-->
     
-        <meta name="description" content="title:你好呀！！！！！！！Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can fin">
+        <meta name="description" content="一、发布公司网站1、安装Apache服务 # yum install -y httpd 
+#systemctl start httpd.service     启动服务
+​        /etc/httpd/conf：该目录存放Apache服务器的配置文件
+​        /var/www/ht">
     
 
     <!--Author-->
@@ -146,13 +149,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2019/12/03/hello-world/">
+            <a href="/2019/12/30/Web服务器/">
                 Untitled
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-12-03</span>
+                <span class="date">2019-12-30</span>
             
             
             
@@ -165,20 +168,95 @@
         
 
         <!-- Post Content -->
-        <hr>
-<h2 id="title-你好呀！！！！！！！"><a href="#title-你好呀！！！！！！！" class="headerlink" title="title:你好呀！！！！！！！"></a>title:你好呀！！！！！！！</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="一、发布公司网站"><a href="#一、发布公司网站" class="headerlink" title="一、发布公司网站"></a><strong>一、发布公司网站</strong></h1><h2 id="1、安装Apache服务"><a href="#1、安装Apache服务" class="headerlink" title="1、安装Apache服务"></a>1、安装Apache服务</h2><p> # yum install -y httpd </p>
+<p>#systemctl start httpd.service     启动服务</p>
+<p>​        <strong>/etc/httpd/conf</strong>：该目录存放Apache服务器的<strong>配置文件</strong></p>
+<p>​        <strong>/var/www/html</strong>：该目录是Apache服务器的默认<strong>站点根目录</strong></p>
+<p>​        /etc/httpd/logs:Apache服务器的日志文件目录</p>
+<p>2、测试Apache是否安装成功</p>
+<p> 在浏览器的地址栏输入：localhost进行测试</p>
+<p>3、将公司网站exam复制到/var/www/html/目录下，并修改配置文件：</p>
+<p>  Vim  /etc/httpd/conf/httpd.conf</p>
+<pre><code>修改：DocumentRoot &quot;/var/www/html/&quot;为</code></pre><p>​                        DocumentRoot “/var/www/html/exam”</p>
+<p> 4、【修改完配置文件后必须要重启服务：<strong>systemctl restart httpd</strong>】</p>
+<h1 id="二、基于端口号访问"><a href="#二、基于端口号访问" class="headerlink" title="二、基于端口号访问"></a>二、基于端口号访问</h1><p>项目考核信息网站部署完成后，考虑到站点是内部网站，为了保证安全，将首页改为exam.html，并使用8080端口访问。</p>
+<p><strong>改首页名字：</strong>#mv /var/www/html/exam/index.html                         </p>
+<p>/v ar/www/html/exam/exam.html</p>
+<p><strong>修改配置文件</strong>：Vim/etc/httpd/conf/httpd.conf</p>
+<p>​                            Listen 8080</p>
+<p>​                            DirectoryIndex exam.html index.html</p>
+<p><strong>重启服务：</strong>systemctl restart httpd</p>
+<p><strong>访问测试：</strong>192.168.75.128:8080<strong>1**</strong>、基于域名的虚拟主机*</p>
+<h1 id="三、基于域名的虚拟主机"><a href="#三、基于域名的虚拟主机" class="headerlink" title="三、基于域名的虚拟主机"></a>三、基于域名的虚拟主机</h1><h2 id="（1）域名注册"><a href="#（1）域名注册" class="headerlink" title="（1）域名注册"></a>（1）域名注册</h2><p><strong>vim  /etc/hosts：</strong></p>
+<p>192.168.75.128 exam.excesoft.com</p>
+<p>域名测试：nslookup</p>
+<h2 id="（2）将两个网站放到-var-www-html-目录下"><a href="#（2）将两个网站放到-var-www-html-目录下" class="headerlink" title="（2）将两个网站放到/var/www/html/目录下"></a>（2）将两个网站放到/var/www/html/目录下</h2><h2 id="（3）修改主配置文件："><a href="#（3）修改主配置文件：" class="headerlink" title="（3）修改主配置文件："></a>（3）修改主配置文件：</h2><p>​        vim /etc/httpd/conf/httpd.conf</p>
+<p>​        Listen 80</p>
+<p>​        DirectoryIndex index.html</p>
+<p>​        在末尾增加：Include conf/<strong>vhost</strong>/*.conf</p>
+<h2 id="（4）修改exam-conf和attendance-conf配置文件"><a href="#（4）修改exam-conf和attendance-conf配置文件" class="headerlink" title="（4）修改exam.conf和attendance.conf配置文件"></a>（4）修改exam.conf和attendance.conf配置文件</h2><p>​       在/etc/httpd/conf 目录下新建vhost目录，并在下面新建exam.conf与attendance.conf两个</p>
+<p><strong>域名配置文件，并作如下编辑。</strong></p>
+<p>#vim exam.conf</p>
+<p>​            &lt;VirtualHost 192.168.75.128&gt;</p>
+<p>​            ServerName exam.excesoft.com</p>
+<p>​            DocumentRoot /var/www/exam/</p>
+<p>​            &lt;Directory “/var/www/exam/”&gt;</p>
+<p>​            Options Indexes FollowSymLinks  //显示网页文件列表</p>
+<p>​            AllowOverride NOne        //忽略.htaccess 文件</p>
+<p>​            Require all granted       //允许所有</p>
+<p>​            </p>
+<p>​            </p>
+<p>#vim attendance.conf</p>
+<p>​            &lt;VirtualHost 192.168.75.128&gt;</p>
+<p>​            ServerName attendance.excesoft.com</p>
+<p>​            DocumentRoot /var/www/attendance/</p>
+<p>​            &lt;Directory “/var/www/attendance/”&gt;</p>
+<p>​            Options Indexes FollowSymLinks  //显示网页文件列表</p>
+<p>​            AllowOverride NOne        //忽略.htaccess 文件</p>
+<p>​            Require all granted       //允许所有</p>
+<p>​            </p>
+<p>​            </p>
+<p> <strong>使用httpd -t检查虚拟主机的配置是否正确</strong></p>
+<h2 id="5-重启Apache服务并进行测试"><a href="#5-重启Apache服务并进行测试" class="headerlink" title="(5)   重启Apache服务并进行测试"></a><strong>(5)</strong>   重启Apache服务并进行测试</h2><p><strong>systemctl</strong> <strong>restart httpd</strong> </p>
+<h1 id="四、基于IP地址的虚拟主机"><a href="#四、基于IP地址的虚拟主机" class="headerlink" title="四、基于IP地址的虚拟主机"></a>四、基于IP地址的虚拟主机</h1><p>要求：</p>
+<p>192.168.75.128：test1站点，域名：<a href="http://www.test1.com,站点目录是/var/www/html/test1,使用80端口；" target="_blank" rel="noopener">www.test1.com,站点目录是/var/www/html/test1,使用80端口；</a></p>
+<p>192.168.75.228：test2站点，域名：<a href="http://www.test2.com,站点目录是/var/www/html/test2,使用80端口；" target="_blank" rel="noopener">www.test2.com,站点目录是/var/www/html/test2,使用80端口；</a></p>
+<p>操作：</p>
+<p>[root@localhost ~]# mkdir /var/www/html/test1</p>
+<p>[root@localhost ~]# vim /var/www/html/test1/<strong>index.html</strong></p>
+<p>[root@localhost ~]# mkdir /var/www/html/test2</p>
+<p>[root@localhost ~]# vim /var/www/html/test2/<strong>index.html</strong></p>
+<h2 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h2><p>修改文件<strong>vim</strong>   <strong>/etc/hosts</strong></p>
+<p>172.16.16.223 <a href="http://www.test1.com" target="_blank" rel="noopener">www.test1.com</a></p>
+<p>172.16.16.224 <a href="http://www.test2.com" target="_blank" rel="noopener">www.test2.com</a></p>
+<h2 id="IP地址分配"><a href="#IP地址分配" class="headerlink" title="IP地址分配"></a>IP地址分配</h2><p>[root@localhost ~]# ifconfig ens33:01 172.16.16.223/24 up</p>
+<p>[root@localhost ~]# ifconfig ens33:02 172.16.16.224/24 up</p>
+<h2 id="修改主配置文件"><a href="#修改主配置文件" class="headerlink" title="修改主配置文件"></a>修改主配置文件</h2><p>[root@localhost ~]# vim /etc/httpd/conf/httpd.conf</p>
+<p>​             DirectoryIndex index.html</p>
+<p>​             DocumentRoot “/var/www/html/“</p>
+<p>​             Include conf/vhost/*.conf</p>
+<h2 id="修改test1-conf文件"><a href="#修改test1-conf文件" class="headerlink" title="修改test1.conf文件"></a>修改test1.conf文件</h2><p>[root@localhost ~]# vim /etc/httpd/conf/vhost/test1.conf</p>
+<pre><code>&lt;VirtualHost 172.16.16.223&gt;    </code></pre><p>​            DocumentRoot /var/www/html/test1</p>
+<p>​            &lt;Directory “/var/www/html/test1”&gt;</p>
+<p>​            Options Indexes FollowSymLinks  </p>
+<p>​            AllowOverride NOne        </p>
+<p>​            Require all granted       </p>
+<p>​            </p>
+<p>​            </p>
+<h2 id="修改test2-conf文件"><a href="#修改test2-conf文件" class="headerlink" title="修改test2.conf文件"></a>修改test2.conf文件</h2><p>[root@localhost ~]# vim /etc/httpd/conf/vhost/test2.conf</p>
+<p>​            &lt;VirtualHost 172.16.16.224&gt;</p>
+<p>​            DocumentRoot /var/www/html/test2</p>
+<pre><code>&lt;Directory “/var/www/html/test2”&gt;</code></pre><p>​            Options Indexes FollowSymLinks  </p>
+<p>​            AllowOverride NOne        </p>
+<p>​            Require all granted       </p>
+<p>​            </p>
+<p>​            </p>
+<h2 id="重启Apache服务"><a href="#重启Apache服务" class="headerlink" title="重启Apache服务"></a>重启Apache服务</h2><p>​            <strong>systemctl restart httpd</strong></p>
+<h1 id="五、虚拟目录"><a href="#五、虚拟目录" class="headerlink" title="五、虚拟目录"></a>五、虚拟目录</h1><img src="C:\Users\asus\Desktop\1577374504220.png" alt="1577374504220" style="zoom: 200%;">
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>虚拟目录:<br>安全:如何限制用户和特定网络访问网站?|</p>
 
     </div>
 
