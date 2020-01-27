@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="你好">
 <meta property="og:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-26T04:14:21.516Z">
+<meta property="og:updated_time" content="2020-01-26T09:45:52.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
 <meta name="twitter:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
@@ -181,13 +181,25 @@
 <p>注意：在update语句中，如果没有出现where子句，则表示针对表中所有数据进行更新操作；如果表中出现where子句，则必须先根据条件表达式筛选数据，再行更新操作</p>
 <h3 id="2-3、delete-删除"><a href="#2-3、delete-删除" class="headerlink" title="2.3、delete-删除"></a>2.3、delete-删除</h3><p>语法：<strong>delete from</strong> <strong>表名  [where</strong> 条件表达式];</p>
 <p>注意：如果是多个条件，则使用逻辑运算符：与(and)、或(or)、非（not）</p>
-<h2 id="3、DQL（针对数据信息）"><a href="#3、DQL（针对数据信息）" class="headerlink" title="3、DQL（针对数据信息）"></a>3、DQL（针对数据信息）</h2><h3 id="3-1、select-查询"><a href="#3-1、select-查询" class="headerlink" title="3.1、select-查询"></a>3.1、select-查询</h3><h2 id="4、DCL（针对用户）：grant-授权、revoke-回收"><a href="#4、DCL（针对用户）：grant-授权、revoke-回收" class="headerlink" title="4、DCL（针对用户）：grant-授权、revoke-回收"></a>4、DCL（针对用户）：grant-授权、revoke-回收</h2><h3 id="4-1、授权"><a href="#4-1、授权" class="headerlink" title="4.1、授权"></a>4.1、授权</h3><p>语法：grant 权限 on 范围 to 用户 [with grant option];</p>
+<h2 id="3、DQL（针对数据信息）–select-查询"><a href="#3、DQL（针对数据信息）–select-查询" class="headerlink" title="3、DQL（针对数据信息）–select-查询"></a>3、DQL（针对数据信息）–select-查询</h2><h3 id="3-1、基本语法："><a href="#3-1、基本语法：" class="headerlink" title="3.1、基本语法："></a>3.1、基本语法：</h3><p>select  字段1，字段2……   from 表名 ；–查询表中的字段</p>
+<h3 id="3-2、where子句"><a href="#3-2、where子句" class="headerlink" title="3.2、where子句"></a>3.2、where子句</h3><p>select  字段1，字段2……   from 表名 [where 条件表达式];   –查询满足条件的字段</p>
+<h3 id="3-3、order-by子句"><a href="#3-3、order-by子句" class="headerlink" title="3.3、order by子句"></a>3.3、order by子句</h3><p>select  字段列表   from 表名 [order by 字段1 [asc]|desc [字段2 [asc]|desc]；–根据字段进行升序或者降序</p>
+<p>注意：如果有where子句，order by 子句出现在where子句的后面</p>
+<h3 id="3-4、limit子句"><a href="#3-4、limit子句" class="headerlink" title="3.4、limit子句"></a>3.4、limit子句</h3><p>select 字段列表 from 表名 limit [m,]n;  –取多少条数据</p>
+<p>注意：<br>        limit 关键字后可以只有一个数字n时，表示取前n条数据（此时m=0）<br>        limit 关键字后有两个数m,n时，表示从m+1行开始读取</p>
+<h3 id="3-5、group-by子句（having子句）"><a href="#3-5、group-by子句（having子句）" class="headerlink" title="3.5、group by子句（having子句）"></a>3.5、group by子句（having子句）</h3><p>select count(*)<br>from表名  group by 字段名 having 条件表达式</p>
+<h3 id="3-6、join技术"><a href="#3-6、join技术" class="headerlink" title="3.6、join技术"></a>3.6、join技术</h3><h4 id="3-6-1、内连接"><a href="#3-6-1、内连接" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><h4 id="3-6-1、内连接-1"><a href="#3-6-1、内连接-1" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><p>select 字段列表 from 表B inner join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
+<p>select 字段列表 from 表A，表B where 表A.主键字段=表B.外键字段 [and 其他条件表达式]</p>
+<h4 id="3-6-2外连接：outer-join"><a href="#3-6-2外连接：outer-join" class="headerlink" title="3.6.2外连接：outer join"></a>3.6.2外连接：outer join</h4><h5 id="左外连接：left-outer-join-left-join"><a href="#左外连接：left-outer-join-left-join" class="headerlink" title="左外连接：left outer join/left join"></a>左外连接：left outer join/left join</h5><p>语法：select 字段列表 from 表B left join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
+<p>说明：</p>
+<p>​        以左表（left join左边的表）为基表呈现数据，右表中无对应匹配的数据则以null呈现（有条件表达式存在则再筛选）</p>
+<h5 id="右连接：right-join"><a href="#右连接：right-join" class="headerlink" title="右连接：right join"></a>右连接：right join</h5><h2 id="4、DCL（针对用户）：grant-授权、revoke-回收"><a href="#4、DCL（针对用户）：grant-授权、revoke-回收" class="headerlink" title="4、DCL（针对用户）：grant-授权、revoke-回收"></a>4、DCL（针对用户）：grant-授权、revoke-回收</h2><h3 id="4-1、授权"><a href="#4-1、授权" class="headerlink" title="4.1、授权"></a>4.1、授权</h3><p>语法：grant 权限 on 范围 to 用户 [with grant option];</p>
 <p>说明：如果在授权语句中出现with grant option，代表被授权的用户可将自己的权限授予给别人</p>
+<p>如：创建用户同时分配权限</p>
+<p>语法：grant 权限 on 范围 to 用户 identified by ‘密码’;</p>
 <h3 id="4-2、回收"><a href="#4-2、回收" class="headerlink" title="4.2、回收"></a>4.2、回收</h3><p>语法：revoke 权限 on 范围 from 用户;</p>
 <h3 id="4-3、刷新权限机制"><a href="#4-3、刷新权限机制" class="headerlink" title="4.3、刷新权限机制"></a>4.3、刷新权限机制</h3><p>flush privileges;</p>
 <h3 id="4-4、查看用户当前权限"><a href="#4-4、查看用户当前权限" class="headerlink" title="4.4、查看用户当前权限"></a>4.4、查看用户当前权限</h3><p>语法：show grants for 用户名;</p>
-<p>如：创建用户同时分配权限</p>
-<p>语法：grant 权限 on 范围 to 用户 identified by ‘密码’;</p>
 
       
 
@@ -279,16 +291,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2019/12/30/用户与组的管理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
