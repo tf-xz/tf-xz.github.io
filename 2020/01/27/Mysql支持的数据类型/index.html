@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+  <meta name="description" content="一.数值类型Mysq|支持所有标准SQL中的数值类型,其中包括严格数据类型(INTEGER,SMALLINT,DECIMAL,NUMBERIC) ,以及近似数值数据类型(FLOAT,REAL ,DOUBLE PRESISION)，并在此基础上进行扩展。扩展后增加了TINYINT,MEDIUMINT, BIGINT这3种长度不同的整形,并增加了BIT类型,用来存放位数据。 整数类型        宇">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/2020/01/22/SQL-DML/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/01/27/Mysql支持的数据类型/index.html">
 <meta property="og:site_name" content="你好">
-<meta property="og:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+<meta property="og:description" content="一.数值类型Mysq|支持所有标准SQL中的数值类型,其中包括严格数据类型(INTEGER,SMALLINT,DECIMAL,NUMBERIC) ,以及近似数值数据类型(FLOAT,REAL ,DOUBLE PRESISION)，并在此基础上进行扩展。扩展后增加了TINYINT,MEDIUMINT, BIGINT这3种长度不同的整形,并增加了BIT类型,用来存放位数据。 整数类型        宇">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-26T09:45:52.619Z">
+<meta property="og:updated_time" content="2020-01-27T04:45:12.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
-<meta name="twitter:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+<meta name="twitter:description" content="一.数值类型Mysq|支持所有标准SQL中的数值类型,其中包括严格数据类型(INTEGER,SMALLINT,DECIMAL,NUMBERIC) ,以及近似数值数据类型(FLOAT,REAL ,DOUBLE PRESISION)，并在此基础上进行扩展。扩展后增加了TINYINT,MEDIUMINT, BIGINT这3种长度不同的整形,并增加了BIT类型,用来存放位数据。 整数类型        宇">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -154,52 +154,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SQL-DML" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Mysql支持的数据类型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SQL分类：DDL、DML、DQL、DCL"><a href="#SQL分类：DDL、DML、DQL、DCL" class="headerlink" title="SQL分类：DDL、DML、DQL、DCL"></a>SQL分类：DDL、DML、DQL、DCL</h1><h2 id="1、DDL（针对数据库对象）"><a href="#1、DDL（针对数据库对象）" class="headerlink" title="1、DDL（针对数据库对象）"></a>1、DDL（针对数据库对象）</h2><h3 id="1-1、create-创建"><a href="#1-1、create-创建" class="headerlink" title="1.1、create-创建"></a>1.1、create-创建</h3><p>语法：create 对象类型 对象名</p>
-<p> 如：创建用户（同时设置密码）</p>
-<p>语法：create user   用户名称;</p>
-<h3 id="1-2、alter-修改"><a href="#1-2、alter-修改" class="headerlink" title="1.2、alter-修改"></a>1.2、alter-修改</h3><p>语法：alter 对象类型 对象名</p>
-<h3 id="1-3、drop-删除"><a href="#1-3、drop-删除" class="headerlink" title="1.3、drop-删除"></a>1.3、drop-删除</h3><p>语法：drop 对象类型 对象名</p>
-<h2 id="2、DML（针对数据信息）"><a href="#2、DML（针对数据信息）" class="headerlink" title="2、DML（针对数据信息）"></a>2、DML（针对数据信息）</h2><h3 id="2-1、insert-插入"><a href="#2-1、insert-插入" class="headerlink" title="2.1、insert-插入"></a>2.1、insert-插入</h3><p>2.1.1、inset into 表名[(字段1[,字段2,…])] values(值1,值2,…);</p>
-<p>注意：</p>
-<p>​        1、 如果针对表中所有字段添加数据，可省略字段列表</p>
-<p>​        2、 字段列表不是表中所有字段时，非空、无默认值的字段必须出现</p>
-<p>​        3、 值列表与字段列表必须一一对应（数量、数据类型）</p>
-<p>​        4、 对于字段列表中有允许为空字段，其值可使用default或null替代</p>
-<p>​        5、 对于字段列表中有默认值字段，其值可使用default替代</p>
-<p>强调：针对字符、日期和时间类型对应的数据值，在SQL语句中须使用英文单引号括起来！</p>
-<p>2.1.2、insert…select…（须先创建目标表）</p>
-<p>语法：insert  into 表名[(字段列表)]  select 字段列表 from 表名;</p>
-<p>注意：两处字段列表数量须一致，且数据类型能兼容</p>
-<p>2.1.3、create…select…（插入数据前自动根据源表所选字段构建目标表）</p>
-<p>语法：create table  select  from ;</p>
-<h3 id="2-2、update-更新"><a href="#2-2、update-更新" class="headerlink" title="2.2、update-更新"></a>2.2、update-更新</h3><p>语法：update 表名 set字段1=值1[,字段2=值2,…] [where 条件表达式];</p>
-<p>注意：在update语句中，如果没有出现where子句，则表示针对表中所有数据进行更新操作；如果表中出现where子句，则必须先根据条件表达式筛选数据，再行更新操作</p>
-<h3 id="2-3、delete-删除"><a href="#2-3、delete-删除" class="headerlink" title="2.3、delete-删除"></a>2.3、delete-删除</h3><p>语法：<strong>delete from</strong> <strong>表名  [where</strong> 条件表达式];</p>
-<p>注意：如果是多个条件，则使用逻辑运算符：与(and)、或(or)、非（not）</p>
-<h2 id="3、DQL（针对数据信息）–select-查询"><a href="#3、DQL（针对数据信息）–select-查询" class="headerlink" title="3、DQL（针对数据信息）–select-查询"></a>3、DQL（针对数据信息）–select-查询</h2><h3 id="3-1、基本语法："><a href="#3-1、基本语法：" class="headerlink" title="3.1、基本语法："></a>3.1、基本语法：</h3><p>select  字段1，字段2……   from 表名 ；–查询表中的字段</p>
-<h3 id="3-2、where子句"><a href="#3-2、where子句" class="headerlink" title="3.2、where子句"></a>3.2、where子句</h3><p>select  字段1，字段2……   from 表名 [where 条件表达式];   –查询满足条件的字段</p>
-<h3 id="3-3、order-by子句"><a href="#3-3、order-by子句" class="headerlink" title="3.3、order by子句"></a>3.3、order by子句</h3><p>select  字段列表   from 表名 [order by 字段1 [asc]|desc [字段2 [asc]|desc]；–根据字段进行升序或者降序</p>
-<p>注意：如果有where子句，order by 子句出现在where子句的后面</p>
-<h3 id="3-4、limit子句"><a href="#3-4、limit子句" class="headerlink" title="3.4、limit子句"></a>3.4、limit子句</h3><p>select 字段列表 from 表名 limit [m,]n;  –取多少条数据</p>
-<p>注意：<br>        limit 关键字后可以只有一个数字n时，表示取前n条数据（此时m=0）<br>        limit 关键字后有两个数m,n时，表示从m+1行开始读取</p>
-<h3 id="3-5、group-by子句（having子句）"><a href="#3-5、group-by子句（having子句）" class="headerlink" title="3.5、group by子句（having子句）"></a>3.5、group by子句（having子句）</h3><p>select count(*)<br>from表名  group by 字段名 having 条件表达式</p>
-<h3 id="3-6、join技术"><a href="#3-6、join技术" class="headerlink" title="3.6、join技术"></a>3.6、join技术</h3><h4 id="3-6-1、内连接"><a href="#3-6-1、内连接" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><h4 id="3-6-1、内连接-1"><a href="#3-6-1、内连接-1" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><p>select 字段列表 from 表B inner join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>select 字段列表 from 表A，表B where 表A.主键字段=表B.外键字段 [and 其他条件表达式]</p>
-<h4 id="3-6-2外连接：outer-join"><a href="#3-6-2外连接：outer-join" class="headerlink" title="3.6.2外连接：outer join"></a>3.6.2外连接：outer join</h4><h5 id="左外连接：left-outer-join-left-join"><a href="#左外连接：left-outer-join-left-join" class="headerlink" title="左外连接：left outer join/left join"></a>左外连接：left outer join/left join</h5><p>语法：select 字段列表 from 表B left join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>说明：</p>
-<p>​        以左表（left join左边的表）为基表呈现数据，右表中无对应匹配的数据则以null呈现（有条件表达式存在则再筛选）</p>
-<h5 id="右连接：right-join"><a href="#右连接：right-join" class="headerlink" title="右连接：right join"></a>右连接：right join</h5><h2 id="4、DCL（针对用户）：grant-授权、revoke-回收"><a href="#4、DCL（针对用户）：grant-授权、revoke-回收" class="headerlink" title="4、DCL（针对用户）：grant-授权、revoke-回收"></a>4、DCL（针对用户）：grant-授权、revoke-回收</h2><h3 id="4-1、授权"><a href="#4-1、授权" class="headerlink" title="4.1、授权"></a>4.1、授权</h3><p>语法：grant 权限 on 范围 to 用户 [with grant option];</p>
-<p>说明：如果在授权语句中出现with grant option，代表被授权的用户可将自己的权限授予给别人</p>
-<p>如：创建用户同时分配权限</p>
-<p>语法：grant 权限 on 范围 to 用户 identified by ‘密码’;</p>
-<h3 id="4-2、回收"><a href="#4-2、回收" class="headerlink" title="4.2、回收"></a>4.2、回收</h3><p>语法：revoke 权限 on 范围 from 用户;</p>
-<h3 id="4-3、刷新权限机制"><a href="#4-3、刷新权限机制" class="headerlink" title="4.3、刷新权限机制"></a>4.3、刷新权限机制</h3><p>flush privileges;</p>
-<h3 id="4-4、查看用户当前权限"><a href="#4-4、查看用户当前权限" class="headerlink" title="4.4、查看用户当前权限"></a>4.4、查看用户当前权限</h3><p>语法：show grants for 用户名;</p>
+        <h1 id="一-数值类型"><a href="#一-数值类型" class="headerlink" title="一.数值类型"></a>一.数值类型</h1><p>Mysq|支持所有标准SQL中的数值类型,其中包括严格数据类型(INTEGER,SMALLINT,DECIMAL,NUMBERIC) ,以及近似数值数据类型(FLOAT,REAL ,DOUBLE PRESISION)，并在此基础上进行扩展。<br>扩展后增加了TINYINT,MEDIUMINT, BIGINT这3种长度不同的整形,并增加了BIT类型,用来存放位数据。</p>
+<p>整数类型        宇节         范围 (有符号)              范围 (无符号)            用途<br>tinyint             1字节         (-128 , 127)                (0, 255)                       小整数值<br>smallint           2字节         (-32 768, 32767)       (0, 65 535)                 大整数值<br>mediumint      3字节         (-2^23 , 2^23-1)        (0, 2^24)                    大整数值<br>INT或integer  4字节         (-2^31 ,2^31-1)         (0 , 2^32)                   大整数值<br>BIGINT             8字节        (-2^63 , 2^63-1)         (0, 2^64)                    极大整数值</p>
+<p>FLOAT、DOUBLE和DECIMAL类型<br>MySQL支持的三个浮点类型是FLOAT、DOUBLE和DECIMAL类型。FLOAT 数值类型用于表示单精度浮点数值,而DOUBLE数值类型用于表示双精度浮点数值。<br>与整数-样,这些类型也带有附加参数: -个显示宽度指示器和一一个小数点指示器。比如语句FLOAT(7,3)规定显示的值不会超过7位数字,小数点后面带有3位数字。<br>对于小数点后面的位数超过允许范围的值, MySQL会自动将它四舍五入为最接近它的值,再插入它。<br>DECIMAL数据类型用于精度要求非常高的计算中,这种类型允许指定数值的精度和计数方法作为选择参数。精度在这里指为这个值保存的有效数字的总个数,<br>而计数方法表示小数点后数字的位数。比如语句DECIMAL(7,3)规定了存储的值不会超过7位数字,并且小数点后不超过3位。<br>忽略DECIMAL数据类型的精度和计数方法修饰符将会使MySQL数据库把所有标识为这个数据类型的字段精度设置为10 ,计算方法设置为0.<br>UNSIGNED和ZEROFILL修饰符也可以被FLOAT、DOUBLE和DECIMAL数据类型使用。并且效果与INT数据类型相同。</p>
+<h1 id="二-宇符串类型"><a href="#二-宇符串类型" class="headerlink" title="二.宇符串类型"></a>二.宇符串类型</h1><p>MySQL提供了8个基本的字符串类型，分别:CHAR、VARCHAR、BINARY. VARBINARY、BLOB、 TEXT、ENUM各SET等多种字符串类型。<br>可以存储的范围从简单的一个字符到巨大的文本块或二进制字符串数据。<br>宇符串类型                    宇节大小                    描述及存储需求<br>CHAR                             0-255字节                     定长字符串<br>VARCHAR                     0-255字节                     变长字符串<br>TINYBLOB                    0-255字节                     不超过255个字符的二进制字符串<br>TINYTEXT                    0-255字节                     短文本字符串<br>BLOB                              0-65535字节                二 进制形式的长文本数据<br>TEXT                              0-65535字节                长文本数据</p>
+<h2 id="CHAR和VARCHAR类型"><a href="#CHAR和VARCHAR类型" class="headerlink" title="CHAR和VARCHAR类型"></a>CHAR和VARCHAR类型</h2><p>CHAR类型用于定长字符串,并且必须在圆括号内用-一个大小修饰符来定义。这个大小修饰符的范围从0-255.比指定长度大的值将被截短,而比指定长度小的值将会用空格作填补。<br>CHAR类型可以使用BINARY修饰符。当用于比较运算时,这个修饰符使CHAR以二进制方式参于运算,而不是以传统的区分大小写的方式。<br>CHAR类型的一个变体是VARCHAR类型。它是一种可变长度的字符串类型 ,并且也必须带有一个范围在0-255之间的指示器。</p>
+<p>CHAR和VARCHGAR不同之处在于MYSQL数据库处理<br>指示器的方式: CHAR把这个大小视为值的大小,不长度不足的情况下就用空格补足。而VARCHAR类型把它视为最大值并且只使用存储字符串实际需要的长度<br>(增加一一个额外字节来存储字符串本身的长度)来存储值。所以短于指示器长度的VARCHAR类型不会被空格填补,但长于指示器的值仍然会被截短。<br>因为VARCHAR类型可以根据实际内容动态改变存储值的长度,所以在不能确定字段需要多少字符时使用VARCHAR类型可以大大地节约磁盘空间、提高存储效率。<br>VARCHAR类型在使用BINARY修饰符时与CHAR类型完全相同。</p>
+<h2 id="TEXT和BLOB类型"><a href="#TEXT和BLOB类型" class="headerlink" title="TEXT和BLOB类型"></a>TEXT和BLOB类型</h2><p>对于字段长度要求超过255个的情况下, MySQL提供了TEXT和BLOB两种类型。根据存储数据的大小,它们都有不同的子类型。这些大型的数据用于存储文本块或图像、声音文件等二进制数据类型。<br>TEXT和BLOB类型在分类和比较上存在区别。BLOB 类型区分大小写,而TEXT不区分大小写.大小修饰符不用于各种BLOB和TEXT子类型。<br>比指定类型支持的最大范围大的值将被自动截短。</p>
+<h1 id="三-日期和时间类型"><a href="#三-日期和时间类型" class="headerlink" title="三.日期和时间类型"></a>三.日期和时间类型</h1><p>在处理日期和时间类型的值时, MySQL带有5个不同的数据类型可供选择。它们可以被分成简单的日期、时间类型,和混合日期、时间类型。<br>根据要求的精度,子类型在每个分类型中都可以使用,并且MySQL带有内置功能可以把多样化的输入格式变为一一个标准格式。<br>类型          大小(宇节)        范围                                    格式                    用途<br>DATE                4            1000-01-019999-12-31       YYYY-MM-DD     日期值<br>TIME                3            ‘-838:59:59’/‘838:59:59’       HH:MM:SS        时间值/持续时间<br>YEAR                1            1901/2155                              YYYY                    年份值<br>DATETIME       8   1000-01-01 00:00:00/9999-12-31 23:59:59         YYYY-MM-DD HH:MM:SS        混合日期和时间值<br>TIMESTAMP    4    1970-01-01 00:00:00/2037年某时        YYYYMMDD HHMMSS        混合日期和时间值,时间戳</p>
+<h2 id="DATE、TIME-和TEAR类型"><a href="#DATE、TIME-和TEAR类型" class="headerlink" title="DATE、TIME 和TEAR类型"></a>DATE、TIME 和TEAR类型</h2><p>​        MySQL用DATE和TEAR类型存储简单的日期值,使用TIME类型存储时间值。这些类型可以描述为字符串或不带分隔符的整数序列。如果描述为字符串，DATE类型的值应该使用连字号作为分隔符分开,而TIME类型的值应该使用冒号作为分隔符分开。<br>​        需要注意的是,没有冒号分隔符的TIME类型值,将会被MySQL理解为持续的时间,而不是时间戳。<br>MySQL还对日期的年份中的两个数字的值,或是SQL语句中为TEAR类型输入的两个数字进行最大限度的通译。因为所有TEAR类型的值必须用4个数字存储。<br>MySQL试图将2个数字的年份转换为4个数字的值。把在00-69范围内的值转换到2000-2069范围内。把70-99范围内的值转换到1970-1979之内。<br>如果MySQL自动转换后的值并不符合我们的需要,请输入4个数字表示的年份。</p>
+<h2 id="DATEYIME和TIMESTAMP类型"><a href="#DATEYIME和TIMESTAMP类型" class="headerlink" title="DATEYIME和TIMESTAMP类型"></a>DATEYIME和TIMESTAMP类型</h2><p>除了日期和时间数据类型, MySQL还支持DATEYIME和TIMESTAMP这两种混合类型。它们可以把日期和时间作为单个的值进行存储。<br>这两种类型通常用于自动存储包含当前日期和时间的时间戳,并可在需要执行大量数据库事务和需要建立一一个调试和审 查用途的审计跟踪的应用程序中发挥良好作用。<br>如果我们对TIMESTAMP类型的字段没有明确赋值,或是被赋与了null值。MySQL会自动使用系统当前的日期和时间来填充它。</p>
 
       
 
@@ -279,7 +248,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/22/SQL-DML/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/27/Mysql支持的数据类型/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,7 +262,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/27/Mysql支持的数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/27/STP协议/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -302,6 +271,11 @@
       </div>
     </a>
   
+  
+    <a href="/2020/01/22/SQL-DML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

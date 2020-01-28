@@ -8,17 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+  <meta name="description" content="STP 环路问题     STP的作用，是解决什么的   ARP和STP的关联 STP协议介绍 1、 STP（Spanning Tree Protocol）（生成树协议）逻辑上断开环路，防止广播风暴的产生，解决二层环路。 当线路出现故障，断开的接口被激活，恢复通信，起备份线路的作用。  2、STP的算法  STP将一个环形网络生成无环拓朴的步骤： 第一步：选择根网桥（Root Bridge） 第二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/2020/01/22/SQL-DML/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/01/27/STP协议/index.html">
 <meta property="og:site_name" content="你好">
-<meta property="og:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+<meta property="og:description" content="STP 环路问题     STP的作用，是解决什么的   ARP和STP的关联 STP协议介绍 1、 STP（Spanning Tree Protocol）（生成树协议）逻辑上断开环路，防止广播风暴的产生，解决二层环路。 当线路出现故障，断开的接口被激活，恢复通信，起备份线路的作用。  2、STP的算法  STP将一个环形网络生成无环拓朴的步骤： 第一步：选择根网桥（Root Bridge） 第二">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-26T09:45:52.619Z">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image004.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image006.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image008.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image010.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image012.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image014.jpg">
+<meta property="og:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image016.jpg">
+<meta property="og:updated_time" content="2020-01-27T05:03:59.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
-<meta name="twitter:description" content="SQL分类：DDL、DML、DQL、DCL1、DDL（针对数据库对象）1.1、create-创建语法：create 对象类型 对象名  如：创建用户（同时设置密码） 语法：create user   用户名称; 1.2、alter-修改语法：alter 对象类型 对象名 1.3、drop-删除语法：drop 对象类型 对象名 2、DML（针对数据信息）2.1、insert-插入2.1.1、inse">
+<meta name="twitter:description" content="STP 环路问题     STP的作用，是解决什么的   ARP和STP的关联 STP协议介绍 1、 STP（Spanning Tree Protocol）（生成树协议）逻辑上断开环路，防止广播风暴的产生，解决二层环路。 当线路出现故障，断开的接口被激活，恢复通信，起备份线路的作用。  2、STP的算法  STP将一个环形网络生成无环拓朴的步骤： 第一步：选择根网桥（Root Bridge） 第二">
+<meta name="twitter:image" content="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.jpg">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -154,52 +163,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SQL-DML" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-STP协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SQL分类：DDL、DML、DQL、DCL"><a href="#SQL分类：DDL、DML、DQL、DCL" class="headerlink" title="SQL分类：DDL、DML、DQL、DCL"></a>SQL分类：DDL、DML、DQL、DCL</h1><h2 id="1、DDL（针对数据库对象）"><a href="#1、DDL（针对数据库对象）" class="headerlink" title="1、DDL（针对数据库对象）"></a>1、DDL（针对数据库对象）</h2><h3 id="1-1、create-创建"><a href="#1-1、create-创建" class="headerlink" title="1.1、create-创建"></a>1.1、create-创建</h3><p>语法：create 对象类型 对象名</p>
-<p> 如：创建用户（同时设置密码）</p>
-<p>语法：create user   用户名称;</p>
-<h3 id="1-2、alter-修改"><a href="#1-2、alter-修改" class="headerlink" title="1.2、alter-修改"></a>1.2、alter-修改</h3><p>语法：alter 对象类型 对象名</p>
-<h3 id="1-3、drop-删除"><a href="#1-3、drop-删除" class="headerlink" title="1.3、drop-删除"></a>1.3、drop-删除</h3><p>语法：drop 对象类型 对象名</p>
-<h2 id="2、DML（针对数据信息）"><a href="#2、DML（针对数据信息）" class="headerlink" title="2、DML（针对数据信息）"></a>2、DML（针对数据信息）</h2><h3 id="2-1、insert-插入"><a href="#2-1、insert-插入" class="headerlink" title="2.1、insert-插入"></a>2.1、insert-插入</h3><p>2.1.1、inset into 表名[(字段1[,字段2,…])] values(值1,值2,…);</p>
-<p>注意：</p>
-<p>​        1、 如果针对表中所有字段添加数据，可省略字段列表</p>
-<p>​        2、 字段列表不是表中所有字段时，非空、无默认值的字段必须出现</p>
-<p>​        3、 值列表与字段列表必须一一对应（数量、数据类型）</p>
-<p>​        4、 对于字段列表中有允许为空字段，其值可使用default或null替代</p>
-<p>​        5、 对于字段列表中有默认值字段，其值可使用default替代</p>
-<p>强调：针对字符、日期和时间类型对应的数据值，在SQL语句中须使用英文单引号括起来！</p>
-<p>2.1.2、insert…select…（须先创建目标表）</p>
-<p>语法：insert  into 表名[(字段列表)]  select 字段列表 from 表名;</p>
-<p>注意：两处字段列表数量须一致，且数据类型能兼容</p>
-<p>2.1.3、create…select…（插入数据前自动根据源表所选字段构建目标表）</p>
-<p>语法：create table  select  from ;</p>
-<h3 id="2-2、update-更新"><a href="#2-2、update-更新" class="headerlink" title="2.2、update-更新"></a>2.2、update-更新</h3><p>语法：update 表名 set字段1=值1[,字段2=值2,…] [where 条件表达式];</p>
-<p>注意：在update语句中，如果没有出现where子句，则表示针对表中所有数据进行更新操作；如果表中出现where子句，则必须先根据条件表达式筛选数据，再行更新操作</p>
-<h3 id="2-3、delete-删除"><a href="#2-3、delete-删除" class="headerlink" title="2.3、delete-删除"></a>2.3、delete-删除</h3><p>语法：<strong>delete from</strong> <strong>表名  [where</strong> 条件表达式];</p>
-<p>注意：如果是多个条件，则使用逻辑运算符：与(and)、或(or)、非（not）</p>
-<h2 id="3、DQL（针对数据信息）–select-查询"><a href="#3、DQL（针对数据信息）–select-查询" class="headerlink" title="3、DQL（针对数据信息）–select-查询"></a>3、DQL（针对数据信息）–select-查询</h2><h3 id="3-1、基本语法："><a href="#3-1、基本语法：" class="headerlink" title="3.1、基本语法："></a>3.1、基本语法：</h3><p>select  字段1，字段2……   from 表名 ；–查询表中的字段</p>
-<h3 id="3-2、where子句"><a href="#3-2、where子句" class="headerlink" title="3.2、where子句"></a>3.2、where子句</h3><p>select  字段1，字段2……   from 表名 [where 条件表达式];   –查询满足条件的字段</p>
-<h3 id="3-3、order-by子句"><a href="#3-3、order-by子句" class="headerlink" title="3.3、order by子句"></a>3.3、order by子句</h3><p>select  字段列表   from 表名 [order by 字段1 [asc]|desc [字段2 [asc]|desc]；–根据字段进行升序或者降序</p>
-<p>注意：如果有where子句，order by 子句出现在where子句的后面</p>
-<h3 id="3-4、limit子句"><a href="#3-4、limit子句" class="headerlink" title="3.4、limit子句"></a>3.4、limit子句</h3><p>select 字段列表 from 表名 limit [m,]n;  –取多少条数据</p>
-<p>注意：<br>        limit 关键字后可以只有一个数字n时，表示取前n条数据（此时m=0）<br>        limit 关键字后有两个数m,n时，表示从m+1行开始读取</p>
-<h3 id="3-5、group-by子句（having子句）"><a href="#3-5、group-by子句（having子句）" class="headerlink" title="3.5、group by子句（having子句）"></a>3.5、group by子句（having子句）</h3><p>select count(*)<br>from表名  group by 字段名 having 条件表达式</p>
-<h3 id="3-6、join技术"><a href="#3-6、join技术" class="headerlink" title="3.6、join技术"></a>3.6、join技术</h3><h4 id="3-6-1、内连接"><a href="#3-6-1、内连接" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><h4 id="3-6-1、内连接-1"><a href="#3-6-1、内连接-1" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><p>select 字段列表 from 表B inner join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>select 字段列表 from 表A，表B where 表A.主键字段=表B.外键字段 [and 其他条件表达式]</p>
-<h4 id="3-6-2外连接：outer-join"><a href="#3-6-2外连接：outer-join" class="headerlink" title="3.6.2外连接：outer join"></a>3.6.2外连接：outer join</h4><h5 id="左外连接：left-outer-join-left-join"><a href="#左外连接：left-outer-join-left-join" class="headerlink" title="左外连接：left outer join/left join"></a>左外连接：left outer join/left join</h5><p>语法：select 字段列表 from 表B left join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>说明：</p>
-<p>​        以左表（left join左边的表）为基表呈现数据，右表中无对应匹配的数据则以null呈现（有条件表达式存在则再筛选）</p>
-<h5 id="右连接：right-join"><a href="#右连接：right-join" class="headerlink" title="右连接：right join"></a>右连接：right join</h5><h2 id="4、DCL（针对用户）：grant-授权、revoke-回收"><a href="#4、DCL（针对用户）：grant-授权、revoke-回收" class="headerlink" title="4、DCL（针对用户）：grant-授权、revoke-回收"></a>4、DCL（针对用户）：grant-授权、revoke-回收</h2><h3 id="4-1、授权"><a href="#4-1、授权" class="headerlink" title="4.1、授权"></a>4.1、授权</h3><p>语法：grant 权限 on 范围 to 用户 [with grant option];</p>
-<p>说明：如果在授权语句中出现with grant option，代表被授权的用户可将自己的权限授予给别人</p>
-<p>如：创建用户同时分配权限</p>
-<p>语法：grant 权限 on 范围 to 用户 identified by ‘密码’;</p>
-<h3 id="4-2、回收"><a href="#4-2、回收" class="headerlink" title="4.2、回收"></a>4.2、回收</h3><p>语法：revoke 权限 on 范围 from 用户;</p>
-<h3 id="4-3、刷新权限机制"><a href="#4-3、刷新权限机制" class="headerlink" title="4.3、刷新权限机制"></a>4.3、刷新权限机制</h3><p>flush privileges;</p>
-<h3 id="4-4、查看用户当前权限"><a href="#4-4、查看用户当前权限" class="headerlink" title="4.4、查看用户当前权限"></a>4.4、查看用户当前权限</h3><p>语法：show grants for 用户名;</p>
+        <p>STP 环路问题     STP的作用，是解决什么的   ARP和STP的关联</p>
+<p>STP协议介绍</p>
+<h1 id="1、-STP（Spanning-Tree-Protocol）（生成树协议）"><a href="#1、-STP（Spanning-Tree-Protocol）（生成树协议）" class="headerlink" title="1、 STP（Spanning Tree Protocol）（生成树协议）"></a>1、 STP（Spanning Tree Protocol）（生成树协议）</h1><p>逻辑上断开环路，防止广播风暴的产生，解决二层环路。</p>
+<p>当线路出现故障，断开的接口被激活，恢复通信，起备份线路的作用。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.jpg" alt="img"></p>
+<h1 id="2、STP的算法"><a href="#2、STP的算法" class="headerlink" title="2、STP的算法"></a>2、STP的算法</h1><p>  STP将一个环形网络生成无环拓朴的步骤：</p>
+<p>第一步：选择根网桥（Root Bridge）</p>
+<p>第二步：选择根端口（Root Ports）</p>
+<p>第三步：选择指端口（Designated Ports）</p>
+<h2 id="2-1、选择根网桥（Root-Bridge）"><a href="#2-1、选择根网桥（Root-Bridge）" class="headerlink" title="2.1、选择根网桥（Root Bridge）"></a>2.1、选择根网桥（Root Bridge）</h2><p><strong>（1）如何选择根网桥？</strong></p>
+<p>根据<strong>网桥ID</strong>（<strong>BID</strong>）选择根网桥，谁的优先级小，谁就是根桥。如果优先级相同，谁的MAC地址小谁就是根桥。</p>
+<p>（2）什么是网桥ID（BID）？</p>
+<p>每个网络只能有一个根桥，根桥具有最低的桥ID，根桥上的所有端口都是指派端口，选择根网桥的目的是为了给将生成的树形结构确定一个树根。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image004.jpg" alt="img"></p>
+<p><strong>（3）选择根网桥举例</strong></p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image006.jpg" alt="img"></p>
+<h2 id="2-2、选择根端口（Root-Ports）"><a href="#2-2、选择根端口（Root-Ports）" class="headerlink" title="2.2、选择根端口（Root Ports）"></a>2.2、选择根端口（Root Ports）</h2><p><strong>（1）如何选择根端口？</strong></p>
+<p>在非根网桥上选择一个<strong>到根网桥最近的端口</strong>作为根端口 选择根端口的依据是：</p>
+<p>根路径成本（cost值）【从端口出发到根桥】最低</p>
+<p>直连网桥的网桥ID最小</p>
+<p>直连网桥的端口ID最小</p>
+<p><strong>（2）什么是cost值？</strong></p>
+<p>根路径成本是网桥到根网桥的路径上所有链路的成本之和。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image008.jpg" alt="img"></p>
+<p>根路径成本表</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image010.jpg" alt="img"></p>
+<p><strong>（3）什么是端口ID</strong></p>
+<p>  <img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image012.jpg" alt="img"></p>
+<p><strong>（4）选择根端口举例</strong></p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image014.jpg" alt="img">    <img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image016.jpg" alt="img"></p>
+<h2 id="2-3、选择指定端口"><a href="#2-3、选择指定端口" class="headerlink" title="2.3、选择指定端口"></a><strong>2.3、选择指定端口</strong></h2><p>  选择指定端口的依据是：</p>
+<p>在每个网段上，选择1个指定端口，根桥上的端口全是指定端口。</p>
+<p>非根桥上的指定端口：</p>
+<p>根路径成本【从非根桥到根桥】最低</p>
+<p>端口所在的网桥的ID值较小</p>
+<p>直连网桥的端口ID值较小</p>
 
       
 
@@ -279,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/22/SQL-DML/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/27/STP协议/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,7 +297,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/27/Mysql支持的数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/27/OSI七层/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -302,6 +306,11 @@
       </div>
     </a>
   
+  
+    <a href="/2020/01/27/Mysql支持的数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
