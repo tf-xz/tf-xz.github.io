@@ -152,6 +152,673 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-磁盘的分区与挂载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="磁盘的分区与挂载："><a href="#磁盘的分区与挂载：" class="headerlink" title="磁盘的分区与挂载："></a>磁盘的分区与挂载：</h1><p>1.磁盘(硬盘）在Linux系统中的表示方法<br>  IDE硬盘：hda1 hda2  hdb1 hdc1 ….<br>  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1</p>
+<p>2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4<br>            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑分区。1-4，除主分区外。<br>            逻辑分区   可以直接使用，编号从5开始，不能做为系统引导盘。</p>
+<p>第一个扇区最重要，里面有：</p>
+<p>主引导区(Master boot record, MBR)</p>
+<p>分区表(partition table)</p>
+<p>3.磁盘分区的格式：</p>
+<p>windows 系统中的格式有 fat fat 16  fat32   分区大小也会受到限制、文件的大小会受到限制，安全性能不高。</p>
+<p> NTFS   支持大容量分区，支持NTFS权限设置，安全性能较高</p>
+<p> Linux系统中的常用格式有 ext2 ext3 ext4</p>
+<h2 id="4-磁盘分区"><a href="#4-磁盘分区" class="headerlink" title="4.磁盘分区"></a>4.磁盘分区</h2><p>​    步骤一：向Linux服务器添加一块硬盘，并重启系统。</p>
+<h3 id="步骤二：查看系统当中的硬盘及其分区信息"><a href="#步骤二：查看系统当中的硬盘及其分区信息" class="headerlink" title="步骤二：查看系统当中的硬盘及其分区信息"></a>步骤二：查看系统当中的硬盘及其分区信息</h3><p>​            ls /dev/sd*   查看/dev目录下的硬盘文件</p>
+<p>​            <strong>fdisk -l</strong>   查看硬盘分区的信息</p>
+<h3 id="步骤三：对磁盘进行分区"><a href="#步骤三：对磁盘进行分区" class="headerlink" title="步骤三：对磁盘进行分区"></a>步骤三：对磁盘进行分区</h3><p>​             <strong>fdisk /dev/sdb</strong>   对sdb这块硬盘进行分区</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576858883150.png" alt="1576858883150"></p>
+<h3 id="步骤四：格式化磁盘"><a href="#步骤四：格式化磁盘" class="headerlink" title="步骤四：格式化磁盘"></a>步骤四：格式化磁盘</h3><p>​            mkfs -t 分区格式 分区名称</p>
+<p>​            mkfs -t ext4 /dev/sdb1</p>
+<p>​                     举例：将/dev/sdb1 格式化为 ext4 文件系统。<br>​                     [root@localhost ~]# mkfs -t ext4 /dev/sdb1</p>
+<h3 id="步骤五：挂载分区"><a href="#步骤五：挂载分区" class="headerlink" title="步骤五：挂载分区"></a>步骤五：挂载分区</h3><p>​           mount  -t  分区格式 设备名称  空目录名称<br>​           mount  -t  ext4  /dev/sdb1  /mnt/sdb1<br>​           mount  -t  ext4  -o  ro  /dev/sdb1  /mnt/sdb1</p>
+<p>​           检查是否挂载成功：mount<br>​           <strong>取消挂载</strong>：umount 挂载目录的名称 （不能在挂载目录下进行）<br>​           <strong>查看已挂载分区的信息</strong>：df -hT /mnt/sdb1<br>​           使用mount命令挂载的文件系统，只是临时的，如果系统重启则需要重新挂载。</p>
+<h3 id="mount-命令"><a href="#mount-命令" class="headerlink" title="mount 命令"></a>mount 命令</h3><p> 命令格式：mount [选项] [设备名] [挂载点]<br>选项 功能说明<br>-t fstype 指定要挂载的文件系统的类型，如果不清楚，可以使用-t auto 让系统 自己选择最合适的文件系统类型挂载。<br>-r 以只读的方式挂载文件系统<br>4<br>-w 以读写的方式挂载文件系统，默认选项<br>-o 设置挂载属性<br>-a 挂载/etc/fstab 文件中记录的设备</p>
+<h3 id="步骤六：可以使用-etc-fstab文件对文件系统进行永久挂载。"><a href="#步骤六：可以使用-etc-fstab文件对文件系统进行永久挂载。" class="headerlink" title="步骤六：可以使用/etc/fstab文件对文件系统进行永久挂载。"></a>步骤六：可以使用/etc/fstab文件对文件系统进行永久挂载。</h3><p>   步骤七：挂载光盘（光盘的设备文件名为：/dev/sr0,文件系统的类型为：iso9660)<br>           mount -t iso9660 /dev/sr0 /mnt/cdrom<br>   步骤八：挂载U盘</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/磁盘的分区与挂载/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-firewall防火墙" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>firewalld防火墙是CentOS7版本系统默认的防火墙管理工具，取代了之前的iptables防火墙，与iptables防火墙一样也属于典型的包过滤防火墙或称之为网络层防火墙，firewalld和iptables都是用来管理防火墙的工具（属于用户态）来定义防火墙的各种规则功能，内部结构都指向netfilter这一强大的网络过滤子系统（属于内核态）以实现包过滤防火墙功能。firewalld防火墙最大的优点在于支持动态更新以及加入了防火墙的“Zone”概念，firewalld防火墙支持IPV4和IPV6地址。可以通过字符管理工具firewall-cmd和图形化管理工具firewall-config进行管理。</p>
+<h1 id="一、区域的概念"><a href="#一、区域的概念" class="headerlink" title="一、区域的概念"></a>一、区域的概念</h1><p>firewalld防火墙为了简化管理，将所有网络流量分为多个区域（zone）。然后要所数据包的源IP地址或传入的网络接口条件等将流量传入相应区域。每个区域都定义了自己打开或关闭的端口服务列表。其中默认区域为public区域，trusted区域默认允许所有流量通过，是一个特殊的区域。</p>
+<table>
+<thead>
+<tr>
+<th><strong>区域名称</strong></th>
+<th><strong>默认配置说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trusted</td>
+<td>允许所有的传入流量</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>允许与ssh、mdns、ipp-client、samba-client或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝</td>
+</tr>
+<tr>
+<td>Internal</td>
+<td>默认值时与home区域相同</td>
+</tr>
+<tr>
+<td>Work</td>
+<td>允许与ssh、ipp-client或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝</td>
+</tr>
+<tr>
+<td>Public</td>
+<td>允许与ssh或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝。是新添加网络接口的默认区域。</td>
+</tr>
+<tr>
+<td>External</td>
+<td>允许与ssh预定义服务匹配的传入流量，其余均拒绝。默认将经过此区域转发的IPv4地址传出流量进行地址伪装。</td>
+</tr>
+<tr>
+<td>Dmz</td>
+<td>允许与ssh预定义服务匹配的传入流量，其余均拒绝。</td>
+</tr>
+<tr>
+<td>Block</td>
+<td>拒绝所有传入流量</td>
+</tr>
+<tr>
+<td>Drop</td>
+<td>丢弃所有传入流量</td>
+</tr>
+</tbody></table>
+<p>用户可以根据具体环境选择使用区域。管理员也可以对这些区域进行自定义，使其具有不同的设置规则。</p>
+<p>在流量经过防火墙时，firewalld防火墙会对传入的每个数据包进行检查，如果此数据包的源地址关联到特定的区域，则会应用该区域的规则对此数据包进行处理，如果该源地址没有关联到任何区域，则将使用传入网络接口所在的区域规则进行处理。如果流量与不允许的端口、协议或者服务匹配，则防火墙拒绝传入流量。</p>
+<h1 id="二、firewall-cmd字符管理工具"><a href="#二、firewall-cmd字符管理工具" class="headerlink" title="二、firewall-cmd字符管理工具"></a>二、firewall-cmd字符管理工具</h1><p>firewall-cmd是firewalld防火墙自带的字符管理工具，可以用来设置firewalld防火墙的各种规则，需要注意的是firewalld防火墙规则分为两种状态，一种是runtime(正在运行生效的状态），在runtime状态添加新的防火墙规则，这些规则会立即生效，但是重新加载防火墙配置或者重启系统后这些规则将会失效；一种是permanent（永久生效的状态），在permanent状态添加新的防火墙规则，这些规则不会马上生效，需要重新加载防火墙配置或者重启系统后生效。</p>
+<p>在使用firewall-cmd命令管理防火墙时，需要添加为永久生效的规则需要在配置规则时添加–permanent选项（否则所有命令都是作用于runtime，运行时配置）,如果让永久生效规则立即覆盖当前规则生效使用，还需要使用firewall-cmd –reload命令重新加载防火墙配置。常用firewall-cmd命令如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>firewall-cmd**</strong>命令**</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–get-default-zone</td>
+<td>查看当前默认区域</td>
+</tr>
+<tr>
+<td>–get–active-zones</td>
+<td>列出当前正在使用的区域及其所对应的网卡接口</td>
+</tr>
+<tr>
+<td>–get-zones</td>
+<td>列出所有可用的区域</td>
+</tr>
+<tr>
+<td>–set-default-zone=<zone></zone></td>
+<td>设置默认区域（注意此命令会同时修改运行时配置和永久配置）</td>
+</tr>
+<tr>
+<td>–add-source=<cidr>[–zone=<zone>]</zone></cidr></td>
+<td>将来自IP地址或网段的所有流量路由到指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-source=<cidr>[–zone=&lt;ZONE]</cidr></td>
+<td>从指定区域中删除来自IP地址或网段的所有路由流量规则，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-interface=<interface>[–zone=&lt;ZONE]</interface></td>
+<td>将来自该接口的所有流量都路由到指定区域。没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–change-interface=<interface>[–zone=&lt;ZONE]</interface></td>
+<td>将接口与指定区域做关联，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–list-all[–zone=&lt;ZONE]</td>
+<td>列出指定区域已配置接口、源、服务、端口等信息，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-service=<service>[–zone=&lt;ZONE]</service></td>
+<td>允许到该服务的流量通过指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-service=<service>[–zone=&lt;ZONE]</service></td>
+<td>从指定区域的允许列表中删除该服务，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-port=&lt;PORT/PROTOCOL&gt;[–zone=&lt;ZONE]</td>
+<td>允许到该端口的流量通过指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-port=&lt;PORT/PROTOCOL&gt;[–zone=&lt;ZONE]</td>
+<td>从指定区域的允许列表中删除该端口，没有指定区域时使用默认区域。</td>
+</tr>
+</tbody></table>
+<h2 id="1、区域管理"><a href="#1、区域管理" class="headerlink" title="1、区域管理"></a>1、区域管理</h2><p>  firewall-cmd –help | wc -l</p>
+<p>（1）查看默认区域</p>
+<p># firewall-cmd –get-default-zone </p>
+<p>（2）列出当前正在使用的区域及其所对应的网卡接口</p>
+<p># firewall-cmd –get-active-zones </p>
+<p>（3）列出所有可用的区域</p>
+<p>   # firewall-cmd –get-zones</p>
+<p>（4）设置默认区域</p>
+<p>   # firewall-cmd –set-default-zone=block </p>
+<h2 id="2、服务管理"><a href="#2、服务管理" class="headerlink" title="2、服务管理"></a>2、服务管理</h2><p>（1）查看预定义服务</p>
+<p># firewall-cmd –get-services </p>
+<p>（2）添加http服务到public区域</p>
+<p># firewall-cmd –add-service=http –zone=public –permanent</p>
+<p># systemctl restart firewalld</p>
+<p>（3）查看public区域已配置的规则</p>
+<p># firewall-cmd –list-all –zone=public</p>
+<p>（4）移除public区域的http服务，不使用–zone指定区域时使用默认区域</p>
+<p># firewall-cmd –remove-service=http –permanent –zone=public </p>
+<p># systemctl restart firewalld</p>
+<p>（5）将多个服务添加到某一个区域，不添加–permanent选项表示是即时生效的临时设置</p>
+<p># firewall-cmd –add-service=http –add-service=https </p>
+<p>  # systemctl restart firewalld</p>
+<h2 id="3、端口管理"><a href="#3、端口管理" class="headerlink" title="3、端口管理"></a>3、端口管理</h2><p>（1）允许TCP的3306端口到public区域</p>
+<p>   # firewall-cmd –add-port=3306/tcp</p>
+<p>（2）从public区域将TCP的3306端口移除</p>
+<p>   # firewall-cmd –remove-port=3306/tcp</p>
+<p>（3）允许某一范围的端口，如允许UDP的2048-2050端口到public区域</p>
+<p>   # firewall-cmd –add-port=2048-2050/udp –zone=public</p>
+<p>（4）使用–list-ports查看加入的端口操作是否成功</p>
+<p># firewall-cmd –list-ports</p>
+<h2 id="4、伪装IP"><a href="#4、伪装IP" class="headerlink" title="4、伪装IP"></a>4、伪装IP</h2><p>（1）什么是地址伪装？</p>
+<p>通过地址伪装，NAT设备将经过设备的包转发到指定的接收方，同时将通过的数据包<br> 源地址更改为其NAT设备自己的接口地址。当返回的数据包到达时，会将目的地址修改<br> 为原始主机的地址并做路由。地址伪装可以实现局域网多个地址共享单一公网地址上网。类似于NAT技术中的端口多路复用（PAT）。IP地址伪装仅支持ipv4，不支持ipv6。</p>
+<p>（2）相关命令</p>
+<p>firewall-cmd –query-masquerade # 检查是否允许伪装IP</p>
+<p>firewall-cmd –permanent –add-masquerade # 允许防火墙伪装IP</p>
+<p>firewall-cmd –permanent –remove-masquerade# 禁止防火墙伪装IP</p>
+<h2 id="5、端口转发"><a href="#5、端口转发" class="headerlink" title="5、端口转发"></a>5、端口转发</h2><p>当我们想把某个端口隐藏起来的时候，就可以在防火墙上阻止那个端口访问，然后再开一个不规则的端口，之后配置防火墙的端口转发，将流量转发过去。</p>
+<p># firewall-cmd –permanent –add-masquerade</p>
+<p># firewall-cmd –add-forward-port=port=8080:proto=tcp:toport=80</p>
+<p># firewall-cmd –add-port=8080/tcp</p>
+<p># firewall-cmd –remove-service=http</p>
+<p><strong>端口转发还可以做流量分发，一个防火墙拖着好多台运行着不同服务的机器，然后用防火墙将不同端口的流量转发至不同机器。</strong></p>
+<h1 id="三、firewalld富规则"><a href="#三、firewalld富规则" class="headerlink" title="三、firewalld富规则"></a>三、firewalld富规则</h1><p><a href="https://www.cnblogs.com/meizy/p/firewalld.html#fanghuoqiangfuguize" target="_blank" rel="noopener">https://www.cnblogs.com/meizy/p/firewalld.html#fanghuoqiangfuguize</a> </p>
+<p> –list-rich-rules            –列出富规则</p>
+<p>–add-rich-rule=<rule>       　　 –使用富规则语言添加富规则</rule></p>
+<p>–remove-rich-rule=<rule>    　　　 –移除富规则</rule></p>
+<p>–query-rich-rule=<rule>        –查询某条富规则是否存在</rule></p>
+<p>–list-rich-rules           –列出指定区域中的所有富规则</p>
+<p>–list-all 和 –list-all-zones     –也能列出存在的富规则</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/firewall防火墙/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-FTP服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="搭建ftp服务器"><a href="#搭建ftp服务器" class="headerlink" title="搭建ftp服务器"></a>搭建ftp服务器</h1><p>​     1、使用yum安装vsftpd软件包 </p>
+<p>​         #yum install vsftpd ftp</p>
+<p>​      2、启动服务并设置开机自启</p>
+<p>​        #systemctl start vsftpd.service<br>​        #systemctl enable vsftpd.service</p>
+<p>​      3、设置防火墙与selinux机制</p>
+<p>​        #systemctl stop firewalld<br>​        #setenforce 0</p>
+<h1 id="1、匿名用户访问FTP"><a href="#1、匿名用户访问FTP" class="headerlink" title="1、匿名用户访问FTP"></a>1、匿名用户访问FTP</h1><p>​        默认目录是：/var/ftp  </p>
+<p>​        ftp的配置文件是：/etc/vsftpd/vsftpd.conf  </p>
+<p>相关命令：</p>
+<p>设置<strong>匿名</strong>用户访问ftp：    anonymous_enable=YES</p>
+<p>登录ftp时<strong>不输入密码</strong>  ：  no_anon_password=YES  </p>
+<p>设置匿名用户<strong>上传</strong>文件：  anon_upload_enable=YES  </p>
+<p>设置匿名用户<strong>新建</strong>文件：       anon_mkdir_write_enable=YES  </p>
+<p>设置匿名用户<strong>删除</strong>文件：       anon_other_write_enable=yes  </p>
+<p> <strong>修改</strong>匿名用户访问ftp的<strong>默认目录</strong>  ： anon_root=/mnt/ftp</p>
+<h2 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h2><p>设置匿名用户上传或新建文件的权限</p>
+<p>如果使用vsftp的是本地用户，则要修改配置文件中的 local_umask 的值；</p>
+<p> 如果使用vsftp的是虚拟用户，则要修改配置文件中的 <strong>anon_umask</strong> 的值。</p>
+<p>umask = 022 时，新建的目录 权限是755，文件的权限是 644；</p>
+<h1 id="2、系统用户访问FTP服务器"><a href="#2、系统用户访问FTP服务器" class="headerlink" title="2、系统用户访问FTP服务器"></a>2、系统用户访问FTP服务器</h1><p>​         系统用户默认访问主目录，具有上传、下载、新建、删除的权限，还可以切换到的系统其他目录  </p>
+<p>anonymous_enable=no</p>
+<p>local_enable=yes</p>
+<p>local_root=/mnt/public/  设置系统用户访问ftp的默认目录</p>
+<p>write_enable=YES     允许写入</p>
+<p>chroot_local_user=YES   控制用户访问路径访问指定目录，不能切换到其他目录</p>
+<p>allow_writeable_chroot=YES 允许写入q</p>
+<p>黑名单  ： /etc/vsftpd/ftpusers  </p>
+<p>白名单  ：  /etc/vsftpd/user_list  </p>
+<p>当存在userlist_enable=YES时，user_list文件生效。</p>
+<p>当存在userlist_deny=YES时，则仅禁止列表中的帐户登录。</p>
+<p>当存在userlist_deny=NO时，则允许列表中用户登录。 </p>
+<h1 id="3、虚拟用户访问FTP"><a href="#3、虚拟用户访问FTP" class="headerlink" title="3、虚拟用户访问FTP"></a>3、虚拟用户访问FTP</h1><p>1、安装Vsftpd虚拟用户需要用到的软件及认证模块</p>
+<p>  #yum install pam* libdb-utils libdb* –skip-broken -y</p>
+<p>2、创建虚拟用户临时文件/etc/vsftpd/ftpusers.txt,用户名密码格式如下：</p>
+<p>techftp</p>
+<p>123456</p>
+<p>3、生成Vsftpd虚拟用户数据库认证文件，设置权限为600</p>
+<p>  #db_load -T -t hash -f /etc/vsftpd/ftpusers.txt /etc/vsftpd/vsftp_login.db</p>
+<p>  #chmod 600 /etc/vsftpd/vsftp_login.db  </p>
+<p>4、配置PAM认证文件：vim /etc/pam.d/vsftpd.vu</p>
+<p>  auth  required  pam_userdb.so  db=/etc/vsftpd/vsftp_login</p>
+<p>  account required pam_userdb.so db=/etc/vsftpd/vsftp_login</p>
+<p>5、创建一个系统用户，用于虚拟用户映射</p>
+<p>  #useradd -s /sbin/nologin ftpuser</p>
+<p>6、修改配置文件：#vim /etc/vsftpd/vsftpd.conf </p>
+<p>  #pam_service_name=vsftpd</p>
+<p>  pam_service_name=vsftpd.vu</p>
+<p>  guest_enable=YES</p>
+<p>  guest_username=ftpuser</p>
+<p>  user_config_dir=/etc/vsftpd/vsftpd_user_conf</p>
+<p>  virtual_use_local_privs=YES</p>
+<p>7、分别为虚拟用户创建私有的虚拟目录与独立的配置文件</p>
+<p>  #mkdir /home/ftpuser/techftp</p>
+<p>  #mkdir /etc/vsftpd/vsftpd_user_conf</p>
+<p>  #vim techftp</p>
+<p>   local_root=/home/ftpuser/techftp</p>
+<p>   write_enable=YES</p>
+<p>   anon_world_readable_only=YES</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+<p>  #mkdir /home/ftpuser/netftp</p>
+<p>  #vim netftp</p>
+<p>   local_root=/home/ftpuser/netftp</p>
+<p>   write_enable=YES</p>
+<p>virtual_use_local_privs=NO    #不具有可登录用户的权限   </p>
+<p>anon_world_readable_only=YES       #可浏览目录</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/FTP服务器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-samba服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装Samba服务器"><a href="#安装Samba服务器" class="headerlink" title="安装Samba服务器"></a>安装Samba服务器</h1><h2 id="1-、修改防火墙设置"><a href="#1-、修改防火墙设置" class="headerlink" title="1 、修改防火墙设置"></a>1 、修改防火墙设置</h2><p>#systemctl stop firewall  –关闭防火墙</p>
+<h2 id="2-、-安装-samba-并启动-samba-服务"><a href="#2-、-安装-samba-并启动-samba-服务" class="headerlink" title="2 、 安装 samba 并启动 samba 服务"></a>2 、 安装 samba 并启动 samba 服务</h2><p>#yum install -y samba samba-client           </p>
+<p>#systemctl start smb.service nmb.service</p>
+<h2 id="3-、-建立共享目录"><a href="#3-、-建立共享目录" class="headerlink" title="3 、 建立共享目录"></a>3 、 建立共享目录</h2><p>mkdir /home/company</p>
+<h2 id="4-、创建访问账号"><a href="#4-、创建访问账号" class="headerlink" title="4 、创建访问账号"></a>4 、创建访问账号</h2><p>useradd -s /sbin/nologin smbuser</p>
+<p>#smbpasswd -a smbuser</p>
+<p>【smbpasswd 选项说明： -a 添加 smb 帐号；x-x 删除 smb 帐号； -d 禁用  smb 帐号； -e 启用smb 帐号】</p>
+<h2 id="5-、修改配置文件：-etc-samba-smb-conf"><a href="#5-、修改配置文件：-etc-samba-smb-conf" class="headerlink" title="5 、修改配置文件： /etc/samba/smb.conf"></a>5 、修改配置文件： /etc/samba/smb.conf</h2><p>默认情况下，Samba 已经配置为允许用户通过远程共享访问账号的主目录。</p>
+<p>[company] //共享名称为 company<br>comment = company share//共享注释<br>path = /home/company //指定共享路径<br>browseable = yes //所有人可见<br>guest ok = no //拒绝匿名访问<br>writeable = yes //支持写入数据</p>
+<p>[company]<br>comment = company share<br>path = /home/company<br>guest ok = no //拒绝匿名访问<br>valid users=xzusr,gcusr,xsusr //允许访问的用户列表<br>write list=xzusr //允许写入的用户列表</p>
+<p>注意：修改配置文件以后，必须重启服务（systemctl t restart b smb nmb）</p>
+<h2 id="6-、测试-Samba-服务器"><a href="#6-、测试-Samba-服务器" class="headerlink" title="6 、测试 Samba 服务器"></a>6 、测试 Samba 服务器</h2><p>在 linux 客户端访问测试：smbclient -U smbuser //192.168.75.128/company</p>
+<p>查看服务器的共享文件有哪些：smbclient -L 192.168.75.128</p>
+<p>查看 smbuser 用户可以访问的共享文件：smbclient -L 192.168.75.128 -U         smbuser</p>
+<h2 id="7、linux、windows文件共享"><a href="#7、linux、windows文件共享" class="headerlink" title="7、linux、windows文件共享"></a>7、linux、windows文件共享</h2><p>在 x Linux 下访问 s Windows 共享目录的配置方法</p>
+<p>（1）在 Windows xp 上设置一个共享目录：d:\myfiles</p>
+<p>（2）在 Linux 下安装 samba-client 客户端</p>
+<p>​            #yum install samba-client</p>
+<p>（3）安装 cifs-utils 软件包</p>
+<p>​            #yum install cifs-utils</p>
+<p>（4）在 Linux 下创建一个挂载点</p>
+<p>​            #mkdir /mnt/Windows</p>
+<p>（5）挂载 Windows 上的共享目录 d:\myfiles 到 Linux 下的/mnt/Windows 目录下</p>
+<p>​        #mount -t cifs -o username=smbuser//192.168.0.3/company                 /mnt/Windows</p>
+<p>​            Enter password: <strong>****</strong><br>（6）如果挂载成功，则可以进入/mnt/Windows 下进行相应操作。</p>
+<p>（7）在/etc/fstab 文件中，加入该共享目录的挂载信息<br>//192.168.1.123/redhat_disk /mnt/Windows cifs username=tommy,password=111111 0 0</p>
+<p>（8）到此为止，Windows 上的共享目录//192.168.1.123/redhat_disk 就被成功挂载到了 Linux<br>上面了，并且 Linux 重启后，会自动挂载该目录到/mnt/Windows 目录下</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/samba服务器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-OSPF" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1、OSPF理论知识"><a href="#1、OSPF理论知识" class="headerlink" title="1、OSPF理论知识"></a>1、OSPF理论知识</h1><h2 id="1-1、常规"><a href="#1-1、常规" class="headerlink" title="1.1、常规"></a>1.1、常规</h2><p>ospf：开放最短距离优先         管理距离：110</p>
+<p>封装IP头部协议字段：88eigrp  89ospf </p>
+<p>组播地址：224.0.0.5  224.0.0.6</p>
+<p>三个表：邻居表、数据库、路由表</p>
+<p>主干路由器：BR            区域边界路由器：ABR        自治系统边界路由器：ASBR </p>
+<p>指定路由：DR                备份指定路由：BDR</p>
+<h2 id="1-2、原理"><a href="#1-2、原理" class="headerlink" title="1.2、原理:"></a>1.2、原理:</h2><p> 通过hello数据包建立邻居表。用lsa链路状态创建链路状态数据库，使用SPF 算法计算到目的地的最优路径加入到路由表中  </p>
+<h2 id="1-3、划分区域的好处："><a href="#1-3、划分区域的好处：" class="headerlink" title="1.3、划分区域的好处："></a>1.3、划分区域的好处：</h2><p>1、减少路由表的路由条目<br>2、拓朴发生改变时，只影响本区域的数据库<br>3、每隔30分钟泛数据库信息（周期和触发更新），划分区域后，只在本区域泛洪<br>4、网络设计灵活</p>
+<h2 id="1-4、邻接七种状态"><a href="#1-4、邻接七种状态" class="headerlink" title="1.4、邻接七种状态"></a>1.4、邻接七种状态</h2><p>down、init、2way、exstart、exchange、loading、full</p>
+<p>​        down ：路由器A刚启动时，ospf处于down的状态，因为它还没有与其他路由器交换信息。它使用组播地址224.0.0.5发送hello分组。 </p>
+<p>​        init：所有运行ospf的路由器收到A的hello分组时，将A加入邻居列表中，这是init状态。</p>
+<p>​        2way ：收到A的hello的路由器都向A发送单播应答，A收到后，将这些路由器加入邻居列表，所有路由器都建立了双向关系，进入了2way状态。</p>
+<p>​        Exstart ：如果链路类型是广播网络（如以太网），接下来必须选举DR和BDR，选举结束后，路由器处于预启动Exstart状态。</p>
+<p>​        Exchange ：然后交换链路状态数据库摘要，也就是交换DBD，这是Exchange状态。 </p>
+<p>​        Loading ：DBD交换完毕后进入Loading状态 </p>
+<p>​        Full :路由器根据DBD发送LSR请求更新链路状态条目，对方用LSU进行响应。至此，双方都学到了路由条目，database完整，就是Full状态。</p>
+<h2 id="1-5、最短路径优先算法（SPF-Calculation）"><a href="#1-5、最短路径优先算法（SPF-Calculation）" class="headerlink" title="1.5、最短路径优先算法（SPF Calculation）"></a>1.5、<strong>最短路径优先算法（SPF Calculation）</strong></h2><p>Cost=108/BW（b/s)<br>metric值=所有目的地址到达本地路由器的入接口的cost值之和        </p>
+<p>或<strong>metric值=所有本地路由器到达目的地址的路由器的出接口的cost值之和</strong>  </p>
+<p>修改接口的cost值：<br>Router(config)#int f0/0<br>Router(config-if)#ip ospf cost 1</p>
+<p>或Router(config-if)#bandwidth 100</p>
+<h2 id="1-6、-DR-BDR选取"><a href="#1-6、-DR-BDR选取" class="headerlink" title="1.6、 DR/BDR选取"></a><strong>1.6、</strong> DR/BDR选取</h2><p>​       <strong>DR:指定路由 BDR：备份指定路由</strong></p>
+<p>（1）DR与BDR有自己的组播地址：224.0.0.6</p>
+<p>（2）DR与BDR选取原则</p>
+<p>​     首要因素是时间</p>
+<p>​     其次是接口优先级（多路访问网络的接口优先级为1，点到点网络接口优先级为0。</p>
+<p>​       ip ospf priority 可以修改接口优先级，若为0则不参与DR选举</p>
+<p>​     再次是路由器ID：先比环回接口，再比物理接口</p>
+<p>（3）DR与BDR选取是非抢占的，以下情况会重选</p>
+<p>​     重启ospf进程或路由器；参与的路由器都执行clear ip ospf process命令；DR故障；</p>
+<p>OSPF接口优先级为0。</p>
+<p>（4）如果DR故障，BDR接管DR，如果BDR故障，选新的BDR</p>
+<h2 id="1-7、明文和MD5身份验证"><a href="#1-7、明文和MD5身份验证" class="headerlink" title="1.7、明文和MD5身份验证"></a>1.7、明文和MD5身份验证</h2><p><strong>（1）配置明文认证</strong></p>
+<p> R1(config-if)#ip ospf authentication-key ccie  设置明文密码，两端口密码要一致</p>
+<p>R1(config-if)#ip ospf authentication   开启接口认证</p>
+<p>R1(config)#router ospf 1</p>
+<p>R1(config-router)#area 1 authentication  开户区域认证</p>
+<p>（2）配置MD5认证</p>
+<p>​    R1(config-if)#ip ospf message-digest-key 1 md5 ccie</p>
+<p>​    R1(config-if)#ip ospf authentication  接口md5</p>
+<p>​    R1(config-if)#ip ospf message-digest-key 1 md5 ccie</p>
+<p>​    R1(config-router)#area 1 authentication message-digest  区域MD5</p>
+<h1 id="2、操作"><a href="#2、操作" class="headerlink" title="2、操作"></a>2、操作</h1><h2 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h2><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576249410474.png" alt="1576249410474"></p>
+<h3 id="区域1要求用OSPF明文验证"><a href="#区域1要求用OSPF明文验证" class="headerlink" title="区域1要求用OSPF明文验证"></a>区域1要求用OSPF明文验证</h3><p>R1(config)#int f0/0<br>R1(config-if)#ip ospf authentication-key 123456<br>R1(config-if)#ip ospf authentication</p>
+<p>R2(config)#int f0/0<br>R2(config-if)#ip ospf authentication-key 123456<br>R2(config-if)#ip ospf authentication</p>
+<p>R3(config)#int f0/0<br>R3(config-if)#ip ospf authentication-key 123456<br>R3(config-if)#ip ospf authentication</p>
+<h3 id="区域0要求用可靠的验证方式"><a href="#区域0要求用可靠的验证方式" class="headerlink" title="区域0要求用可靠的验证方式"></a>区域0要求用可靠的验证方式</h3><p>R4(config)#int f0/1<br>R4(config-if)#ip ospf message-digest-key 1 md5 123456<br>R4(config)#router ospf 1<br>R4(config-router)#area 0 authentication message-digest</p>
+<p>R4(config)#int s1/0<br>R4(config-if)#ip ospf message-digest-key 1 md5 123456<br>R4(config)#router ospf 1<br>R4(config-router)#area 0 authentication message-digest</p>
+<p>R3(config)#int f0/1<br>R3(config-if)#ip ospf message-digest-key 1 md5 123456<br>R3(config)#router ospf 1<br>R3(config-router)#area 0 authentication message-digest</p>
+<p>R2(config)#int s1/0<br>R2(config-if)#ip ospf message-digest-key 1 md5 123456<br>R2(config)#router ospf 1<br>R2(config-router)#area 0 authentication message-digest</p>
+<h3 id="要求R4去往R1的环回从R2走"><a href="#要求R4去往R1的环回从R2走" class="headerlink" title="要求R4去往R1的环回从R2走"></a>要求R4去往R1的环回从R2走</h3><p>R4(config)#int s1/0<br>R4(config-if)#ip ospf cost 2</p>
+<p>cost小于R3</p>
+<h3 id="R1上看到去往R4的两条等价负载均衡"><a href="#R1上看到去往R4的两条等价负载均衡" class="headerlink" title="R1上看到去往R4的两条等价负载均衡"></a>R1上看到去往R4的两条等价负载均衡</h3><p>R2(config)#int s1/0<br>R2(config-if)#ip ospf cost 10</p>
+<p>COST相等</p>
+<h2 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h2><p>   <img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576251902169.png" alt="1576251902169"></p>
+<h3 id="区域间路由汇总"><a href="#区域间路由汇总" class="headerlink" title="区域间路由汇总"></a>区域间路由汇总</h3><p>R2(config-router)#area 1 range 172.16.0.0 255.255.252.0  </p>
+<h3 id="eigrp重分ospf"><a href="#eigrp重分ospf" class="headerlink" title="eigrp重分ospf"></a>eigrp重分ospf</h3><p>R3(config)#router ospf 1<br>R3(config-router)#redistribute eigrp 1 subnets</p>
+<p>默认为 metric-type 2  OE2,Metric为20，不累加  metric-type 1  OE1<br>R3(config-router)#redistribute eigrp 1 metric-type 1 metric 100 subnets  </p>
+<h3 id="ospf重分eigrp"><a href="#ospf重分eigrp" class="headerlink" title="ospf重分eigrp"></a>ospf重分eigrp</h3><p>R3(config)#router eigrp 1<br>R3(config-router)#redistribute ospf 1 metric 1000 100 255 1 1500</p>
+<h2 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h2><p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576250906633.png" alt="1576250906633"></p>
+<h3 id="直连和静态重分RIP"><a href="#直连和静态重分RIP" class="headerlink" title="直连和静态重分RIP"></a>直连和静态重分RIP</h3><p>R1(config)#router rip </p>
+<p>R1(config-router)#redistribute static metric 3</p>
+<p>R1(config-router)#redistribute connected metric 3 </p>
+<h3 id="eigrp重分rip"><a href="#eigrp重分rip" class="headerlink" title="eigrp重分rip"></a>eigrp重分rip</h3><p>R2(config)#router rip</p>
+<p>R2(config-router)#redistribute eigrp 1 metric 4</p>
+<h3 id="rip重分eigrp"><a href="#rip重分eigrp" class="headerlink" title="rip重分eigrp"></a>rip重分eigrp</h3><p>R2(config)#router eigrp 1</p>
+<p>R2(config-router)#redistribute rip metric 1000 100 255 1 1500</p>
+<h3 id="eigrp-重分ospf"><a href="#eigrp-重分ospf" class="headerlink" title="eigrp 重分ospf"></a>eigrp 重分ospf</h3><p>R3(config)#router ospf 1</p>
+<p>R3(config-router)#redistribute eigrp 1 metric-type 2 subnets  </p>
+<h3 id="ospf-重分eigrp"><a href="#ospf-重分eigrp" class="headerlink" title="ospf 重分eigrp"></a>ospf 重分eigrp</h3><p>R3(config)#router eigrp 1</p>
+<p>R3(config-router)#redistribute ospf 1 metric 10000 100 1 1 1500</p>
+<p>R3(config-router)#distance eigrp 90 150</p>
+<h3 id="直连重分ospf"><a href="#直连重分ospf" class="headerlink" title="直连重分ospf"></a>直连重分ospf</h3><p>R4(config)#router ospf 1</p>
+<p>R4(config-router)#redistribute connected subnets </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/OSPF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RIP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RIP:动态传输协议；RIP的管理距离是120 </p>
+<p>​        原理：通过cdp协议发现邻居，运行RIP时每隔30秒向邻居发送路由表，学习路由中Metric（度量值）值小的路由放到路由表中。</p>
+<p>​        缺点：收敛慢、路由选取到无限、不能检测路由环路、度量值只是跳跃计数、网络直径小（15个跳跃）。</p>
+<p>​        解决环路机制：</p>
+<ol>
+<li><p>定义最大跳数；</p>
+</li>
+<li><p>水平分割；</p>
+</li>
+<li><p>路由毒化与毒性逆转；</p>
+</li>
+<li><p>抑制计时器；</p>
+</li>
+<li><p>触发更新。</p>
+<p>R2 (config)#router rip    开启RIP路由协议</p>
+<p>R2 (config)#version 1/2  设置版本号</p>
+<p>R2 (config)#network 网关  宣告网关</p>
+<p>R2 (config)#no auto-summary   关闭自动汇总，使用版本二时，若不关闭则等于使用版本1</p>
+</li>
+</ol>
+<h2 id="实验一-版本1与版本2的兼容问题"><a href="#实验一-版本1与版本2的兼容问题" class="headerlink" title="实验一:版本1与版本2的兼容问题:"></a>实验一:版本1与版本2的兼容问题:</h2><p> R2 (config)#int f0/ 1</p>
+<p> R2(config- -if)#ip rip receive version 2</p>
+<p> R2(config- if)#ip rip send version 2</p>
+<p>​    区别：RIPv1是有类路由协议， RIPv2是无类路由协议</p>
+<p>​                RIPv1不能支持VLSM，RIPv2可以支持VLSM</p>
+<p>​                RIPv1没有认证的功能 ，RIPv2可以支持认证（md5）</p>
+<pre><code>RIPv1是广播更新，RIPv2是组播更新</code></pre><h2 id="实验二-在接口禁止运行RIP"><a href="#实验二-在接口禁止运行RIP" class="headerlink" title="实验二:在接口禁止运行RIP"></a>实验二:在接口禁止运行RIP</h2><p>   R3 (config-router)#passive- interface f0/1 <u><strong>只接受不发送</strong></u></p>
+<h2 id="实验三-单播更新"><a href="#实验三-单播更新" class="headerlink" title="实验三:单播更新"></a>实验三:单播更新</h2><p>   R3 (config-router)#neighbor 23. 1.1.1</p>
+<h2 id="实验四-手动汇总"><a href="#实验四-手动汇总" class="headerlink" title="实验四:手动汇总"></a>实验四:手动汇总</h2><p>(因为自动汇总最终汇总成了主类网络)</p>
+<p>   R3(config-if)#ip summary-address rip 181. 1.0.0 255. 255.252.0</p>
+<h2 id="实验五-使用RIP产生默认路由"><a href="#实验五-使用RIP产生默认路由" class="headerlink" title="实验五:使用RIP产生默认路由"></a>实验五:使用RIP产生默认路由</h2><p>   R3(config)#router rip</p>
+<p>   R3(config-router) #default- infornation originate</p>
+<h2 id="实验六：RIPV2明文认证"><a href="#实验六：RIPV2明文认证" class="headerlink" title="实验六：RIPV2明文认证"></a>实验六：RIPV2明文认证</h2><p>R1(config)#key chain yeslab 配置钥匙链的名字<br>R1(config-keychain)#key 1 配置KEY ID<br>R1(config-keychain-key)#key-string cisco 配置密匙<br>R1(config)#int f0/0<br>R1(config-if)#ip rip authentication mode text 指定认证的类型为明文的<br>R1(config-if)#ip rip authentication key-chain yeslab 调用配置的钥匙链</p>
+<h2 id="实验七：RIPV2-MD5认证"><a href="#实验七：RIPV2-MD5认证" class="headerlink" title="实验七：RIPV2 MD5认证"></a>实验七：RIPV2 MD5认证</h2><p>R1(config)#key chain yeslab 配置钥匙链的名字<br>R1(config-keychain)#key 1 配置KEY ID<br>R1(config-keychain-key)#key-string cisco 配置密匙  两端的密匙必须一致<br>R1(config)#int f0/0<br>R1(config-if)#ip rip authentication mode md5 指定认证的类型为md5的<br>R1(config-if)#ip rip authentication key-chain yeslab 调用配置的钥匙链</p>
+<h2 id="实验八：过滤路由"><a href="#实验八：过滤路由" class="headerlink" title="实验八：过滤路由"></a>实验八：过滤路由</h2><p>R2(config)#access-list 10 deny 181.1.0.0   拒绝路由IP网关<br>R2(config)#access-list 10 permit any<br>R2(config)#router rip<br>R2(config-router)#distribute-list 10 in   in：进入  out：出去</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/29/RIP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-OSI七层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

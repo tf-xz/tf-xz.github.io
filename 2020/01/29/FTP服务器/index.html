@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 你好</title>
+  <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="搭建ftp服务器​     1、使用yum安装vsftpd软件包  ​         #yum install vsftpd ftp ​      2、启动服务并设置开机自启 ​        #systemctl start vsftpd.service​        #systemctl enable vsftpd.service ​      3、设置防火墙与selinux机制 ​">
+<meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/FTP服务器/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="搭建ftp服务器​     1、使用yum安装vsftpd软件包  ​         #yum install vsftpd ftp ​      2、启动服务并设置开机自启 ​        #systemctl start vsftpd.service​        #systemctl enable vsftpd.service ​      3、设置防火墙与selinux机制 ​">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-01-29T07:52:39.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
+<meta name="twitter:description" content="搭建ftp服务器​     1、使用yum安装vsftpd软件包  ​         #yum install vsftpd ftp ​      2、启动服务并设置开机自启 ​        #systemctl start vsftpd.service​        #systemctl enable vsftpd.service ​      3、设置防火墙与selinux机制 ​">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,232 +154,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-FTP服务器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="搭建ftp服务器"><a href="#搭建ftp服务器" class="headerlink" title="搭建ftp服务器"></a>搭建ftp服务器</h1><p>​     1、使用yum安装vsftpd软件包 </p>
+<p>​         #yum install vsftpd ftp</p>
+<p>​      2、启动服务并设置开机自启</p>
+<p>​        #systemctl start vsftpd.service<br>​        #systemctl enable vsftpd.service</p>
+<p>​      3、设置防火墙与selinux机制</p>
+<p>​        #systemctl stop firewalld<br>​        #setenforce 0</p>
+<h1 id="1、匿名用户访问FTP"><a href="#1、匿名用户访问FTP" class="headerlink" title="1、匿名用户访问FTP"></a>1、匿名用户访问FTP</h1><p>​        默认目录是：/var/ftp  </p>
+<p>​        ftp的配置文件是：/etc/vsftpd/vsftpd.conf  </p>
+<p>相关命令：</p>
+<p>设置<strong>匿名</strong>用户访问ftp：    anonymous_enable=YES</p>
+<p>登录ftp时<strong>不输入密码</strong>  ：  no_anon_password=YES  </p>
+<p>设置匿名用户<strong>上传</strong>文件：  anon_upload_enable=YES  </p>
+<p>设置匿名用户<strong>新建</strong>文件：       anon_mkdir_write_enable=YES  </p>
+<p>设置匿名用户<strong>删除</strong>文件：       anon_other_write_enable=yes  </p>
+<p> <strong>修改</strong>匿名用户访问ftp的<strong>默认目录</strong>  ： anon_root=/mnt/ftp</p>
+<h2 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h2><p>设置匿名用户上传或新建文件的权限</p>
+<p>如果使用vsftp的是本地用户，则要修改配置文件中的 local_umask 的值；</p>
+<p> 如果使用vsftp的是虚拟用户，则要修改配置文件中的 <strong>anon_umask</strong> 的值。</p>
+<p>umask = 022 时，新建的目录 权限是755，文件的权限是 644；</p>
+<h1 id="2、系统用户访问FTP服务器"><a href="#2、系统用户访问FTP服务器" class="headerlink" title="2、系统用户访问FTP服务器"></a>2、系统用户访问FTP服务器</h1><p>​         系统用户默认访问主目录，具有上传、下载、新建、删除的权限，还可以切换到的系统其他目录  </p>
+<p>anonymous_enable=no</p>
+<p>local_enable=yes</p>
+<p>local_root=/mnt/public/  设置系统用户访问ftp的默认目录</p>
+<p>write_enable=YES     允许写入</p>
+<p>chroot_local_user=YES   控制用户访问路径访问指定目录，不能切换到其他目录</p>
+<p>allow_writeable_chroot=YES 允许写入q</p>
+<p>黑名单  ： /etc/vsftpd/ftpusers  </p>
+<p>白名单  ：  /etc/vsftpd/user_list  </p>
+<p>当存在userlist_enable=YES时，user_list文件生效。</p>
+<p>当存在userlist_deny=YES时，则仅禁止列表中的帐户登录。</p>
+<p>当存在userlist_deny=NO时，则允许列表中用户登录。 </p>
+<h1 id="3、虚拟用户访问FTP"><a href="#3、虚拟用户访问FTP" class="headerlink" title="3、虚拟用户访问FTP"></a>3、虚拟用户访问FTP</h1><p>1、安装Vsftpd虚拟用户需要用到的软件及认证模块</p>
+<p>  #yum install pam* libdb-utils libdb* –skip-broken -y</p>
+<p>2、创建虚拟用户临时文件/etc/vsftpd/ftpusers.txt,用户名密码格式如下：</p>
+<p>techftp</p>
+<p>123456</p>
+<p>3、生成Vsftpd虚拟用户数据库认证文件，设置权限为600</p>
+<p>  #db_load -T -t hash -f /etc/vsftpd/ftpusers.txt /etc/vsftpd/vsftp_login.db</p>
+<p>  #chmod 600 /etc/vsftpd/vsftp_login.db  </p>
+<p>4、配置PAM认证文件：vim /etc/pam.d/vsftpd.vu</p>
+<p>  auth  required  pam_userdb.so  db=/etc/vsftpd/vsftp_login</p>
+<p>  account required pam_userdb.so db=/etc/vsftpd/vsftp_login</p>
+<p>5、创建一个系统用户，用于虚拟用户映射</p>
+<p>  #useradd -s /sbin/nologin ftpuser</p>
+<p>6、修改配置文件：#vim /etc/vsftpd/vsftpd.conf </p>
+<p>  #pam_service_name=vsftpd</p>
+<p>  pam_service_name=vsftpd.vu</p>
+<p>  guest_enable=YES</p>
+<p>  guest_username=ftpuser</p>
+<p>  user_config_dir=/etc/vsftpd/vsftpd_user_conf</p>
+<p>  virtual_use_local_privs=YES</p>
+<p>7、分别为虚拟用户创建私有的虚拟目录与独立的配置文件</p>
+<p>  #mkdir /home/ftpuser/techftp</p>
+<p>  #mkdir /etc/vsftpd/vsftpd_user_conf</p>
+<p>  #vim techftp</p>
+<p>   local_root=/home/ftpuser/techftp</p>
+<p>   write_enable=YES</p>
+<p>   anon_world_readable_only=YES</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+<p>  #mkdir /home/ftpuser/netftp</p>
+<p>  #vim netftp</p>
+<p>   local_root=/home/ftpuser/netftp</p>
+<p>   write_enable=YES</p>
+<p>virtual_use_local_privs=NO    #不具有可登录用户的权限   </p>
+<p>anon_world_readable_only=YES       #可浏览目录</p>
+<p>   anon_upload_enable=YES</p>
+<p>   anon_mkdir_write_enable=YES</p>
+<p>   anon_other_write_enable=YES</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/磁盘的分区与挂载/" class="archive-article-date">
-  	<time datetime="2020-01-29T08:18:58.693Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/FTP服务器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/firewall防火墙/" class="archive-article-date">
-  	<time datetime="2020-01-29T08:16:00.459Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/FTP服务器/" class="archive-article-date">
-  	<time datetime="2020-01-29T07:52:17.871Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2020/01/29/firewall防火墙/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/29/samba服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/samba服务器/" class="archive-article-date">
-  	<time datetime="2020-01-29T05:14:25.742Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/OSPF/" class="archive-article-date">
-  	<time datetime="2020-01-29T04:57:37.098Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/RIP/" class="archive-article-date">
-  	<time datetime="2020-01-29T02:40:21.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/27/OSI七层/" class="archive-article-date">
-  	<time datetime="2020-01-27T05:05:27.070Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/27/STP协议/" class="archive-article-date">
-  	<time datetime="2020-01-27T04:52:56.346Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/27/Mysql支持的数据类型/" class="archive-article-date">
-  	<time datetime="2020-01-27T03:16:06.864Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/22/SQL-DML/" class="archive-article-date">
-  	<time datetime="2020-01-22T09:34:16.305Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -398,8 +389,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
