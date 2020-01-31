@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 你好</title>
+  <title>你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="title: RIP动态传输协议date: 2020-1-6 20:18:52modified: 2020-1-6 20:18:52tag: - linux - CVE-2019-1-6photos: --–### CVE _2019-1-6">
+<meta property="og:type" content="article">
 <meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/RIP/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="title: RIP动态传输协议date: 2020-1-6 20:18:52modified: 2020-1-6 20:18:52tag: - linux - CVE-2019-1-6photos: --–### CVE _2019-1-6">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/yang-bos/yang-bos.github.io/blob/master/E:/ketanggongju/hexo/sourcepop.png">
+<meta property="og:updated_time" content="2020-01-31T10:51:01.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好">
+<meta name="twitter:description" content="title: RIP动态传输协议date: 2020-1-6 20:18:52modified: 2020-1-6 20:18:52tag: - linux - CVE-2019-1-6photos: --–### CVE _2019-1-6">
+<meta name="twitter:image" content="https://github.com/yang-bos/yang-bos.github.io/blob/master/E:/ketanggongju/hexo/sourcepop.png">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,43 +156,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RIP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/29/RIP/" class="archive-article-date">
-  	<time datetime="2020-01-29T02:40:21.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        <p> title: RIP动态传输协议<br>date: 2020-1-6 20:18:52<br>modified: 2020-1-6 20:18:52<br>tag:<br> - linux<br> - CVE-2019-1-6<br>photos:<br> -<img src="https://github.com/yang-bos/yang-bos.github.io/blob/master/E:/ketanggongju/hexo/sourcepop.png" alt><br>-–<br>### CVE _2019-1-6 </p>
+<a id="more"></a> 
+<p>RIP:动态传输协议；RIP的管理距离是120 </p>
+<p>​        原理：通过cdp协议发现邻居，运行RIP时每隔30秒向邻居发送路由表，学习路由中Metric（度量值）值小的路由放到路由表中。</p>
+<p>​        缺点：收敛慢、路由选取到无限、不能检测路由环路、度量值只是跳跃计数、网络直径小（15个跳跃）。</p>
+<p>​        解决环路机制：</p>
+<ol>
+<li><p>定义最大跳数；</p>
+</li>
+<li><p>水平分割；</p>
+</li>
+<li><p>路由毒化与毒性逆转；</p>
+</li>
+<li><p>抑制计时器；</p>
+</li>
+<li><p>触发更新。</p>
+<p>R2 (config)#router rip    开启RIP路由协议</p>
+<p>R2 (config)#version 1/2  设置版本号</p>
+<p>R2 (config)#network 网关  宣告网关</p>
+<p>R2 (config)#no auto-summary   关闭自动汇总，使用版本二时，若不关闭则等于使用版本1</p>
+</li>
+</ol>
+<h2 id="实验一-版本1与版本2的兼容问题"><a href="#实验一-版本1与版本2的兼容问题" class="headerlink" title="实验一:版本1与版本2的兼容问题:"></a>实验一:版本1与版本2的兼容问题:</h2><p> R2 (config)#int f0/ 1</p>
+<p> R2(config- -if)#ip rip receive version 2</p>
+<p> R2(config- if)#ip rip send version 2</p>
+<p>​    区别：RIPv1是有类路由协议， RIPv2是无类路由协议</p>
+<p>​                RIPv1不能支持VLSM，RIPv2可以支持VLSM</p>
+<p>​                RIPv1没有认证的功能 ，RIPv2可以支持认证（md5）</p>
+<pre><code>RIPv1是广播更新，RIPv2是组播更新</code></pre><h2 id="实验二-在接口禁止运行RIP"><a href="#实验二-在接口禁止运行RIP" class="headerlink" title="实验二:在接口禁止运行RIP"></a>实验二:在接口禁止运行RIP</h2><p>   R3 (config-router)#passive- interface f0/1 <u><strong>只接受不发送</strong></u></p>
+<h2 id="实验三-单播更新"><a href="#实验三-单播更新" class="headerlink" title="实验三:单播更新"></a>实验三:单播更新</h2><p>   R3 (config-router)#neighbor 23. 1.1.1</p>
+<h2 id="实验四-手动汇总"><a href="#实验四-手动汇总" class="headerlink" title="实验四:手动汇总"></a>实验四:手动汇总</h2><p>(因为自动汇总最终汇总成了主类网络)</p>
+<p>   R3(config-if)#ip summary-address rip 181. 1.0.0 255. 255.252.0</p>
+<h2 id="实验五-使用RIP产生默认路由"><a href="#实验五-使用RIP产生默认路由" class="headerlink" title="实验五:使用RIP产生默认路由"></a>实验五:使用RIP产生默认路由</h2><p>   R3(config)#router rip</p>
+<p>   R3(config-router) #default- infornation originate</p>
+<h2 id="实验六：RIPV2明文认证"><a href="#实验六：RIPV2明文认证" class="headerlink" title="实验六：RIPV2明文认证"></a>实验六：RIPV2明文认证</h2><p>R1(config)#key chain yeslab 配置钥匙链的名字<br>R1(config-keychain)#key 1 配置KEY ID<br>R1(config-keychain-key)#key-string cisco 配置密匙<br>R1(config)#int f0/0<br>R1(config-if)#ip rip authentication mode text 指定认证的类型为明文的<br>R1(config-if)#ip rip authentication key-chain yeslab 调用配置的钥匙链</p>
+<h2 id="实验七：RIPV2-MD5认证"><a href="#实验七：RIPV2-MD5认证" class="headerlink" title="实验七：RIPV2 MD5认证"></a>实验七：RIPV2 MD5认证</h2><p>R1(config)#key chain yeslab 配置钥匙链的名字<br>R1(config-keychain)#key 1 配置KEY ID<br>R1(config-keychain-key)#key-string cisco 配置密匙  两端的密匙必须一致<br>R1(config)#int f0/0<br>R1(config-if)#ip rip authentication mode md5 指定认证的类型为md5的<br>R1(config-if)#ip rip authentication key-chain yeslab 调用配置的钥匙链</p>
+<h2 id="实验八：过滤路由"><a href="#实验八：过滤路由" class="headerlink" title="实验八：过滤路由"></a>实验八：过滤路由</h2><p>R2(config)#access-list 10 deny 181.1.0.0   拒绝路由IP网关<br>R2(config)#access-list 10 permit any<br>R2(config)#router rip<br>R2(config-router)#distribute-list 10 in   in：进入  out：出去</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/RIP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -209,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
