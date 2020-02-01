@@ -8,19 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>磁盘的分区与挂载 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="磁盘的分区与挂载：1.磁盘(硬盘）在Linux系统中的表示方法  IDE硬盘：hda1 hda2  hdb1 hdc1 ….  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1 2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑">
+  <meta name="description" content="CVE _2019-12-31">
+<meta name="keywords" content="网络安全,CVE-2019-1-26">
 <meta property="og:type" content="article">
 <meta property="og:title" content="磁盘的分区与挂载">
 <meta property="og:url" content="http://yoursite.com/2020/01/26/磁盘的分区与挂载/index.html">
 <meta property="og:site_name" content="你好">
-<meta property="og:description" content="磁盘的分区与挂载：1.磁盘(硬盘）在Linux系统中的表示方法  IDE硬盘：hda1 hda2  hdb1 hdc1 ….  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1 2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑">
+<meta property="og:description" content="CVE _2019-12-31">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/01/26/磁盘的分区与挂载/-![](https://github.com/yang-bos/yang-bos.github.io/blob/master/E:/ketanggongju/hexo/sourcepop.png)">
-<meta property="og:updated_time" content="2020-02-01T08:37:26.614Z">
+<meta property="og:image" content="http://yoursite.com/2020/01/26/磁盘的分区与挂载/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta property="og:updated_time" content="2020-02-01T09:10:14.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="磁盘的分区与挂载">
-<meta name="twitter:description" content="磁盘的分区与挂载：1.磁盘(硬盘）在Linux系统中的表示方法  IDE硬盘：hda1 hda2  hdb1 hdc1 ….  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1 2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑">
-<meta name="twitter:image" content="http://yoursite.com/2020/01/26/磁盘的分区与挂载/-![](https://github.com/yang-bos/yang-bos.github.io/blob/master/E:/ketanggongju/hexo/sourcepop.png)">
+<meta name="twitter:description" content="CVE _2019-12-31">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/26/磁盘的分区与挂载/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -176,7 +177,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="磁盘的分区与挂载："><a href="#磁盘的分区与挂载：" class="headerlink" title="磁盘的分区与挂载："></a>磁盘的分区与挂载：</h1><p>1.磁盘(硬盘）在Linux系统中的表示方法<br>  IDE硬盘：hda1 hda2  hdb1 hdc1 ….<br>  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1</p>
+        <h3 id="CVE-2019-12-31"><a href="#CVE-2019-12-31" class="headerlink" title="CVE _2019-12-31"></a>CVE _2019-12-31</h3><a id="more"></a>
+<h1 id="磁盘的分区与挂载："><a href="#磁盘的分区与挂载：" class="headerlink" title="磁盘的分区与挂载："></a>磁盘的分区与挂载：</h1><p>1.磁盘(硬盘）在Linux系统中的表示方法<br>  IDE硬盘：hda1 hda2  hdb1 hdc1 ….<br>  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1</p>
 <p>2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4<br>            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑分区。1-4，除主分区外。<br>            逻辑分区   可以直接使用，编号从5开始，不能做为系统引导盘。</p>
 <p>第一个扇区最重要，里面有：</p>
 <p>主引导区(Master boot record, MBR)</p>
@@ -226,6 +228,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CVE-2019-1-26</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -290,11 +307,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="/2020/01/26/RIP/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RIP动态传输协议</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2020/01/26/RIP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          RIP动态传输协议
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -416,6 +437,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CVE-2019-1-26</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
