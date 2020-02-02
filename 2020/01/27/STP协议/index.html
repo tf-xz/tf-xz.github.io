@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | 你好</title>
+  <title>STP协议 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+  <meta name="description" content="CVE _2020-2-2">
+<meta name="keywords" content="2020-2-2,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STP协议">
+<meta property="og:url" content="http://yoursite.com/2020/01/27/STP协议/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="CVE _2020-2-2">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/STP协议/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta property="og:updated_time" content="2020-02-02T04:35:07.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好">
+<meta name="twitter:title" content="STP协议">
+<meta name="twitter:description" content="CVE _2020-2-2">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/27/STP协议/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,106 +157,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-STP协议" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/磁盘的分区与挂载/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:17.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/磁盘的分区与挂载/">磁盘的分区与挂载</a>
+    <h1 class="article-title" itemprop="name">
+      STP协议
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/27/STP协议/" class="archive-article-date">
+  	<time datetime="2020-01-27T04:52:56.346Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CVE-2020-2-2"><a href="#CVE-2020-2-2" class="headerlink" title="CVE _2020-2-2"></a>CVE _2020-2-2</h3><a id="more"></a>
+
+
+<p>STP协议介绍</p>
+<h1 id="1、-STP（Spanning-Tree-Protocol）（生成树协议）"><a href="#1、-STP（Spanning-Tree-Protocol）（生成树协议）" class="headerlink" title="1、 STP（Spanning Tree Protocol）（生成树协议）"></a>1、 STP（Spanning Tree Protocol）（生成树协议）</h1><p>逻辑上断开环路，防止广播风暴的产生，解决二层环路。</p>
+<p>当线路出现故障，断开的接口被激活，恢复通信，起备份线路的作用。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.jpg" alt="img"></p>
+<h1 id="2、STP的算法"><a href="#2、STP的算法" class="headerlink" title="2、STP的算法"></a>2、STP的算法</h1><p>  STP将一个环形网络生成无环拓朴的步骤：</p>
+<p>第一步：选择根网桥（Root Bridge）</p>
+<p>第二步：选择根端口（Root Ports）</p>
+<p>第三步：选择指端口（Designated Ports）</p>
+<h2 id="2-1、选择根网桥（Root-Bridge）"><a href="#2-1、选择根网桥（Root-Bridge）" class="headerlink" title="2.1、选择根网桥（Root Bridge）"></a>2.1、选择根网桥（Root Bridge）</h2><p><strong>（1）如何选择根网桥？</strong></p>
+<p>根据<strong>网桥ID</strong>（<strong>BID</strong>）选择根网桥，谁的优先级小，谁就是根桥。如果优先级相同，谁的MAC地址小谁就是根桥。</p>
+<p>（2）什么是网桥ID（BID）？</p>
+<p>每个网络只能有一个根桥，根桥具有最低的桥ID，根桥上的所有端口都是指派端口，选择根网桥的目的是为了给将生成的树形结构确定一个树根。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image004.jpg" alt="img"></p>
+<p><strong>（3）选择根网桥举例</strong></p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image006.jpg" alt="img"></p>
+<h2 id="2-2、选择根端口（Root-Ports）"><a href="#2-2、选择根端口（Root-Ports）" class="headerlink" title="2.2、选择根端口（Root Ports）"></a>2.2、选择根端口（Root Ports）</h2><p><strong>（1）如何选择根端口？</strong></p>
+<p>在非根网桥上选择一个<strong>到根网桥最近的端口</strong>作为根端口 选择根端口的依据是：</p>
+<p>根路径成本（cost值）【从端口出发到根桥】最低</p>
+<p>直连网桥的网桥ID最小</p>
+<p>直连网桥的端口ID最小</p>
+<p><strong>（2）什么是cost值？</strong></p>
+<p>根路径成本是网桥到根网桥的路径上所有链路的成本之和。</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image008.jpg" alt="img"></p>
+<p>根路径成本表</p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image010.jpg" alt="img"></p>
+<p><strong>（3）什么是端口ID</strong></p>
+<p>  <img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image012.jpg" alt="img"></p>
+<p><strong>（4）选择根端口举例</strong></p>
+<p><img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image014.jpg" alt="img">    <img src="file:///C:%5CUsers%5Casus%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image016.jpg" alt="img"></p>
+<h2 id="2-3、选择指定端口"><a href="#2-3、选择指定端口" class="headerlink" title="2.3、选择指定端口"></a><strong>2.3、选择指定端口</strong></h2><p>  选择指定端口的依据是：</p>
+<p>在每个网段上，选择1个指定端口，根桥上的端口全是指定端口。</p>
+<p>非根桥上的指定端口：</p>
+<p>根路径成本【从非根桥到根桥】最低</p>
+<p>端口所在的网桥的ID值较小</p>
+<p>直连网桥的端口ID值较小</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-2</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/27/STP协议/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/RIP/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:13.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/01/27/OSI七层/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          OSI七层
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/27/Mysql支持的数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql支持的数据类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/RIP/">RIP动态传输协议</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -272,8 +390,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

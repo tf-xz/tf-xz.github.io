@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | 你好</title>
+  <title>Samba服务器 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+  <meta name="description" content="CVE _2020-2-2">
+<meta name="keywords" content="系统安全,2020-2-2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Samba服务器">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/samba服务器/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="CVE _2020-2-2">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/samba服务器/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta property="og:updated_time" content="2020-02-02T04:36:15.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好">
+<meta name="twitter:title" content="Samba服务器">
+<meta name="twitter:description" content="CVE _2020-2-2">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/29/samba服务器/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,106 +157,208 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-samba服务器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/磁盘的分区与挂载/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:17.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/磁盘的分区与挂载/">磁盘的分区与挂载</a>
+    <h1 class="article-title" itemprop="name">
+      Samba服务器
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/29/samba服务器/" class="archive-article-date">
+  	<time datetime="2020-01-29T05:14:25.742Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CVE-2020-2-2"><a href="#CVE-2020-2-2" class="headerlink" title="CVE _2020-2-2"></a>CVE _2020-2-2</h3><a id="more"></a>
+
+<h1 id="安装Samba服务器"><a href="#安装Samba服务器" class="headerlink" title="安装Samba服务器"></a>安装Samba服务器</h1><h2 id="1-、修改防火墙设置"><a href="#1-、修改防火墙设置" class="headerlink" title="1 、修改防火墙设置"></a>1 、修改防火墙设置</h2><p>#systemctl stop firewall  –关闭防火墙</p>
+<h2 id="2-、-安装-samba-并启动-samba-服务"><a href="#2-、-安装-samba-并启动-samba-服务" class="headerlink" title="2 、 安装 samba 并启动 samba 服务"></a>2 、 安装 samba 并启动 samba 服务</h2><p>#yum install -y samba samba-client           </p>
+<p>#systemctl start smb.service nmb.service</p>
+<h2 id="3-、-建立共享目录"><a href="#3-、-建立共享目录" class="headerlink" title="3 、 建立共享目录"></a>3 、 建立共享目录</h2><p>mkdir /home/company</p>
+<h2 id="4-、创建访问账号"><a href="#4-、创建访问账号" class="headerlink" title="4 、创建访问账号"></a>4 、创建访问账号</h2><p>useradd -s /sbin/nologin smbuser</p>
+<p>#smbpasswd -a smbuser</p>
+<p>【smbpasswd 选项说明： -a 添加 smb 帐号；x-x 删除 smb 帐号； -d 禁用  smb 帐号； -e 启用smb 帐号】</p>
+<h2 id="5-、修改配置文件：-etc-samba-smb-conf"><a href="#5-、修改配置文件：-etc-samba-smb-conf" class="headerlink" title="5 、修改配置文件： /etc/samba/smb.conf"></a>5 、修改配置文件： /etc/samba/smb.conf</h2><p>默认情况下，Samba 已经配置为允许用户通过远程共享访问账号的主目录。</p>
+<p>[company] //共享名称为 company<br>comment = company share//共享注释<br>path = /home/company //指定共享路径<br>browseable = yes //所有人可见<br>guest ok = no //拒绝匿名访问<br>writeable = yes //支持写入数据</p>
+<p>[company]<br>comment = company share<br>path = /home/company<br>guest ok = no //拒绝匿名访问<br>valid users=xzusr,gcusr,xsusr //允许访问的用户列表<br>write list=xzusr //允许写入的用户列表</p>
+<p>注意：修改配置文件以后，必须重启服务（systemctl t restart b smb nmb）</p>
+<h2 id="6-、测试-Samba-服务器"><a href="#6-、测试-Samba-服务器" class="headerlink" title="6 、测试 Samba 服务器"></a>6 、测试 Samba 服务器</h2><p>在 linux 客户端访问测试：smbclient -U smbuser //192.168.75.128/company</p>
+<p>查看服务器的共享文件有哪些：smbclient -L 192.168.75.128</p>
+<p>查看 smbuser 用户可以访问的共享文件：smbclient -L 192.168.75.128 -U         smbuser</p>
+<h2 id="7、linux、windows文件共享"><a href="#7、linux、windows文件共享" class="headerlink" title="7、linux、windows文件共享"></a>7、linux、windows文件共享</h2><p>在 x Linux 下访问 s Windows 共享目录的配置方法</p>
+<p>（1）在 Windows xp 上设置一个共享目录：d:\myfiles</p>
+<p>（2）在 Linux 下安装 samba-client 客户端</p>
+<p>​            #yum install samba-client</p>
+<p>（3）安装 cifs-utils 软件包</p>
+<p>​            #yum install cifs-utils</p>
+<p>（4）在 Linux 下创建一个挂载点</p>
+<p>​            #mkdir /mnt/Windows</p>
+<p>（5）挂载 Windows 上的共享目录 d:\myfiles 到 Linux 下的/mnt/Windows 目录下</p>
+<p>​        #mount -t cifs -o username=smbuser//192.168.0.3/company                 /mnt/Windows</p>
+<p>​            Enter password: <strong>****</strong><br>（6）如果挂载成功，则可以进入/mnt/Windows 下进行相应操作。</p>
+<p>（7）在/etc/fstab 文件中，加入该共享目录的挂载信息<br>//192.168.1.123/redhat_disk /mnt/Windows cifs username=tommy,password=111111 0 0</p>
+<p>（8）到此为止，Windows 上的共享目录//192.168.1.123/redhat_disk 就被成功挂载到了 Linux<br>上面了，并且 Linux 重启后，会自动挂载该目录到/mnt/Windows 目录下</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统安全</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-2</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/samba服务器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/RIP/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:13.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/01/29/FTP服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ftp服务器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/29/OSPF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OSPF协议</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/RIP/">RIP动态传输协议</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -272,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

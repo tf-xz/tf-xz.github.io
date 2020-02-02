@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | 你好</title>
+  <title>firewalld防火墙 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+  <meta name="description" content="CVE _2020-2-2">
+<meta name="keywords" content="系统安全,2020-2-2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="firewalld防火墙">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/firewall防火墙/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="CVE _2020-2-2">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/firewall防火墙/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta property="og:updated_time" content="2020-02-02T04:30:16.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好">
+<meta name="twitter:title" content="firewalld防火墙">
+<meta name="twitter:description" content="CVE _2020-2-2">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/29/firewall防火墙/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,106 +157,340 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-firewall防火墙" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/磁盘的分区与挂载/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:17.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/磁盘的分区与挂载/">磁盘的分区与挂载</a>
+    <h1 class="article-title" itemprop="name">
+      firewalld防火墙
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/29/firewall防火墙/" class="archive-article-date">
+  	<time datetime="2020-01-29T08:16:00.459Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CVE-2020-2-2"><a href="#CVE-2020-2-2" class="headerlink" title="CVE _2020-2-2"></a>CVE _2020-2-2</h3><a id="more"></a>
+
+<p>firewalld防火墙是CentOS7版本系统默认的防火墙管理工具，取代了之前的iptables防火墙，与iptables防火墙一样也属于典型的包过滤防火墙或称之为网络层防火墙，firewalld和iptables都是用来管理防火墙的工具（属于用户态）来定义防火墙的各种规则功能，内部结构都指向netfilter这一强大的网络过滤子系统（属于内核态）以实现包过滤防火墙功能。firewalld防火墙最大的优点在于支持动态更新以及加入了防火墙的“Zone”概念，firewalld防火墙支持IPV4和IPV6地址。可以通过字符管理工具firewall-cmd和图形化管理工具firewall-config进行管理。</p>
+<h1 id="一、区域的概念"><a href="#一、区域的概念" class="headerlink" title="一、区域的概念"></a>一、区域的概念</h1><p>firewalld防火墙为了简化管理，将所有网络流量分为多个区域（zone）。然后要所数据包的源IP地址或传入的网络接口条件等将流量传入相应区域。每个区域都定义了自己打开或关闭的端口服务列表。其中默认区域为public区域，trusted区域默认允许所有流量通过，是一个特殊的区域。</p>
+<table>
+<thead>
+<tr>
+<th><strong>区域名称</strong></th>
+<th><strong>默认配置说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trusted</td>
+<td>允许所有的传入流量</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>允许与ssh、mdns、ipp-client、samba-client或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝</td>
+</tr>
+<tr>
+<td>Internal</td>
+<td>默认值时与home区域相同</td>
+</tr>
+<tr>
+<td>Work</td>
+<td>允许与ssh、ipp-client或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝</td>
+</tr>
+<tr>
+<td>Public</td>
+<td>允许与ssh或dhcpv6-client预定义服务匹配的传入流量，其余均拒绝。是新添加网络接口的默认区域。</td>
+</tr>
+<tr>
+<td>External</td>
+<td>允许与ssh预定义服务匹配的传入流量，其余均拒绝。默认将经过此区域转发的IPv4地址传出流量进行地址伪装。</td>
+</tr>
+<tr>
+<td>Dmz</td>
+<td>允许与ssh预定义服务匹配的传入流量，其余均拒绝。</td>
+</tr>
+<tr>
+<td>Block</td>
+<td>拒绝所有传入流量</td>
+</tr>
+<tr>
+<td>Drop</td>
+<td>丢弃所有传入流量</td>
+</tr>
+</tbody></table>
+<p>用户可以根据具体环境选择使用区域。管理员也可以对这些区域进行自定义，使其具有不同的设置规则。</p>
+<p>在流量经过防火墙时，firewalld防火墙会对传入的每个数据包进行检查，如果此数据包的源地址关联到特定的区域，则会应用该区域的规则对此数据包进行处理，如果该源地址没有关联到任何区域，则将使用传入网络接口所在的区域规则进行处理。如果流量与不允许的端口、协议或者服务匹配，则防火墙拒绝传入流量。</p>
+<h1 id="二、firewall-cmd字符管理工具"><a href="#二、firewall-cmd字符管理工具" class="headerlink" title="二、firewall-cmd字符管理工具"></a>二、firewall-cmd字符管理工具</h1><p>firewall-cmd是firewalld防火墙自带的字符管理工具，可以用来设置firewalld防火墙的各种规则，需要注意的是firewalld防火墙规则分为两种状态，一种是runtime(正在运行生效的状态），在runtime状态添加新的防火墙规则，这些规则会立即生效，但是重新加载防火墙配置或者重启系统后这些规则将会失效；一种是permanent（永久生效的状态），在permanent状态添加新的防火墙规则，这些规则不会马上生效，需要重新加载防火墙配置或者重启系统后生效。</p>
+<p>在使用firewall-cmd命令管理防火墙时，需要添加为永久生效的规则需要在配置规则时添加–permanent选项（否则所有命令都是作用于runtime，运行时配置）,如果让永久生效规则立即覆盖当前规则生效使用，还需要使用firewall-cmd –reload命令重新加载防火墙配置。常用firewall-cmd命令如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>firewall-cmd**</strong>命令**</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–get-default-zone</td>
+<td>查看当前默认区域</td>
+</tr>
+<tr>
+<td>–get–active-zones</td>
+<td>列出当前正在使用的区域及其所对应的网卡接口</td>
+</tr>
+<tr>
+<td>–get-zones</td>
+<td>列出所有可用的区域</td>
+</tr>
+<tr>
+<td>–set-default-zone=<zone></zone></td>
+<td>设置默认区域（注意此命令会同时修改运行时配置和永久配置）</td>
+</tr>
+<tr>
+<td>–add-source=<cidr>[–zone=<zone>]</zone></cidr></td>
+<td>将来自IP地址或网段的所有流量路由到指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-source=<cidr>[–zone=&lt;ZONE]</cidr></td>
+<td>从指定区域中删除来自IP地址或网段的所有路由流量规则，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-interface=<interface>[–zone=&lt;ZONE]</interface></td>
+<td>将来自该接口的所有流量都路由到指定区域。没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–change-interface=<interface>[–zone=&lt;ZONE]</interface></td>
+<td>将接口与指定区域做关联，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–list-all[–zone=&lt;ZONE]</td>
+<td>列出指定区域已配置接口、源、服务、端口等信息，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-service=<service>[–zone=&lt;ZONE]</service></td>
+<td>允许到该服务的流量通过指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-service=<service>[–zone=&lt;ZONE]</service></td>
+<td>从指定区域的允许列表中删除该服务，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–add-port=&lt;PORT/PROTOCOL&gt;[–zone=&lt;ZONE]</td>
+<td>允许到该端口的流量通过指定区域，没有指定区域时使用默认区域。</td>
+</tr>
+<tr>
+<td>–remove-port=&lt;PORT/PROTOCOL&gt;[–zone=&lt;ZONE]</td>
+<td>从指定区域的允许列表中删除该端口，没有指定区域时使用默认区域。</td>
+</tr>
+</tbody></table>
+<h2 id="1、区域管理"><a href="#1、区域管理" class="headerlink" title="1、区域管理"></a>1、区域管理</h2><p>  firewall-cmd –help | wc -l</p>
+<p>（1）查看默认区域</p>
+<p># firewall-cmd –get-default-zone </p>
+<p>（2）列出当前正在使用的区域及其所对应的网卡接口</p>
+<p># firewall-cmd –get-active-zones </p>
+<p>（3）列出所有可用的区域</p>
+<p>   # firewall-cmd –get-zones</p>
+<p>（4）设置默认区域</p>
+<p>   # firewall-cmd –set-default-zone=block </p>
+<h2 id="2、服务管理"><a href="#2、服务管理" class="headerlink" title="2、服务管理"></a>2、服务管理</h2><p>（1）查看预定义服务</p>
+<p># firewall-cmd –get-services </p>
+<p>（2）添加http服务到public区域</p>
+<p># firewall-cmd –add-service=http –zone=public –permanent</p>
+<p># systemctl restart firewalld</p>
+<p>（3）查看public区域已配置的规则</p>
+<p># firewall-cmd –list-all –zone=public</p>
+<p>（4）移除public区域的http服务，不使用–zone指定区域时使用默认区域</p>
+<p># firewall-cmd –remove-service=http –permanent –zone=public </p>
+<p># systemctl restart firewalld</p>
+<p>（5）将多个服务添加到某一个区域，不添加–permanent选项表示是即时生效的临时设置</p>
+<p># firewall-cmd –add-service=http –add-service=https </p>
+<p>  # systemctl restart firewalld</p>
+<h2 id="3、端口管理"><a href="#3、端口管理" class="headerlink" title="3、端口管理"></a>3、端口管理</h2><p>（1）允许TCP的3306端口到public区域</p>
+<p>   # firewall-cmd –add-port=3306/tcp</p>
+<p>（2）从public区域将TCP的3306端口移除</p>
+<p>   # firewall-cmd –remove-port=3306/tcp</p>
+<p>（3）允许某一范围的端口，如允许UDP的2048-2050端口到public区域</p>
+<p>   # firewall-cmd –add-port=2048-2050/udp –zone=public</p>
+<p>（4）使用–list-ports查看加入的端口操作是否成功</p>
+<p># firewall-cmd –list-ports</p>
+<h2 id="4、伪装IP"><a href="#4、伪装IP" class="headerlink" title="4、伪装IP"></a>4、伪装IP</h2><p>（1）什么是地址伪装？</p>
+<p>通过地址伪装，NAT设备将经过设备的包转发到指定的接收方，同时将通过的数据包<br> 源地址更改为其NAT设备自己的接口地址。当返回的数据包到达时，会将目的地址修改<br> 为原始主机的地址并做路由。地址伪装可以实现局域网多个地址共享单一公网地址上网。类似于NAT技术中的端口多路复用（PAT）。IP地址伪装仅支持ipv4，不支持ipv6。</p>
+<p>（2）相关命令</p>
+<p>firewall-cmd –query-masquerade # 检查是否允许伪装IP</p>
+<p>firewall-cmd –permanent –add-masquerade # 允许防火墙伪装IP</p>
+<p>firewall-cmd –permanent –remove-masquerade# 禁止防火墙伪装IP</p>
+<h2 id="5、端口转发"><a href="#5、端口转发" class="headerlink" title="5、端口转发"></a>5、端口转发</h2><p>当我们想把某个端口隐藏起来的时候，就可以在防火墙上阻止那个端口访问，然后再开一个不规则的端口，之后配置防火墙的端口转发，将流量转发过去。</p>
+<p># firewall-cmd –permanent –add-masquerade</p>
+<p># firewall-cmd –add-forward-port=port=8080:proto=tcp:toport=80</p>
+<p># firewall-cmd –add-port=8080/tcp</p>
+<p># firewall-cmd –remove-service=http</p>
+<p><strong>端口转发还可以做流量分发，一个防火墙拖着好多台运行着不同服务的机器，然后用防火墙将不同端口的流量转发至不同机器。</strong></p>
+<h1 id="三、firewalld富规则"><a href="#三、firewalld富规则" class="headerlink" title="三、firewalld富规则"></a>三、firewalld富规则</h1><p><a href="https://www.cnblogs.com/meizy/p/firewalld.html#fanghuoqiangfuguize" target="_blank" rel="noopener">https://www.cnblogs.com/meizy/p/firewalld.html#fanghuoqiangfuguize</a> </p>
+<p> –list-rich-rules            –列出富规则</p>
+<p>–add-rich-rule=<rule>       　　 –使用富规则语言添加富规则</rule></p>
+<p>–remove-rich-rule=<rule>    　　　 –移除富规则</rule></p>
+<p>–query-rich-rule=<rule>        –查询某条富规则是否存在</rule></p>
+<p>–list-rich-rules           –列出指定区域中的所有富规则</p>
+<p>–list-all 和 –list-all-zones     –也能列出存在的富规则</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统安全</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-2</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/firewall防火墙/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/RIP/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:13.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/02/01/RIP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          RIP动态传输协议
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/29/FTP服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ftp服务器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/RIP/">RIP动态传输协议</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -272,8 +513,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

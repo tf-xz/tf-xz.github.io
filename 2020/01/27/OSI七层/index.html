@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | 你好</title>
+  <title>OSI七层 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你好">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+  <meta name="description" content="CVE _2020-2-2">
+<meta name="keywords" content="2020-2-2,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSI七层">
+<meta property="og:url" content="http://yoursite.com/2020/01/27/OSI七层/index.html">
 <meta property="og:site_name" content="你好">
+<meta property="og:description" content="CVE _2020-2-2">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/OSI七层/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta property="og:updated_time" content="2020-02-02T05:52:11.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好">
+<meta name="twitter:title" content="OSI七层">
+<meta name="twitter:description" content="CVE _2020-2-2">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/27/OSI七层/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -150,106 +157,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OSI七层" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/磁盘的分区与挂载/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:17.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/磁盘的分区与挂载/">磁盘的分区与挂载</a>
+    <h1 class="article-title" itemprop="name">
+      OSI七层
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/27/OSI七层/" class="archive-article-date">
+  	<time datetime="2020-01-27T05:05:27.070Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CVE-2020-2-2"><a href="#CVE-2020-2-2" class="headerlink" title="CVE _2020-2-2"></a>CVE _2020-2-2</h3><a id="more"></a>
+
+<h3 id="OSI的基本概念"><a href="#OSI的基本概念" class="headerlink" title="OSI的基本概念"></a>OSI的基本概念</h3><p>OSI是Open <a href="http://www.ha97.com/tag/system" target="_blank" rel="noopener">System</a> Interconnect的缩写，意为开放式系统互联。<br>OSI七层参考模型的各个层次的划分遵循下列原则：<br>1、同一层中的各网络节点都有相同的层次结构，具有同样的功能。<br>2、同一节点内相邻层之间通过接口（可以是逻辑接口）进行通信。<br>3、七层结构中的每一层使用下一层提供的服务，并且向其上层提供服务。<br>4、不同节点的同等层按照协议实现对等层之间的通信。 </p>
+<h3 id="应用层："><a href="#应用层：" class="headerlink" title="应用层："></a>应用层：</h3><p>​        提供用户和程序的接口， 例如：为操作系统或网络应用程序提供网络服务的接口</p>
+<p>​        协议：Telnet、FTP、HTTP、SNMP、DNS</p>
+<h3 id="表示层："><a href="#表示层：" class="headerlink" title="表示层："></a>表示层：</h3><p>​        提供数据的格式转换，例如：解密与加密，图片解码和编码，数据的压缩和解压缩</p>
+<h3 id="会话层："><a href="#会话层：" class="headerlink" title="会话层："></a>会话层：</h3><p>​        建立端连接并提供访问验证和会话管理，例如：使用校验点可使会话在通信失效时从校验点恢复通信。</p>
+<p>​        常见：服务器验证用户登录、断电续传</p>
+<h3 id="传输层："><a href="#传输层：" class="headerlink" title="传输层："></a>传输层：</h3><p>​        提供应用进程之间的逻辑通信，例如：建立连接，处理数据包错误、数据包次序</p>
+<p>​        协议：TCP、UDP、SPX</p>
+<h3 id="网络层："><a href="#网络层：" class="headerlink" title="网络层："></a>网络层：</h3><p>​        为数据在结点之间传输创建逻辑链路，并分组转发数据，例如：对子网间的数据包进行路由选择</p>
+<p>​        设备：路由器、多层交换机、防火墙</p>
+<p>​        协议：IP、RIP、OSPF                </p>
+<h3 id="数据链路层："><a href="#数据链路层：" class="headerlink" title="数据链路层："></a>数据链路层：</h3><p>​        在通信的实体间建立数据链路连接，例如：将数据分帧，并处理流控制、物理地址寻址、重发等</p>
+<p>​        设备：网卡、网桥、二层交换机</p>
+<h3 id="物理层："><a href="#物理层：" class="headerlink" title="物理层："></a>物理层：</h3><p>​        为数据端设备提供原始比特流的传输的通路，例如：网络通信的数据传输介质，由电缆与设备共同构成</p>
+<p>​        设备：中继器、集线器(HUB)、网线、RJ-45</p>
+<h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><p>​        不同的协议层对数据包有不同的称谓，在传输层叫做段（segment），在网络层叫做数据报（datagram），在链路层叫做帧（frame）加上MAC头，加完后再加上一个FCS校验组成数据帧，就封装完成了，然后在物理层通过Bit来传输。发到传输介质上，到达目的主机后每层协议再剥掉相应的首部，最后将应用层数据交给应用程序处理。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-2</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/27/OSI七层/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/01/RIP/" class="archive-article-date">
-  	<time datetime="2020-02-01T08:36:13.451Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/01/29/OSPF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          OSPF协议
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/27/STP协议/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">STP协议</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/RIP/">RIP动态传输协议</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -272,8 +370,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
