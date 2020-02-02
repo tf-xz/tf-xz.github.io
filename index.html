@@ -152,6 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-磁盘的分区与挂载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/磁盘的分区与挂载/">磁盘的分区与挂载</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/01/磁盘的分区与挂载/" class="archive-article-date">
+  	<time datetime="2020-02-01T08:36:17.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+<h1 id="磁盘的分区与挂载："><a href="#磁盘的分区与挂载：" class="headerlink" title="磁盘的分区与挂载："></a>磁盘的分区与挂载：</h1><p>1.磁盘(硬盘）在Linux系统中的表示方法<br>  IDE硬盘：hda1 hda2  hdb1 hdc1 ….<br>  SATA硬盘/SCSI/USB接口的移动盘：sda1 sda2 sdb1</p>
+<p>2.硬盘分区： 主分区    最多只能分4个，是可以直接使用，主要用于系统盘。编号为1-4<br>            扩展分区  不能直接使用，必须有主分区后才能将所有剩余空间分为扩展分区，可以建立逻辑分区。1-4，除主分区外。<br>            逻辑分区   可以直接使用，编号从5开始，不能做为系统引导盘。</p>
+<p>第一个扇区最重要，里面有：</p>
+<p>主引导区(Master boot record, MBR)</p>
+<p>分区表(partition table)</p>
+<p>3.磁盘分区的格式：</p>
+<p>windows 系统中的格式有 fat fat 16  fat32   分区大小也会受到限制、文件的大小会受到限制，安全性能不高。</p>
+<p> NTFS   支持大容量分区，支持NTFS权限设置，安全性能较高</p>
+<p> Linux系统中的常用格式有 ext2 ext3 ext4</p>
+<h2 id="4-磁盘分区"><a href="#4-磁盘分区" class="headerlink" title="4.磁盘分区"></a>4.磁盘分区</h2><p>​    步骤一：向Linux服务器添加一块硬盘，并重启系统。</p>
+<h3 id="步骤二：查看系统当中的硬盘及其分区信息"><a href="#步骤二：查看系统当中的硬盘及其分区信息" class="headerlink" title="步骤二：查看系统当中的硬盘及其分区信息"></a>步骤二：查看系统当中的硬盘及其分区信息</h3><p>​            ls /dev/sd*   查看/dev目录下的硬盘文件</p>
+<p>​            <strong>fdisk -l</strong>   查看硬盘分区的信息</p>
+<h3 id="步骤三：对磁盘进行分区"><a href="#步骤三：对磁盘进行分区" class="headerlink" title="步骤三：对磁盘进行分区"></a>步骤三：对磁盘进行分区</h3><p>​             <strong>fdisk /dev/sdb</strong>   对sdb这块硬盘进行分区</p>
+<p><img src="C:%5CUsers%5Casus%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576858883150.png" alt="1576858883150"></p>
+<h3 id="步骤四：格式化磁盘"><a href="#步骤四：格式化磁盘" class="headerlink" title="步骤四：格式化磁盘"></a>步骤四：格式化磁盘</h3><p>​            mkfs -t 分区格式 分区名称</p>
+<p>​            mkfs -t ext4 /dev/sdb1</p>
+<p>​                     举例：将/dev/sdb1 格式化为 ext4 文件系统。<br>​                     [root@localhost ~]# mkfs -t ext4 /dev/sdb1</p>
+<h3 id="步骤五：挂载分区"><a href="#步骤五：挂载分区" class="headerlink" title="步骤五：挂载分区"></a>步骤五：挂载分区</h3><p>​           mount  -t  分区格式 设备名称  空目录名称<br>​           mount  -t  ext4  /dev/sdb1  /mnt/sdb1<br>​           mount  -t  ext4  -o  ro  /dev/sdb1  /mnt/sdb1</p>
+<p>​           检查是否挂载成功：mount<br>​           <strong>取消挂载</strong>：umount 挂载目录的名称 （不能在挂载目录下进行）<br>​           <strong>查看已挂载分区的信息</strong>：df -hT /mnt/sdb1<br>​           使用mount命令挂载的文件系统，只是临时的，如果系统重启则需要重新挂载。</p>
+<h3 id="mount-命令"><a href="#mount-命令" class="headerlink" title="mount 命令"></a>mount 命令</h3><p> 命令格式：mount [选项] [设备名] [挂载点]<br>选项 功能说明<br>-t fstype 指定要挂载的文件系统的类型，如果不清楚，可以使用-t auto 让系统 自己选择最合适的文件系统类型挂载。<br>-r 以只读的方式挂载文件系统<br>4<br>-w 以读写的方式挂载文件系统，默认选项<br>-o 设置挂载属性<br>-a 挂载/etc/fstab 文件中记录的设备</p>
+<h3 id="步骤六：可以使用-etc-fstab文件对文件系统进行永久挂载。"><a href="#步骤六：可以使用-etc-fstab文件对文件系统进行永久挂载。" class="headerlink" title="步骤六：可以使用/etc/fstab文件对文件系统进行永久挂载。"></a>步骤六：可以使用/etc/fstab文件对文件系统进行永久挂载。</h3><p>   步骤七：挂载光盘（光盘的设备文件名为：/dev/sr0,文件系统的类型为：iso9660)<br>           mount -t iso9660 /dev/sr0 /mnt/cdrom<br>   步骤八：挂载U盘</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-1</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/01/磁盘的分区与挂载/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-RIP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
