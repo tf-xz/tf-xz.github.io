@@ -6,22 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SQL语言 | 你好</title>
+  <title>Tag: 2020-1-22 | 你好</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CVE _2020-2-2">
-<meta name="keywords" content="2020-2-2,数据库">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SQL语言">
-<meta property="og:url" content="http://yoursite.com/2020/01/22/SQL-DML/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="你好">
+<meta property="og:url" content="http://yoursite.com/tags/2020-1-22/index.html">
 <meta property="og:site_name" content="你好">
-<meta property="og:description" content="CVE _2020-2-2">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/01/22/SQL-DML/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
-<meta property="og:updated_time" content="2020-02-02T04:36:00.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL语言">
-<meta name="twitter:description" content="CVE _2020-2-2">
-<meta name="twitter:image" content="http://yoursite.com/2020/01/22/SQL-DML/-![](%20http://ww1.sinaimg.cn/large/007bHQE8gy1g6rgpepwi8j31h50su4qp.jpg)">
+<meta name="twitter:title" content="你好">
   
     <link rel="alternative" href="/atom.xml" title="你好" type="application/atom+xml">
   
@@ -157,217 +150,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SQL-DML" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      SQL语言
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/22/SQL语言/" class="archive-article-date">
+  	<time datetime="2020-01-22T09:34:16.305Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/22/SQL语言/">SQL语言</a>
     </h1>
   
 
-        
-        <a href="/2020/01/22/SQL-DML/" class="archive-article-date">
-  	<time datetime="2020-01-22T09:34:16.305Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CVE-2020-2-2"><a href="#CVE-2020-2-2" class="headerlink" title="CVE _2020-2-2"></a>CVE _2020-2-2</h3><a id="more"></a>
-
-<h1 id="SQL分类：DDL、DML、DQL、DCL"><a href="#SQL分类：DDL、DML、DQL、DCL" class="headerlink" title="SQL分类：DDL、DML、DQL、DCL"></a>SQL分类：DDL、DML、DQL、DCL</h1><h2 id="1、DDL（针对数据库对象）"><a href="#1、DDL（针对数据库对象）" class="headerlink" title="1、DDL（针对数据库对象）"></a>1、DDL（针对数据库对象）</h2><h3 id="1-1、create-创建"><a href="#1-1、create-创建" class="headerlink" title="1.1、create-创建"></a>1.1、create-创建</h3><p>语法：create 对象类型 对象名</p>
-<p> 如：创建用户（同时设置密码）</p>
-<p>语法：create user   用户名称;</p>
-<h3 id="1-2、alter-修改"><a href="#1-2、alter-修改" class="headerlink" title="1.2、alter-修改"></a>1.2、alter-修改</h3><p>语法：alter 对象类型 对象名</p>
-<h3 id="1-3、drop-删除"><a href="#1-3、drop-删除" class="headerlink" title="1.3、drop-删除"></a>1.3、drop-删除</h3><p>语法：drop 对象类型 对象名</p>
-<h2 id="2、DML（针对数据信息）"><a href="#2、DML（针对数据信息）" class="headerlink" title="2、DML（针对数据信息）"></a>2、DML（针对数据信息）</h2><h3 id="2-1、insert-插入"><a href="#2-1、insert-插入" class="headerlink" title="2.1、insert-插入"></a>2.1、insert-插入</h3><p>2.1.1、inset into 表名[(字段1[,字段2,…])] values(值1,值2,…);</p>
-<p>注意：</p>
-<p>​        1、 如果针对表中所有字段添加数据，可省略字段列表</p>
-<p>​        2、 字段列表不是表中所有字段时，非空、无默认值的字段必须出现</p>
-<p>​        3、 值列表与字段列表必须一一对应（数量、数据类型）</p>
-<p>​        4、 对于字段列表中有允许为空字段，其值可使用default或null替代</p>
-<p>​        5、 对于字段列表中有默认值字段，其值可使用default替代</p>
-<p>强调：针对字符、日期和时间类型对应的数据值，在SQL语句中须使用英文单引号括起来！</p>
-<p>2.1.2、insert…select…（须先创建目标表）</p>
-<p>语法：insert  into 表名[(字段列表)]  select 字段列表 from 表名;</p>
-<p>注意：两处字段列表数量须一致，且数据类型能兼容</p>
-<p>2.1.3、create…select…（插入数据前自动根据源表所选字段构建目标表）</p>
-<p>语法：create table  select  from ;</p>
-<h3 id="2-2、update-更新"><a href="#2-2、update-更新" class="headerlink" title="2.2、update-更新"></a>2.2、update-更新</h3><p>语法：update 表名 set字段1=值1[,字段2=值2,…] [where 条件表达式];</p>
-<p>注意：在update语句中，如果没有出现where子句，则表示针对表中所有数据进行更新操作；如果表中出现where子句，则必须先根据条件表达式筛选数据，再行更新操作</p>
-<h3 id="2-3、delete-删除"><a href="#2-3、delete-删除" class="headerlink" title="2.3、delete-删除"></a>2.3、delete-删除</h3><p>语法：<strong>delete from</strong> <strong>表名  [where</strong> 条件表达式];</p>
-<p>注意：如果是多个条件，则使用逻辑运算符：与(and)、或(or)、非（not）</p>
-<h2 id="3、DQL（针对数据信息）–select-查询"><a href="#3、DQL（针对数据信息）–select-查询" class="headerlink" title="3、DQL（针对数据信息）–select-查询"></a>3、DQL（针对数据信息）–select-查询</h2><h3 id="3-1、基本语法："><a href="#3-1、基本语法：" class="headerlink" title="3.1、基本语法："></a>3.1、基本语法：</h3><p>select  字段1，字段2……   from 表名 ；–查询表中的字段</p>
-<h3 id="3-2、where子句"><a href="#3-2、where子句" class="headerlink" title="3.2、where子句"></a>3.2、where子句</h3><p>select  字段1，字段2……   from 表名 [where 条件表达式];   –查询满足条件的字段</p>
-<h3 id="3-3、order-by子句"><a href="#3-3、order-by子句" class="headerlink" title="3.3、order by子句"></a>3.3、order by子句</h3><p>select  字段列表   from 表名 [order by 字段1 [asc]|desc [字段2 [asc]|desc]；–根据字段进行升序或者降序</p>
-<p>注意：如果有where子句，order by 子句出现在where子句的后面</p>
-<h3 id="3-4、limit子句"><a href="#3-4、limit子句" class="headerlink" title="3.4、limit子句"></a>3.4、limit子句</h3><p>select 字段列表 from 表名 limit [m,]n;  –取多少条数据</p>
-<p>注意：<br>        limit 关键字后可以只有一个数字n时，表示取前n条数据（此时m=0）<br>        limit 关键字后有两个数m,n时，表示从m+1行开始读取</p>
-<h3 id="3-5、group-by子句（having子句）"><a href="#3-5、group-by子句（having子句）" class="headerlink" title="3.5、group by子句（having子句）"></a>3.5、group by子句（having子句）</h3><p>select count(*)<br>from表名  group by 字段名 having 条件表达式</p>
-<h3 id="3-6、join技术"><a href="#3-6、join技术" class="headerlink" title="3.6、join技术"></a>3.6、join技术</h3><h4 id="3-6-1、内连接"><a href="#3-6-1、内连接" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><h4 id="3-6-1、内连接-1"><a href="#3-6-1、内连接-1" class="headerlink" title="3.6.1、内连接"></a>3.6.1、内连接</h4><p>select 字段列表 from 表B inner join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>select 字段列表 from 表A，表B where 表A.主键字段=表B.外键字段 [and 其他条件表达式]</p>
-<h4 id="3-6-2外连接：outer-join"><a href="#3-6-2外连接：outer-join" class="headerlink" title="3.6.2外连接：outer join"></a>3.6.2外连接：outer join</h4><h5 id="左外连接：left-outer-join-left-join"><a href="#左外连接：left-outer-join-left-join" class="headerlink" title="左外连接：left outer join/left join"></a>左外连接：left outer join/left join</h5><p>语法：select 字段列表 from 表B left join 表B on 表A.主键字段=表B.外键字段 [where 条件表达式]</p>
-<p>说明：</p>
-<p>​        以左表（left join左边的表）为基表呈现数据，右表中无对应匹配的数据则以null呈现（有条件表达式存在则再筛选）</p>
-<h5 id="右连接：right-join"><a href="#右连接：right-join" class="headerlink" title="右连接：right join"></a>右连接：right join</h5><h2 id="4、DCL（针对用户）：grant-授权、revoke-回收"><a href="#4、DCL（针对用户）：grant-授权、revoke-回收" class="headerlink" title="4、DCL（针对用户）：grant-授权、revoke-回收"></a>4、DCL（针对用户）：grant-授权、revoke-回收</h2><h3 id="4-1、授权"><a href="#4-1、授权" class="headerlink" title="4.1、授权"></a>4.1、授权</h3><p>语法：grant 权限 on 范围 to 用户 [with grant option];</p>
-<p>说明：如果在授权语句中出现with grant option，代表被授权的用户可将自己的权限授予给别人</p>
-<p>如：创建用户同时分配权限</p>
-<p>语法：grant 权限 on 范围 to 用户 identified by ‘密码’;</p>
-<h3 id="4-2、回收"><a href="#4-2、回收" class="headerlink" title="4.2、回收"></a>4.2、回收</h3><p>语法：revoke 权限 on 范围 from 用户;</p>
-<h3 id="4-3、刷新权限机制"><a href="#4-3、刷新权限机制" class="headerlink" title="4.3、刷新权限机制"></a>4.3、刷新权限机制</h3><p>flush privileges;</p>
-<h3 id="4-4、查看用户当前权限"><a href="#4-4、查看用户当前权限" class="headerlink" title="4.4、查看用户当前权限"></a>4.4、查看用户当前权限</h3><p>语法：show grants for 用户名;</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">2020-2-2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2020-1-22</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/22/SQL-DML/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/01/27/Mysql支持的数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Mysql支持的数据类型
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -390,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -464,11 +304,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">2020-2-2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">2020-1-29</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,7 +312,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">2020-1-27</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">2020-2-1</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">2020-1-22</a>
               </li>
             
             <div class="clearfix"></div>
